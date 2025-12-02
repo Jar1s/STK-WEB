@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="STK JP Control s.r.o. - Technická kontrola, emisná kontrola a kontrola originality vozidiel v Bratislavskom kraji">
+    <title>STK JP Control s.r.o. | Technická kontrola vozidiel</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.kontrolavozidiel.sk/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.kontrolavozidiel.sk/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.kontrolavozidiel.sk/assets/favicons/favicon-16x16.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="status-indicator">
+                    <span class="status-dot-small"></span>
+                    <span class="status-text">ZATVORENÉ</span>
+                </div>
+                <div class="top-bar-right">
+                    <div class="nonstop-info">
+                        <span class="nonstop-label" data-translate="nonstop">NONSTOP</span>
+                        <a href="tel:0948888088" class="phone-link">0948 888 088</a>
+                    </div>
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="sk">SK</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.688-.074-4.948-.074zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <h1>STK JP Control</h1>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="#main-services" class="nav-link nav-link-plates">
+                        <img src="PTI_icons.webp" alt="TK EK KO" class="nav-plates-image">
+                    </a></li>
+                    <li><a href="#services" class="nav-link" data-translate="nav-services">Služby</a></li>
+                    <li><a href="#pricing" class="nav-link" data-translate="nav-pricing">Cenník</a></li>
+                    <li><a href="#reviews" class="nav-link" data-translate="nav-reviews">Recenzie</a></li>
+                    <li><a href="#contact" class="nav-link" data-translate="nav-contact">Kontakt</a></li>
+                    <li><a href="rezervacia.html" class="nav-link btn-primary" data-translate="nav-booking">Rezervovať</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Announcements Banner -->
+    <div class="announcements-banner" id="announcementsBanner">
+        <div class="container">
+            <div class="announcement-card warning">
+                <div class="announcement-icon">📅</div>
+                <div class="announcement-content">
+                    <h3>Celozávodná dovolenka</h3>
+                    <p>V dňoch <strong>31.12.2025 - 6.1.2026</strong> (vrátane) čerpáme celozávodnú dovolenku. Prajeme Vám príjemné prežitie vianočných sviatkov a šťastlivý Nový rok 2026. Tešíme sa na Vás <strong>07.01.2026</strong>.</p>
+                </div>
+                <button class="announcement-close" aria-label="Zatvoriť">×</button>
+            </div>
+            <div class="announcement-card info">
+                <div class="announcement-icon">💰</div>
+                <div class="announcement-content">
+                    <h3>Úprava cien služieb STK</h3>
+                    <p>Od <strong>1.11.2025</strong> dochádza k úprave ceny STK a KO pre osobné motorové vozidlá z pôvodných <strong>89 € na 99 €</strong>.</p>
+                </div>
+                <button class="announcement-close" aria-label="Zatvoriť">×</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    <span>ZATVORENÉ</span>
+                </div>
+                <h1 class="hero-title" data-translate="hero-title">STK JP Control s.r.o.</h1>
+                <p class="hero-subtitle" data-translate="hero-subtitle">Vaša spoľahlivá stanica technickej kontroly v Bratislavskom kraji</p>
+                <div class="hero-cta">
+                    <a href="rezervacia.html" class="btn btn-large btn-hero-cta" data-translate="hero-cta">REZERVOVAŤ TERMÍN ONLINE</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics-section">
+        <div class="container">
+            <h2 class="statistics-header">NAŠA PREVÁDZKA V ČÍSLACH</h2>
+            <div class="statistics-grid">
+                <div class="statistic-item">
+                    <div class="statistic-number">15,000+</div>
+                    <div class="statistic-label">VYKONANÝCH KONTROL</div>
+                </div>
+                <div class="statistic-item">
+                    <div class="statistic-number">10+</div>
+                    <div class="statistic-label">ROKOV SKÚSENOSTÍ</div>
+                </div>
+                <div class="statistic-item">
+                    <div class="statistic-number">98%</div>
+                    <div class="statistic-label">SPOKOJNÝCH ZÁKAZNÍKOV</div>
+                </div>
+            </div>
+            <div class="statistics-cta">
+                <a href="#contact" class="btn-statistics">ADRESA A KONTAKT</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section id="advantages" class="advantages-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-translate="section-advantages">Výhody u nás</h2>
+                <p data-translate="section-advantages-sub">Prečo si vybrať práve nás</p>
+            </div>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon-wrapper">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/>
+                            <polygon points="12 15 17 21 7 21 12 15"/>
+                        </svg>
+                    </div>
+                    <h3 data-translate="advantage-1-title">Odvoz/dovoz zadarmo</h3>
+                    <p data-translate="advantage-1-text">Ak sa potrebujete počas kontroly nečakane dostaviť na neplánované stretnutie, vieme Vám zabezpečiť odvoz aj dovoz k nám. (do 10 km)</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon-wrapper">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <h3 data-translate="advantage-2-title">Prídeme si pre Vaše vozidlo</h3>
+                    <p data-translate="advantage-2-text">Nemôžete sa k nám osobne dostaviť na kontrolu? Prídeme si po Vaše vozidlo a po kontrole Vám ho privezieme späť. (do 10 km)</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon-wrapper">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3 data-translate="advantage-3-title">NONSTOP pre nákladné vozidlá</h3>
+                    <p data-translate="advantage-3-text">Po telefonickej objednávke aj mimo otváracích hodín. <strong>BEZ PRÍPLATKU</strong></p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon-wrapper">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="8" width="18" height="4" rx="1"/>
+                            <path d="M12 8v13"/>
+                            <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/>
+                            <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>
+                        </svg>
+                    </div>
+                    <h3 data-translate="advantage-4-title">Zapožičanie prevozných ŠPZ</h3>
+                    <p data-translate="advantage-4-text">Pre potreby KO a STK v rámci SR</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Services: Technical, Emission, Originality Control -->
+    <section id="main-services" class="main-services-section">
+        <div class="container">
+            <div class="main-services-grid">
+                <!-- Technická kontrola -->
+                <div class="main-service-card">
+                    <div class="main-service-header">
+                        <div class="main-service-icon">🔧</div>
+                        <h2 data-translate="tech-control-title">TECHNICKÁ KONTROLA</h2>
+                    </div>
+                    <div class="main-service-content">
+                        <p data-translate="tech-control-desc">Technická kontrola vozidla (STK) je povinná kontrola, ktorá sa vykonáva v pravidelných intervaloch podľa veku a typu vozidla. Naša STK zabezpečuje komplexnú kontrolu všetkých kritických súčastí vozidla.</p>
+                        <div class="service-details">
+                            <h3 data-translate="tech-control-what">Čo kontrolujeme:</h3>
+                            <ul>
+                                <li>Brzdový systém a účinnosť brzd</li>
+                                <li>Riadiace a zavesenie vozidla</li>
+                                <li>Osvetlenie a svetelné zariadenia</li>
+                                <li>Karoséria a bezpečnostné prvky</li>
+                                <li>Kolesá a pneumatiky</li>
+                                <li>Výfukový systém</li>
+                                <li>Viditeľnosť a čistota skiel</li>
+                                <li>Bezpečnostné pásy a airbagy</li>
+                                <li>Hluk vozidla</li>
+                            </ul>
+                        </div>
+                        <div class="service-info">
+                            <p><strong>Platnosť:</strong> Osobné vozidlá - každé 2 roky (do 4 rokov veku každé 4 roky), nákladné vozidlá - každý rok</p>
+                            <p><strong>Čas kontroly:</strong> Približne 30-45 minút</p>
+                        </div>
+                        <a href="#pricing" class="btn btn-primary">Zobraziť cenník</a>
+                    </div>
+                </div>
+
+                <!-- Emisná kontrola -->
+                <div class="main-service-card">
+                    <div class="main-service-header">
+                        <div class="main-service-icon">🌱</div>
+                        <h2 data-translate="emission-control-title">EMISNÁ KONTROLA</h2>
+                    </div>
+                    <div class="main-service-content">
+                        <p data-translate="emission-control-desc">Emisná kontrola (EK) je povinná kontrola emisií škodlivých látok vo výfukových plynoch vozidla. Kontrola sa vykonáva súčasne s technickou kontrolou alebo samostatne.</p>
+                        <div class="service-details">
+                            <h3 data-translate="emission-control-what">Čo kontrolujeme:</h3>
+                            <ul>
+                                <li>Emisie CO (oxid uhoľnatý)</li>
+                                <li>Emisie HC (uhľovodíky)</li>
+                                <li>Emisie NOx (oxidy dusíka)</li>
+                                <li>Časticové látky (PM) pre dieselové motory</li>
+                                <li>Konečnosť výfukového systému</li>
+                                <li>Pripojenie OBD (On-Board Diagnostics)</li>
+                                <li>Kontrola LPG/CNG systémov</li>
+                            </ul>
+                        </div>
+                        <div class="service-info">
+                            <p><strong>Platnosť:</strong> Osobné vozidlá - každé 2 roky (do 4 rokov veku každé 4 roky), nákladné vozidlá - každý rok</p>
+                            <p><strong>Čas kontroly:</strong> Približne 20-30 minút</p>
+                        </div>
+                        <a href="#pricing" class="btn btn-primary">Zobraziť cenník</a>
+                    </div>
+                </div>
+
+                <!-- Kontrola originality -->
+                <div class="main-service-card">
+                    <div class="main-service-header">
+                        <div class="main-service-icon">🔍</div>
+                        <h2 data-translate="originality-control-title">KONTROLA ORIGINALITY</h2>
+                    </div>
+                    <div class="main-service-content">
+                        <p data-translate="originality-control-desc">Kontrola originality (KO) je kontrola, ktorá sa vykonáva pri dovoze vozidla zo zahraničia, vývoze, zmenách vlastníctva alebo pri zmenách na vozidle (napr. zmena farby).</p>
+                        <div class="service-details">
+                            <h3 data-translate="originality-control-when">Kedy je potrebná:</h3>
+                            <ul>
+                                <li>Dovoz vozidla zo zahraničia</li>
+                                <li>Vývoz vozidla do zahraničia</li>
+                                <li>Nestihnutie prihlásenia vozidla včas</li>
+                                <li>Zmena farby vozidla</li>
+                                <li>Zmena vlastníctva vozidla</li>
+                                <li>Kontrola pri podozrení na nelegálne zmeny</li>
+                            </ul>
+                        </div>
+                        <div class="service-details">
+                            <h3 data-translate="originality-control-what">Čo kontrolujeme:</h3>
+                            <ul>
+                                <li>Zhodu čísla podvozku/rámu</li>
+                                <li>Zhodu čísla motora</li>
+                                <li>Zhodu farby vozidla</li>
+                                <li>Zhodu technických údajov</li>
+                                <li>Kontrola dokumentácie</li>
+                                <li>Kontrola značiek a nálepiek</li>
+                            </ul>
+                        </div>
+                        <div class="service-info">
+                            <p><strong>Dôležité:</strong> Kontrola originality je nevyhnutná pre prihlásenie vozidla v SR</p>
+                            <p><strong>Čas kontroly:</strong> Približne 45-60 minút</p>
+                        </div>
+                        <a href="#pricing" class="btn btn-primary">Zobraziť cenník</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-translate="section-services">Naše služby STK a poradenstvo</h2>
+                <p data-translate="section-services-sub">Kompletná ponuka služieb pre vaše vozidlo</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3>Objednanie mimo otváracích hodín</h3>
+                    <p>Ak Vám nevyhovujú naše otváracie hodiny, sme tu pre Vás aj mimo nich.</p>
+                    <a href="#contact" class="service-link">Chcem si dohodnúť termín</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <h3>Ako pripraviť vozidlo na TK/EK</h3>
+                    <p>Poradíme Vám ako si sám rýchlo a ľahko skontrolovať vozidlo.</p>
+                    <a href="#" class="service-link">Ako na to?</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <h3>Pripomenutie konca platnosti EK/TK</h3>
+                    <p>Zadajte údaje a budeme za Vás sledovať platnosť kontroly a včas Vás budeme kontaktovať.</p>
+                    <a href="#" class="service-link">Zadať údaje</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <h3>Chceme sa zlepšovať</h3>
+                    <p>Boli ste spokojný alebo nie, dajte nám o tom vedieť.</p>
+                    <a href="#reviews" class="service-link">Napíšte recenziu</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3>Ako to u nás na STK prebieha?</h3>
+                    <p>Potrebuje absolvovať pravidelnú kontrolu a neviete ako na to? Netreba sa obávať, je to jednoduché.</p>
+                    <a href="#" class="service-link">Zistiť viac</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                            <line x1="6" y1="1" x2="6" y2="4"/>
+                            <line x1="10" y1="1" x2="10" y2="4"/>
+                            <line x1="14" y1="1" x2="14" y2="4"/>
+                        </svg>
+                    </div>
+                    <h3>Spríjemníme Vám čakanie</h3>
+                    <p>Chceme aby ste sa u nás cítili príjemne.</p>
+                    <a href="#" class="service-link">Čo Vám na STK ponúkame?</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-translate="section-pricing">Cenník služieb</h2>
+                <p class="pricing-validity" data-translate="section-pricing-sub">Transparentné ceny pre všetky naše služby</p>
+            </div>
+            
+            <div class="pricing-intro">
+                <p><strong>Cenník za služby vykonania technickej kontroly (STK) a emisnej kontroly (EK).</strong></p>
+                <p>Cena za opakovanú kontrolu platí iba vtedy, ak bola predchádzajúca kontrola vykonaná na našej STK.</p>
+                <p>V prípade nejasností volajte <a href="tel:0948888088">0948 888 088</a>.</p>
+            </div>
+
+            <div class="pricing-tabs">
+                <button class="pricing-tab active" data-tab="common">Najčastejšie vozidlá</button>
+                <button class="pricing-tab" data-tab="personal">Osobné vozidlá</button>
+                <button class="pricing-tab" data-tab="motorcycles">Motocykle</button>
+                <button class="pricing-tab" data-tab="trailers">Prípojné vozidlá</button>
+                <button class="pricing-tab" data-tab="trucks">Nákladné vozidlá</button>
+                <button class="pricing-tab" data-tab="tractors">Traktory</button>
+                <button class="pricing-tab" data-tab="other">Ostatné</button>
+                <button class="pricing-tab" data-tab="extra">Extra služby</button>
+            </div>
+
+            <!-- Najčastejšie vozidlá -->
+            <div class="pricing-content active" id="common">
+                <h3>Povinná kontrola vyplývajúca zo zákona v SR - najčastejšie vozidlá na našej STK</h3>
+                <div class="pricing-table">
+                    <table>
+                        <tr>
+                            <td>Osobné vozidlo (M1, N1) TK+EK</td>
+                            <td class="price-cell">99 €</td>
+                        </tr>
+                        <tr>
+                            <td>Osobné vozidlo - opakovaná kontrola TK (všetky úkony bez brzdenia vozidla - cena neplatí, ak sa opakuje predošlá závada/závady)</td>
+                            <td class="price-cell">24 €</td>
+                        </tr>
+                        <tr>
+                            <td>Osobné vozidlo - opakovaná kontrola TK (úkony s brzdením vozidla)</td>
+                            <td class="price-cell">24 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola EK (všetky závady týkajúce sa pripojenia OBD - cena neplatí, ak sa opakuje predošlá závada)</td>
+                            <td class="price-cell">24 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola EK (všetky závady okrem pripojenia OBD)</td>
+                            <td class="price-cell">24 €</td>
+                        </tr>
+                        <tr>
+                            <td>Nákladné vozidlo a autobusy (N2,N3, M2, M3) TK+EK</td>
+                            <td class="price-cell">134 €</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Osobné vozidlá -->
+            <div class="pricing-content" id="personal">
+                <h3>Osobné vozidlo (M1, N1)</h3>
+                <div class="pricing-table">
+                    <table>
+                        <tr>
+                            <td>TK (platí aj pri LPG, CNG)</td>
+                            <td class="price-cell">54 €</td>
+                        </tr>
+                        <tr>
+                            <td>EK</td>
+                            <td class="price-cell">45 €</td>
+                        </tr>
+                        <tr>
+                            <td>EK LPG, CNG</td>
+                            <td class="price-cell">55 €</td>
+                        </tr>
+                        <tr>
+                            <td>Administratívna kontrola TK</td>
+                            <td class="price-cell">14 €</td>
+                        </tr>
+                        <tr>
+                            <td>Administratívna kontrola EK</td>
+                            <td class="price-cell">14 €</td>
+                        </tr>
+                        <tr>
+                            <td>Kontrola originality (dovoz, vývoz, nestihol prihlásiť, zmena farby)</td>
+                            <td class="price-cell">99 €</td>
+                        </tr>
+                        <tr>
+                            <td>TK pri neprihlásenom vozidle v SR</td>
+                            <td class="price-cell">49 €</td>
+                        </tr>
+                        <tr>
+                            <td>EK pri neprihlásenom vozidle v SR</td>
+                            <td class="price-cell">40 €</td>
+                        </tr>
+                        <tr>
+                            <td>Komplet KO+TK+EK</td>
+                            <td class="price-cell">188 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola TK (všetky úkony bez brzdenia vozidla - cena neplatí, ak sa opakuje predošlá závada/závady)</td>
+                            <td class="price-cell">24 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola TK (úkony s brzdením vozidla)</td>
+                            <td class="price-cell">24 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola EK (všetky závady týkajúce sa pripojenia OBD - cena neplatí, ak sa opakuje predošlá závada)</td>
+                            <td class="price-cell">24 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola EK (všetky závady okrem pripojenia OBD)</td>
+                            <td class="price-cell">24 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola EK (LPG, CNG)</td>
+                            <td class="price-cell">24 €</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Motocykle -->
+            <div class="pricing-content" id="motorcycles">
+                <h3>Motocykle, trojkolky, štvorkolky (L1e, L2e, L3e, L4e, L5e, L6e, L7e)</h3>
+                <div class="pricing-table">
+                    <table>
+                        <tr>
+                            <td colspan="2" class="note-cell"><strong>L1E, L2E - nepodlieha TK!</strong></td>
+                        </tr>
+                        <tr>
+                            <td>TK</td>
+                            <td class="price-cell">42 €</td>
+                        </tr>
+                        <tr>
+                            <td>Administratívna kontrola</td>
+                            <td class="price-cell">14 €</td>
+                        </tr>
+                        <tr>
+                            <td>Kontrola originality (dovoz, vývoz, nestihol prihlásiť, zmena farby)</td>
+                            <td class="price-cell">73 €</td>
+                        </tr>
+                        <tr>
+                            <td>TK pri kontrole originality</td>
+                            <td class="price-cell">37 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola TK</td>
+                            <td class="price-cell">24 €</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Prípojné vozidlá -->
+            <div class="pricing-content" id="trailers">
+                <h3>Prípojné vozidlá</h3>
+                
+                <h4>Vozík malý prípojný do 750 kg (označenie O1)</h4>
+                <div class="pricing-table">
+                    <table>
+                        <tr>
+                            <td colspan="2" class="note-cell"><strong>TK - od 20.05.2018 nepodlieha TK! (Kontrolu možno vykonať na žiadosť vlastníka)</strong></td>
+                        </tr>
+                        <tr>
+                            <td>TK</td>
+                            <td class="price-cell">17 €</td>
+                        </tr>
+                        <tr>
+                            <td>Administratívna kontrola</td>
+                            <td class="price-cell">14 €</td>
+                        </tr>
+                        <tr>
+                            <td>Kontrola originality</td>
+                            <td class="price-cell">63 €</td>
+                        </tr>
+                        <tr>
+                            <td>TK pri neprihlásenom vozidle v SR (bez nálepky, bez osvedčenia)</td>
+                            <td class="price-cell">12 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola TK</td>
+                            <td class="price-cell">17 €</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h4>Prípojne vozidlo nad 750 kg (označenie O2)</h4>
+                <div class="pricing-table">
+                    <table>
+                        <tr>
+                            <td>TK</td>
+                            <td class="price-cell">37 €</td>
+                        </tr>
+                        <tr>
+                            <td>Administratívna kontrola</td>
+                            <td class="price-cell">14 €</td>
+                        </tr>
+                        <tr>
+                            <td>Kontrola originality</td>
+                            <td class="price-cell">93 €</td>
+                        </tr>
+                        <tr>
+                            <td>TK pri neprihlásenom vozidle v SR (bez nálepky, bez osvedčenia)</td>
+                            <td class="price-cell">32 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola TK</td>
+                            <td class="price-cell">37 €</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h4>Prípojne vozidlo označenie O3 alebo O4</h4>
+                <div class="pricing-table">
+                    <table>
+                        <tr>
+                            <td>TK</td>
+                            <td class="price-cell">67 €</td>
+                        </tr>
+                        <tr>
+                            <td>Administratívna kontrola</td>
+                            <td class="price-cell">14 €</td>
+                        </tr>
+                        <tr>
+                            <td>Kontrola originality</td>
+                            <td class="price-cell">120 €</td>
+                        </tr>
+                        <tr>
+                            <td>TK pri neprihlásenom vozidle v SR (bez nálepky, bez osvedčenia)</td>
+                            <td class="price-cell">62 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola TK</td>
+                            <td class="price-cell">67 €</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Nákladné vozidlá -->
+            <div class="pricing-content" id="trucks">
+                <h3>Nákladné vozidlo a autobusy (N2,N3, M2, M3)</h3>
+                <div class="pricing-table">
+                    <table>
+                        <tr>
+                            <td>TK</td>
+                            <td class="price-cell">80 €</td>
+                        </tr>
+                        <tr>
+                            <td>EK</td>
+                            <td class="price-cell">54 €</td>
+                        </tr>
+                        <tr>
+                            <td>Administratívna kontrola TK</td>
+                            <td class="price-cell">14 €</td>
+                        </tr>
+                        <tr>
+                            <td>Administratívna kontrola EK</td>
+                            <td class="price-cell">14 €</td>
+                        </tr>
+                        <tr>
+                            <td>Kontrola originality ťahač, nákladné vozidlo a autobusy (dovoz, vývoz, nestihol prihlásiť, zmena farby)</td>
+                            <td class="price-cell">140 €</td>
+                        </tr>
+                        <tr>
+                            <td>TK pri neprihlásenom vozidle v SR (bez nálepky, bez osvedčenia)</td>
+                            <td class="price-cell">75 €</td>
+                        </tr>
+                        <tr>
+                            <td>EK pri neprihlásenom vozidle v SR (bez nálepky, bez osvedčenia)</td>
+                            <td class="price-cell">49 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola TK</td>
+                            <td class="price-cell">80 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola EK</td>
+                            <td class="price-cell">54 €</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Traktory -->
+            <div class="pricing-content" id="tractors">
+                <h3>Traktory</h3>
+                
+                <h4>Traktory kolesové (T1, T2, T3, T4, T5)</h4>
+                <div class="pricing-table">
+                    <table>
+                        <tr>
+                            <td>TK</td>
+                            <td class="price-cell">58 €</td>
+                        </tr>
+                        <tr>
+                            <td>EK</td>
+                            <td class="price-cell">55 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola TK</td>
+                            <td class="price-cell">58 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola EK</td>
+                            <td class="price-cell">55 €</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h4>Traktory prípojné (R2, R3, R4)</h4>
+                <div class="pricing-table">
+                    <table>
+                        <tr>
+                            <td>TK</td>
+                            <td class="price-cell">45 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola TK</td>
+                            <td class="price-cell">45 €</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h4>Traktory pásové a pracovné stroje (C1, C2, C3, C4, C5, Ps)</h4>
+                <div class="pricing-table">
+                    <table>
+                        <tr>
+                            <td>TK</td>
+                            <td class="price-cell">69 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola TK</td>
+                            <td class="price-cell">69 €</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h4>Snežné skútre (Ls)</h4>
+                <div class="pricing-table">
+                    <table>
+                        <tr>
+                            <td>TK</td>
+                            <td class="price-cell">45 €</td>
+                        </tr>
+                        <tr>
+                            <td>Opakovaná kontrola TK</td>
+                            <td class="price-cell">45 €</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Ostatné -->
+            <div class="pricing-content" id="other">
+                <h3>Ostatné</h3>
+                <div class="pricing-table">
+                    <table>
+                        <tr>
+                            <td>Zaťaženie do 2. náprav (náves, ťahač, nákladné vozidlo)</td>
+                            <td class="price-cell">20 €</td>
+                        </tr>
+                        <tr>
+                            <td>Zaťaženie do 3. náprav (náves, ťahač, nákladné vozidlo)</td>
+                            <td class="price-cell">30 €</td>
+                        </tr>
+                        <tr>
+                            <td>Zaťaženie do 4. náprav a viac (náves, ťahač, nákladné vozidlo)</td>
+                            <td class="price-cell">40 €</td>
+                        </tr>
+                        <tr>
+                            <td>Preklady dokumentov pri dovoze - cena na základe predložených dokladov</td>
+                            <td class="price-cell">-</td>
+                        </tr>
+                        <tr>
+                            <td>Služba - kompletné prihlásenie vozidla pri dovoze (okresný úrad, dopravný inšpektorát) V CENE NIE SU ZAHRNUTÉ SPRÁVNE POPLATKY</td>
+                            <td class="price-cell">100 €</td>
+                        </tr>
+                        <tr>
+                            <td>Zvláštna kontrola EK - na žiadosť kôli zápisu LPG, CNG do TP</td>
+                            <td class="price-cell">50 €</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Extra služby -->
+            <div class="pricing-content" id="extra">
+                <h3>Extra služby</h3>
+                <div class="pricing-table">
+                    <table>
+                        <tr>
+                            <td>Služba vyzdvihnutie vozidla v rámci Pezinka</td>
+                            <td class="price-cell free">ZADARMO</td>
+                        </tr>
+                        <tr>
+                            <td>Služba vyzdvihnutie vozidla okolité mestá a obce do 10km</td>
+                            <td class="price-cell">+20 €</td>
+                        </tr>
+                        <tr>
+                            <td>Zapožičanie prevozných EČV</td>
+                            <td class="price-cell">20 €/deň + 100 € vratná kaucia</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-translate="section-reviews">Napísali o nás</h2>
+                <p data-translate="section-reviews-sub">Recenzie našich zákazníkov</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Za mňa zatiaľ najlepšia Emisná a STK na akej som bola príjemný prístup dievčat a pani ktorá tam bola a stále nám ponúkala bud koláčik raňajky kávu ..."</p>
+                    <div class="review-author">Kristina Martinková</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Veľmi príjemný zážitok. Bol som prvý krát na odporúčanie a som milo prekvapený. Prakticky o nič sa nemusíte starať, dostanete aj kávičku a štrúdlu v ..."</p>
+                    <div class="review-author">dwarfiusislav</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"EK a STK No lepšie sme ani nemohli spraviť ako ísť zrovna sem ..... 10/10 od vstupu až po odchod ..... Takýto servis som ešte nikde nezažil od ..."</p>
+                    <div class="review-author">CHRÁNIME TO ČO MUSÍME</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offer Section -->
+    <section class="special-offer">
+        <div class="container">
+            <div class="offer-card">
+                <div class="offer-content">
+                    <h2>Prihlásenie Vášho vozidla až po EČV!</h2>
+                    <p>Kompletná služba pre vaše vozidlo</p>
+                    <a href="#contact" class="btn btn-outline btn-large">Chcem vedieť viac!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charging Station Section -->
+    <section id="charging" class="charging-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-translate="section-charging">Dobíjanie elektromobilov</h2>
+                <p data-translate="section-charging-sub">Rýchle a pohodlné dobíjanie vášho elektromobilu</p>
+            </div>
+            <div class="charging-content">
+                <div class="charging-card">
+                    <div class="charging-image-wrapper">
+                        <img src="nabijacka copy.png" alt="Dobíjacia stanica MUCH ENERGY" class="charging-image">
+                    </div>
+                    <div class="charging-info">
+                        <h3 data-translate="charging-title">Dobíjacia stanica MUCH ENERGY</h3>
+                        <p data-translate="charging-desc">Naša STK je vybavená modernou dobíjacou stanicou pre elektromobily. Počas čakania na kontrolu môžete pohodlne dobiť svoje vozidlo.</p>
+                        <div class="charging-features">
+                            <div class="feature-item">
+                                <span class="feature-icon">🔌</span>
+                                <span data-translate="charging-feature-1">Rýchle dobíjanie</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">⏱️</span>
+                                <span data-translate="charging-feature-2">Dostupné počas otváracích hodín</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">💰</span>
+                                <span data-translate="charging-feature-3">Kontaktujte nás pre ceny</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn btn-primary" data-translate="charging-btn">Kontaktovať</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services Section -->
+    <section class="additional-services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-translate="section-additional">Ďalšie služby</h2>
+                <p data-translate="section-additional-sub">Pozrite si naše ďalšie služby a partnery</p>
+            </div>
+            <div class="additional-services-grid">
+                <a href="#" class="service-link-card">
+                    <div class="service-link-icon">👔</div>
+                    <h3 data-translate="service-boutique-title">Botique</h3>
+                    <p data-translate="service-boutique-desc">Oblečenie a módne doplnky</p>
+                    <span class="service-link-arrow">→</span>
+                </a>
+                <a href="#" class="service-link-card">
+                    <div class="service-link-icon">📦</div>
+                    <h3 data-translate="service-container-title">Kontajnerová služba</h3>
+                    <p data-translate="service-container-desc">Prenájom a odvoz kontajnerov</p>
+                    <span class="service-link-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="partners-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-translate="section-partners">Naši partneri</h2>
+                <p data-translate="section-partners-sub">Spolupracujeme s overenými partnermi</p>
+            </div>
+            <div class="partners-scroll-wrapper">
+                <div class="partners-scroll">
+                    <div class="partner-card">
+                        <div class="partner-placeholder">
+                            <span>Partner 1</span>
+                        </div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-placeholder">
+                            <span>Partner 2</span>
+                        </div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-placeholder">
+                            <span>Partner 3</span>
+                        </div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-placeholder">
+                            <span>Partner 4</span>
+                        </div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-placeholder">
+                            <span>Partner 5</span>
+                        </div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-placeholder">
+                            <span>Partner 6</span>
+                        </div>
+                    </div>
+                    <!-- Duplikované pre plynulý efekt -->
+                    <div class="partner-card">
+                        <div class="partner-placeholder">
+                            <span>Partner 1</span>
+                        </div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-placeholder">
+                            <span>Partner 2</span>
+                        </div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-placeholder">
+                            <span>Partner 3</span>
+                        </div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-placeholder">
+                            <span>Partner 4</span>
+                        </div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-placeholder">
+                            <span>Partner 5</span>
+                        </div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-placeholder">
+                            <span>Partner 6</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-translate="section-contact">Kontakt</h2>
+                <p data-translate="section-contact-sub">Kontaktujte nás ešte dnes</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h3 data-translate="contact-phone">Telefón</h3>
+                            <a href="tel:0948888088">0948 888 088</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h3 data-translate="contact-email">Email</h3>
+                            <a href="mailto:stk@kontrolavozidiel.sk">stk@kontrolavozidiel.sk</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h3 data-translate="contact-address">Adresa</h3>
+                            <p>Šenkvická cesta 14/F<br>902 01 Pezinok</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="opening-hours">
+                    <h3 data-translate="opening-hours">Otváracie hodiny</h3>
+                    <table class="hours-table">
+                        <tr>
+                            <td>Pondelok</td>
+                            <td>06:00 - 19:00</td>
+                        </tr>
+                        <tr>
+                            <td>Utorok</td>
+                            <td>06:00 - 16:00</td>
+                        </tr>
+                        <tr>
+                            <td>Streda</td>
+                            <td>06:00 - 16:00</td>
+                        </tr>
+                        <tr>
+                            <td>Štvrtok</td>
+                            <td>06:00 - 16:00</td>
+                        </tr>
+                        <tr>
+                            <td>Piatok</td>
+                            <td>06:00 - 16:00</td>
+                        </tr>
+                        <tr>
+                            <td>Sobota</td>
+                            <td class="closed">zatvorené</td>
+                        </tr>
+                        <tr>
+                            <td>Nedeľa</td>
+                            <td class="closed">zatvorené</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="map-container">
+                <h3 data-translate="map-title">Kde nás nájdete</h3>
+                <div class="map-wrapper">
+                    <iframe 
+                        src="https://www.google.com/maps?q=Šenkvická+cesta+14/F,+902+01+Pezinok&output=embed" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Lokalita STK JP Control - Šenkvická cesta 14/F, Pezinok">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 data-translate="about-title">O nás</h2>
+                <p>Spoločnosť <strong>STK JP Control s.r.o.</strong> je mladá dynamická spoločnosť, pôsobiaca v oblasti služieb spojených s registráciou vozidiel, kontrol originality, emisných kontrol a technických kontrol. S ponukou komplexných služieb je naša spoločnosť pripravená uspokojiť potreby každého jednotlivého zákazníka, obchodného partnera, vodičov či motoristických fanúšikov, ktorý hľadá pomocnú ruku.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>STK JP Control</h3>
+                    <p>Vaša spoľahlivá stanica technickej kontroly v Bratislavskom kraji</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Rýchle odkazy</h4>
+                    <ul>
+                        <li><a href="#home">Úvod</a></li>
+                        <li><a href="#services">Služby</a></li>
+                        <li><a href="#pricing">Cenník</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="footer-contact">Kontakt</h4>
+                    <ul>
+                        <li><a href="tel:0948888088">0948 888 088</a></li>
+                        <li><a href="mailto:stk@kontrolavozidiel.sk">stk@kontrolavozidiel.sk</a></li>
+                        <li>Šenkvická cesta 14/F<br>902 01 Pezinok</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright 2025 © www.kontrolavozidiel.sk</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent -->
+    <div id="cookie-consent" class="cookie-consent">
+        <div class="cookie-content">
+            <h3>Nastavenie cookies</h3>
+            <p>Môžeme ich používať? Cookie je v protokole HTTP malé množstvo stavových dát, ktoré WWW server pošle webovému prehliadaču súčasne s požadovanou webovou stránkou daného webového sídla, ak toto používa cookies.</p>
+            <div class="cookie-actions">
+                <button class="btn btn-primary" id="accept-cookies">Povoliť všetko</button>
+                <button class="btn btn-outline" id="reject-cookies">Odmietnuť</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

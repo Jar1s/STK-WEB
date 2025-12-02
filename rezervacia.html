@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rezervácia termínu na STK JP Control s.r.o.">
+    <title>Rezervovať termín | STK JP Control s.r.o.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="status-indicator">
+                    <span class="status-dot-small"></span>
+                    <span class="status-text">ZATVORENÉ</span>
+                </div>
+                <div class="top-bar-right">
+                    <div class="nonstop-info">
+                        <span class="nonstop-label">NONSTOP</span>
+                        <a href="tel:0948888088" class="phone-link">0948 888 088</a>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.688-.074-4.948-.074zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                        <h1>STK JP Control</h1>
+                        <span class="tagline">Vaša spoľahlivá STK</span>
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Úvod</a></li>
+                    <li><a href="index.html#main-services" class="nav-link">Kontroly</a></li>
+                    <li><a href="index.html#services" class="nav-link">Služby</a></li>
+                    <li><a href="index.html#pricing" class="nav-link">Cenník</a></li>
+                    <li><a href="index.html#reviews" class="nav-link">Recenzie</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Kontakt</a></li>
+                    <li><a href="rezervacia.html" class="nav-link btn-primary">Rezervovať</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Booking Section -->
+    <section class="booking-page-section">
+        <div class="container">
+            <div class="booking-page-header">
+                <a href="index.html" class="back-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Späť na hlavnú stránku
+                </a>
+                <div class="section-header">
+                    <h1>Rezervovať termín online</h1>
+                    <p>Vyberte si najvhodnejší termín pre vašu kontrolu</p>
+                </div>
+            </div>
+            <div class="booking-card">
+                <form class="booking-form" id="bookingForm">
+                    <div class="form-group">
+                        <label for="service-type">Typ služby</label>
+                        <select id="service-type" name="service-type" required>
+                            <option value="">Vyberte službu</option>
+                            <option value="stk">Technická kontrola (STK)</option>
+                            <option value="ek">Emisná kontrola (EK)</option>
+                            <option value="ko">Kontrola originality (KO)</option>
+                            <option value="stk-ek">STK + EK</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Dátum</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Čas</label>
+                            <input type="time" id="time" name="time" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicle">Typ vozidla</label>
+                        <select id="vehicle" name="vehicle" required>
+                            <option value="">Vyberte typ vozidla</option>
+                            <option value="osobne">Osobné vozidlo</option>
+                            <option value="nakladne">Nákladné vozidlo</option>
+                            <option value="motocykel">Motocykel</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Meno a priezvisko</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Telefón</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Poznámky (voliteľné)</label>
+                        <textarea id="notes" name="notes" rows="4" placeholder="Ak máte nejaké špeciálne požiadavky alebo poznámky, napíšte ich sem..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large btn-block">Rezervovať termín</button>
+                </form>
+            </div>
+            
+            <div class="booking-info">
+                <div class="info-card">
+                    <div class="info-icon">📞</div>
+                    <h3>Potrebujete pomoc?</h3>
+                    <p>Ak máte otázky alebo potrebujete pomoc s rezerváciou, kontaktujte nás:</p>
+                    <a href="tel:0948888088" class="btn btn-outline">0948 888 088</a>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">⏰</div>
+                    <h3>Otváracie hodiny</h3>
+                    <p><strong>Pondelok:</strong> 06:00 - 19:00</p>
+                    <p><strong>Utorok - Piatok:</strong> 06:00 - 16:00</p>
+                    <p><strong>Víkend:</strong> Zatvorené</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>STK JP Control</h3>
+                    <p>Vaša spoľahlivá stanica technickej kontroly v Bratislavskom kraji</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Rýchle odkazy</h4>
+                    <ul>
+                        <li><a href="index.html">Úvod</a></li>
+                        <li><a href="index.html#services">Služby</a></li>
+                        <li><a href="index.html#pricing">Cenník</a></li>
+                        <li><a href="index.html#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li><a href="tel:0948888088">0948 888 088</a></li>
+                        <li><a href="mailto:stk@kontrolavozidiel.sk">stk@kontrolavozidiel.sk</a></li>
+                        <li>Šenkvická cesta 14/F<br>902 01 Pezinok</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright 2025 © www.kontrolavozidiel.sk</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
