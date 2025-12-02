@@ -311,15 +311,15 @@ function animateCounter(element, target, suffix = '', duration = 2000) {
         const easeOutQuart = 1 - Math.pow(1 - progress, 4);
         const current = Math.floor(target * easeOutQuart);
         
-        // Format number with thousand separators if needed
-        let formattedValue = current.toLocaleString('sk-SK');
+        // Format number with thousand separators (space instead of comma for Slovak)
+        let formattedValue = current.toLocaleString('sk-SK').replace(/,/g, ' ');
         element.textContent = formattedValue + suffix;
         
         if (progress < 1) {
             requestAnimationFrame(updateCounter);
         } else {
-            // Ensure final value is displayed
-            element.textContent = target.toLocaleString('sk-SK') + suffix;
+            // Ensure final value is displayed (with space as thousand separator)
+            element.textContent = target.toLocaleString('sk-SK').replace(/,/g, ' ') + suffix;
         }
     };
     
@@ -338,9 +338,9 @@ const statisticsObserver = new IntersectionObserver((entries) => {
                 const originalText = numberElement.textContent;
                 
                 // Extract number and suffix from text
-                const match = originalText.match(/([\d,]+)([+%]?)/);
+                const match = originalText.match(/([\d\s,]+)([+%]?)/);
                 if (match) {
-                    const numberStr = match[1].replace(/,/g, '');
+                    const numberStr = match[1].replace(/[\s,]/g, '');
                     const suffix = match[2] || '';
                     const targetNumber = parseInt(numberStr, 10);
                     
