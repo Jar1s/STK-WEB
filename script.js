@@ -335,7 +335,7 @@ const statisticsObserver = new IntersectionObserver((entries) => {
             const statistics = entry.target.querySelectorAll('.statistic-item');
             statistics.forEach((stat, index) => {
                 const numberElement = stat.querySelector('.statistic-number');
-                const originalText = numberElement.textContent;
+                const originalText = numberElement.textContent.trim();
                 
                 // Extract number and suffix from text
                 const match = originalText.match(/([\d\s,]+)([+%]?)/);
@@ -344,20 +344,23 @@ const statisticsObserver = new IntersectionObserver((entries) => {
                     const suffix = match[2] || '';
                     const targetNumber = parseInt(numberStr, 10);
                     
-                    // Reset to 0 initially
-                    numberElement.textContent = '0' + suffix;
-                    
-                    // Add delay for each statistic for staggered effect
-                    setTimeout(() => {
-                        animateCounter(numberElement, targetNumber, suffix, 2000);
-                    }, index * 300);
+                    if (!isNaN(targetNumber)) {
+                        // Reset to 0 initially and show it
+                        numberElement.textContent = '0' + suffix;
+                        numberElement.style.opacity = '1';
+                        
+                        // Add delay for each statistic for staggered effect
+                        setTimeout(() => {
+                            animateCounter(numberElement, targetNumber, suffix, 2000);
+                        }, index * 300);
+                    }
                 }
             });
         }
     });
 }, {
-    threshold: 0.2,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
 });
 
 // Language Switcher - Initialize after DOM is loaded
