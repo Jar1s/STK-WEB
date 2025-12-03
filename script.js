@@ -182,8 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Animate sections themselves
-    const sections = document.querySelectorAll('section:not(.hero)');
+    // Animate sections themselves (except statistics-section which has its own observer)
+    const sections = document.querySelectorAll('section:not(.hero):not(.statistics-section)');
     sections.forEach((section, index) => {
         section.classList.add('animate-on-scroll', 'animate-fade-up');
         observer.observe(section);
@@ -327,9 +327,11 @@ function animateCounter(element, target, suffix = '', duration = 2000) {
 }
 
 // Statistics counter observer
+let statisticsAnimated = false;
 const statisticsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+        if (entry.isIntersecting && !statisticsAnimated) {
+            statisticsAnimated = true;
             entry.target.classList.add('animated');
             
             const statistics = entry.target.querySelectorAll('.statistic-item');
@@ -344,7 +346,10 @@ const statisticsObserver = new IntersectionObserver((entries) => {
                     const suffix = match[2] || '';
                     const targetNumber = parseInt(numberStr, 10);
                     
-                    if (!isNaN(targetNumber)) {
+                    if (!isNaN(targetNumber) && !numberElement.hasAttribute('data-animated')) {
+                        // Mark as animated to prevent multiple triggers
+                        numberElement.setAttribute('data-animated', 'true');
+                        
                         // Reset to 0 initially - this will be visible immediately
                         numberElement.textContent = '0' + suffix;
                         
@@ -355,6 +360,9 @@ const statisticsObserver = new IntersectionObserver((entries) => {
                     }
                 }
             });
+            
+            // Stop observing after animation starts
+            statisticsObserver.unobserve(entry.target);
         }
     });
 }, {

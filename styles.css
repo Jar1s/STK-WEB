@@ -822,27 +822,8 @@ section {
     color: var(--primary-color);
     line-height: 1;
     letter-spacing: -0.02em;
-    transition: transform 0.3s ease;
     display: inline-block;
     min-width: 1ch;
-}
-
-.statistics-section.animated .statistic-number {
-    animation: numberPop 0.5s ease;
-}
-
-@keyframes numberPop {
-    0% {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
 }
 
 .statistic-label {
