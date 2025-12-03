@@ -514,6 +514,9 @@ body {
     align-items: flex-start;
     border: 1px solid transparent;
     position: relative;
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
 }
 
 .announcement-card:last-child {

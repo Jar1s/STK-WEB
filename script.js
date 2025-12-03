@@ -221,13 +221,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }, index * 50);
     });
 
-    // Animate announcement cards
+    // Announcement cards should be visible immediately (no animation delay)
     const announcementCards = document.querySelectorAll('.announcement-card');
-    announcementCards.forEach((card, index) => {
-        card.classList.add('animate-on-scroll', 'animate-fade-right');
-        setTimeout(() => {
-            staggerObserver.observe(card);
-        }, index * 100);
+    announcementCards.forEach((card) => {
+        // Remove any animation classes and make visible immediately
+        card.classList.remove('animate-on-scroll', 'animate-fade-right', 'animate-fade-up', 'animate-fade-left', 'animate-fade-scale');
+        card.style.opacity = '1';
+        card.style.transform = 'none';
     });
 });
 
