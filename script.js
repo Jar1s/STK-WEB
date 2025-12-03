@@ -345,22 +345,21 @@ const statisticsObserver = new IntersectionObserver((entries) => {
                     const targetNumber = parseInt(numberStr, 10);
                     
                     if (!isNaN(targetNumber)) {
-                        // Reset to 0 initially and show it
+                        // Reset to 0 initially - this will be visible immediately
                         numberElement.textContent = '0' + suffix;
-                        numberElement.style.opacity = '1';
                         
-                        // Add delay for each statistic for staggered effect
+                        // Start animation immediately with a small delay for staggered effect
                         setTimeout(() => {
                             animateCounter(numberElement, targetNumber, suffix, 2000);
-                        }, index * 300);
+                        }, index * 200);
                     }
                 }
             });
         }
     });
 }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
 });
 
 // Language Switcher - Initialize after DOM is loaded

@@ -822,11 +822,6 @@ section {
     transition: transform 0.3s ease;
     display: inline-block;
     min-width: 1ch;
-    opacity: 0;
-}
-
-.statistics-section.animated .statistic-number {
-    opacity: 1;
 }
 
 .statistics-section.animated .statistic-number {
