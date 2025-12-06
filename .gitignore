@@ -33,3 +33,9 @@ npm-debug.log*
 *.temp
 
 .vercel
+
+# Large video files and downloads
+drive-download-*/
+*.mov
+
+
