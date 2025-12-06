@@ -287,13 +287,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(0, 77, 153, 0.4) 0%, rgba(0, 102, 204, 0.4) 50%, rgba(0, 128, 255, 0.4) 100%),
-                url('200358324_2030190010482436_7737746352101166953_n.jpg') center/cover no-repeat;
     color: white;
     text-align: center;
     padding-top: 2rem;
     padding-bottom: 2rem;
     overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
 }
 
 .hero::before {
@@ -305,6 +313,7 @@ body {
     bottom: 0;
     background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
     opacity: 0.3;
+    z-index: 1;
 }
 
 .hero-overlay {
@@ -313,7 +322,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    background: linear-gradient(135deg, rgba(0, 77, 153, 0.4) 0%, rgba(0, 102, 204, 0.4) 50%, rgba(0, 128, 255, 0.4) 100%),
+                radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    z-index: 2;
 }
 
 .hero-content {
