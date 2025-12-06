@@ -235,32 +235,45 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const heroVideo = document.querySelector('.hero-video');
     if (heroVideo) {
-        // Force play on load
-        const playVideo = () => {
-            heroVideo.play().catch(err => {
-                console.log('Video autoplay failed:', err);
-                // Retry after user interaction
-                document.addEventListener('click', () => {
+        // Set video properties
+        heroVideo.muted = true;
+        heroVideo.loop = true;
+        heroVideo.playsInline = true;
+        
+        // Force play function
+        const playVideo = async () => {
+            try {
+                await heroVideo.play();
+            } catch (err) {
+                console.log('Video autoplay failed, will retry:', err);
+                // Retry on user interaction
+                const retryPlay = () => {
                     heroVideo.play().catch(e => console.log('Retry play failed:', e));
-                }, { once: true });
-            });
+                };
+                document.addEventListener('click', retryPlay, { once: true });
+                document.addEventListener('touchstart', retryPlay, { once: true });
+            }
         };
         
-        // Try to play when video is ready
-        if (heroVideo.readyState >= 2) {
+        // Try to play immediately if video is already loaded
+        if (heroVideo.readyState >= 3) {
             playVideo();
-        } else {
-            heroVideo.addEventListener('loadeddata', playVideo, { once: true });
-            heroVideo.addEventListener('canplay', playVideo, { once: true });
-            heroVideo.addEventListener('loadedmetadata', () => {
-                heroVideo.play().catch(err => console.log('Play on metadata failed:', err));
-            }, { once: true });
         }
         
-        // Error handling
+        // Play when video can start playing
+        heroVideo.addEventListener('canplay', playVideo, { once: true });
+        heroVideo.addEventListener('loadeddata', playVideo, { once: true });
+        
+        // Also try on loadedmetadata
+        heroVideo.addEventListener('loadedmetadata', () => {
+            if (heroVideo.readyState >= 2) {
+                playVideo();
+            }
+        }, { once: true });
+        
+        // Error handling with fallback
         heroVideo.addEventListener('error', (e) => {
-            console.error('Video loading error:', e);
-            // Fallback to background image if video fails
+            console.error('Video loading error:', e, heroVideo.error);
             const hero = document.querySelector('.hero');
             if (hero) {
                 hero.style.backgroundImage = "url('200358324_2030190010482436_7737746352101166953_n.jpg')";
@@ -270,16 +283,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // Ensure video plays when it becomes visible
+        // Ensure video plays when visible
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    heroVideo.play().catch(err => console.log('Intersection play failed:', err));
+                if (entry.isIntersecting && heroVideo.paused) {
+                    playVideo();
                 }
             });
         }, { threshold: 0.1 });
         
         observer.observe(heroVideo);
+        
+        // Fallback: try to play after a short delay
+        setTimeout(() => {
+            if (heroVideo.paused) {
+                playVideo();
+            }
+        }, 500);
     }
 });
 
