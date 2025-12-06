@@ -44,3 +44,5 @@ Stránka je nasadená na Vercel a automaticky sa aktualizuje pri pushnutí do ma
 
 Copyright 2025 © www.kontrolavozidiel.sk
 
+
+
