@@ -232,25 +232,56 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Hero video setup
-const heroVideo = document.querySelector('.hero-video');
-if (heroVideo) {
-    heroVideo.addEventListener('loadeddata', () => {
-        heroVideo.play().catch(err => {
-            console.log('Video autoplay failed:', err);
-        });
-    });
-    
-    heroVideo.addEventListener('error', (e) => {
-        console.error('Video loading error:', e);
-        // Fallback to background image if video fails
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            hero.style.backgroundImage = "url('200358324_2030190010482436_7737746352101166953_n.jpg')";
-            hero.style.backgroundSize = 'cover';
-            hero.style.backgroundPosition = 'center';
+document.addEventListener('DOMContentLoaded', () => {
+    const heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+        // Force play on load
+        const playVideo = () => {
+            heroVideo.play().catch(err => {
+                console.log('Video autoplay failed:', err);
+                // Retry after user interaction
+                document.addEventListener('click', () => {
+                    heroVideo.play().catch(e => console.log('Retry play failed:', e));
+                }, { once: true });
+            });
+        };
+        
+        // Try to play when video is ready
+        if (heroVideo.readyState >= 2) {
+            playVideo();
+        } else {
+            heroVideo.addEventListener('loadeddata', playVideo, { once: true });
+            heroVideo.addEventListener('canplay', playVideo, { once: true });
+            heroVideo.addEventListener('loadedmetadata', () => {
+                heroVideo.play().catch(err => console.log('Play on metadata failed:', err));
+            }, { once: true });
         }
-    });
-}
+        
+        // Error handling
+        heroVideo.addEventListener('error', (e) => {
+            console.error('Video loading error:', e);
+            // Fallback to background image if video fails
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.backgroundImage = "url('200358324_2030190010482436_7737746352101166953_n.jpg')";
+                hero.style.backgroundSize = 'cover';
+                hero.style.backgroundPosition = 'center';
+                hero.style.backgroundRepeat = 'no-repeat';
+            }
+        });
+        
+        // Ensure video plays when it becomes visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    heroVideo.play().catch(err => console.log('Intersection play failed:', err));
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        observer.observe(heroVideo);
+    }
+});
 
 // Hero scroll button
 const heroScroll = document.querySelector('.hero-scroll');
