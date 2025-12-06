@@ -231,6 +231,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Hero video setup
+const heroVideo = document.querySelector('.hero-video');
+if (heroVideo) {
+    heroVideo.addEventListener('loadeddata', () => {
+        heroVideo.play().catch(err => {
+            console.log('Video autoplay failed:', err);
+        });
+    });
+    
+    heroVideo.addEventListener('error', (e) => {
+        console.error('Video loading error:', e);
+        // Fallback to background image if video fails
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.style.backgroundImage = "url('200358324_2030190010482436_7737746352101166953_n.jpg')";
+            hero.style.backgroundSize = 'cover';
+            hero.style.backgroundPosition = 'center';
+        }
+    });
+}
+
 // Hero scroll button
 const heroScroll = document.querySelector('.hero-scroll');
 if (heroScroll) {

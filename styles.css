@@ -302,6 +302,15 @@ body {
     height: 100%;
     object-fit: cover;
     z-index: 0;
+    background: #000;
+}
+
+.hero-video::-webkit-media-controls {
+    display: none !important;
+}
+
+.hero-video::-webkit-media-controls-enclosure {
+    display: none !important;
 }
 
 .hero::before {
