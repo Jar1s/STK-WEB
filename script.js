@@ -656,4 +656,60 @@ function updateLanguage(lang) {
     });
 }
 
+// Advantages Carousel - Manual Control with Arrows
+document.addEventListener('DOMContentLoaded', () => {
+    const carouselWrapper = document.querySelector('.advantages-carousel-wrapper');
+    const carousel = document.querySelector('.advantages-carousel');
+    const prevBtn = document.querySelector('.carousel-btn-prev');
+    const nextBtn = document.querySelector('.carousel-btn-next');
+    
+    if (!carouselWrapper || !carousel || !prevBtn || !nextBtn) return;
+    
+    let currentPosition = 0;
+    const cardWidth = 320; // max-width + gap (280px + 2rem gap)
+    const totalCards = carousel.querySelectorAll('.advantage-card').length;
+    const visibleCards = Math.floor(window.innerWidth / cardWidth);
+    const maxPosition = Math.max(0, (totalCards / 2 - visibleCards) * cardWidth);
+    
+    // Enable manual control
+    carouselWrapper.classList.add('manual-control');
+    
+    const updateCarousel = () => {
+        carousel.style.transform = `translateX(-${currentPosition}px)`;
+    };
+    
+    const scrollNext = () => {
+        currentPosition += cardWidth;
+        if (currentPosition > maxPosition) {
+            currentPosition = 0; // Loop back to start
+        }
+        updateCarousel();
+    };
+    
+    const scrollPrev = () => {
+        currentPosition -= cardWidth;
+        if (currentPosition < 0) {
+            currentPosition = maxPosition; // Loop to end
+        }
+        updateCarousel();
+    };
+    
+    nextBtn.addEventListener('click', scrollNext);
+    prevBtn.addEventListener('click', scrollPrev);
+    
+    // Update on window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const newVisibleCards = Math.floor(window.innerWidth / cardWidth);
+            const newMaxPosition = Math.max(0, (totalCards / 2 - newVisibleCards) * cardWidth);
+            if (currentPosition > newMaxPosition) {
+                currentPosition = newMaxPosition;
+            }
+            updateCarousel();
+        }, 250);
+    });
+});
+
 

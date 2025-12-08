@@ -902,10 +902,49 @@ section {
     gap: 2rem;
     width: fit-content;
     animation: scroll-advantages 40s linear infinite;
+    transition: transform 0.5s ease;
+}
+
+.advantages-carousel-wrapper.manual-control .advantages-carousel {
+    animation: none;
 }
 
 .advantages-carousel:hover {
     animation-play-state: paused;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 102, 204, 0.3);
+}
+
+.carousel-btn-prev {
+    left: 10px;
+}
+
+.carousel-btn-next {
+    right: 10px;
 }
 
 @keyframes scroll-advantages {
@@ -2319,6 +2358,19 @@ section {
 
     .advantage-card {
         min-width: 280px;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel-btn-prev {
+        left: 5px;
+    }
+
+    .carousel-btn-next {
+        right: 5px;
     }
 
     .reviews-grid,
