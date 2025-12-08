@@ -612,6 +612,49 @@ body {
     line-height: 1.6;
 }
 
+/* Hero Announcements - Priesvitné notifikácie na hero videu */
+.hero-announcements-wrapper {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.hero-announcements-carousel {
+    display: flex;
+    gap: 4rem;
+    width: fit-content;
+    animation: scroll-hero-announcements 30s linear infinite;
+    will-change: transform;
+    align-items: center;
+}
+
+.hero-announcements-carousel:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-hero-announcements {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.hero-announcement-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+    line-height: 1.6;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
 /* Section Styles */
 section {
     padding: 5rem 0;
@@ -2302,6 +2345,18 @@ section {
 
     .hero-scroll {
         bottom: 5rem;
+    }
+
+    .hero-announcements-wrapper {
+        top: 1rem;
+    }
+
+    .hero-announcements-carousel {
+        gap: 2rem;
+    }
+
+    .hero-announcement-text {
+        font-size: 0.875rem;
     }
 
     .btn-large {
