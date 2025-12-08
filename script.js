@@ -656,7 +656,7 @@ function updateLanguage(lang) {
     });
 }
 
-// Advantages Carousel - Manual Control with Arrows
+// Advantages Carousel - Auto-scroll with Manual Control via Arrows
 document.addEventListener('DOMContentLoaded', () => {
     const carouselWrapper = document.querySelector('.advantages-carousel-wrapper');
     const carousel = document.querySelector('.advantages-carousel');
@@ -665,51 +665,77 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (!carouselWrapper || !carousel || !prevBtn || !nextBtn) return;
     
-    let currentPosition = 0;
     const cardWidth = 320; // max-width + gap (280px + 2rem gap)
     const totalCards = carousel.querySelectorAll('.advantage-card').length;
-    const visibleCards = Math.floor(window.innerWidth / cardWidth);
-    const maxPosition = Math.max(0, (totalCards / 2 - visibleCards) * cardWidth);
+    const totalWidth = (totalCards / 2) * cardWidth; // Half because cards are duplicated
     
-    // Enable manual control
-    carouselWrapper.classList.add('manual-control');
+    let currentPosition = 0;
+    let autoScrollInterval = null;
+    let isManualMode = false;
+    let resumeTimeout = null;
     
-    const updateCarousel = () => {
-        carousel.style.transform = `translateX(-${currentPosition}px)`;
+    // Start auto-scroll
+    const startAutoScroll = () => {
+        if (autoScrollInterval) clearInterval(autoScrollInterval);
+        carousel.classList.add('auto-scroll');
+        isManualMode = false;
+        
+        autoScrollInterval = setInterval(() => {
+            if (!isManualMode) {
+                currentPosition = (currentPosition - 2) % totalWidth;
+                if (currentPosition < 0) currentPosition += totalWidth;
+                carousel.style.transform = `translateX(-${currentPosition}px)`;
+            }
+        }, 50); // Update every 50ms for smooth scrolling
+    };
+    
+    // Stop auto-scroll temporarily
+    const pauseAutoScroll = () => {
+        carousel.classList.remove('auto-scroll');
+        isManualMode = true;
+        if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+        }
     };
     
     const scrollNext = () => {
-        currentPosition += cardWidth;
-        if (currentPosition > maxPosition) {
-            currentPosition = 0; // Loop back to start
-        }
-        updateCarousel();
+        pauseAutoScroll();
+        
+        // Clear any existing timeout
+        if (resumeTimeout) clearTimeout(resumeTimeout);
+        
+        // Move one card forward
+        currentPosition = (currentPosition + cardWidth) % totalWidth;
+        carousel.style.transform = `translateX(-${currentPosition}px)`;
+        
+        // Resume auto-scroll after 3 seconds
+        resumeTimeout = setTimeout(() => {
+            startAutoScroll();
+        }, 3000);
     };
     
     const scrollPrev = () => {
-        currentPosition -= cardWidth;
-        if (currentPosition < 0) {
-            currentPosition = maxPosition; // Loop to end
-        }
-        updateCarousel();
+        pauseAutoScroll();
+        
+        // Clear any existing timeout
+        if (resumeTimeout) clearTimeout(resumeTimeout);
+        
+        // Move one card backward
+        currentPosition = (currentPosition - cardWidth + totalWidth) % totalWidth;
+        carousel.style.transform = `translateX(-${currentPosition}px)`;
+        
+        // Resume auto-scroll after 3 seconds
+        resumeTimeout = setTimeout(() => {
+            startAutoScroll();
+        }, 3000);
     };
     
     nextBtn.addEventListener('click', scrollNext);
     prevBtn.addEventListener('click', scrollPrev);
     
-    // Update on window resize
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            const newVisibleCards = Math.floor(window.innerWidth / cardWidth);
-            const newMaxPosition = Math.max(0, (totalCards / 2 - newVisibleCards) * cardWidth);
-            if (currentPosition > newMaxPosition) {
-                currentPosition = newMaxPosition;
-            }
-            updateCarousel();
-        }, 250);
-    });
+    // Start auto-scroll on load
+    startAutoScroll();
 });
 
 
