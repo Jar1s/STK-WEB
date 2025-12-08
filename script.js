@@ -77,37 +77,7 @@ if (dateInput) {
     dateInput.setAttribute('min', today);
 }
 
-// Announcements Banner - Close functionality
-const announcementsBanner = document.getElementById('announcementsBanner');
-const announcementCloses = document.querySelectorAll('.announcement-close');
-
-announcementCloses.forEach(closeBtn => {
-    closeBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const announcementCard = closeBtn.closest('.announcement-card');
-        if (announcementCard) {
-            // Hide both instances (original and duplicate)
-            const cardIndex = Array.from(announcementCard.parentElement.children).indexOf(announcementCard);
-            const allCards = announcementCard.parentElement.querySelectorAll('.announcement-card');
-            const totalCards = allCards.length / 2; // Half are duplicates
-            
-            // Hide original and its duplicate
-            if (cardIndex < totalCards) {
-                allCards[cardIndex].style.display = 'none';
-                allCards[cardIndex + totalCards].style.display = 'none';
-            } else {
-                allCards[cardIndex].style.display = 'none';
-                allCards[cardIndex - totalCards].style.display = 'none';
-            }
-            
-            // Check if all announcements are closed
-            const visibleCards = announcementsBanner.querySelectorAll('.announcement-card:not([style*="display: none"])');
-            if (visibleCards.length === 0) {
-                announcementsBanner.classList.add('hidden');
-            }
-        }
-    });
-});
+// Announcements Banner - No close functionality needed (text-only scrolling)
 
 // Cookie consent
 const cookieConsent = document.getElementById('cookie-consent');
