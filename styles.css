@@ -1761,9 +1761,9 @@ section {
 
 .additional-services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -2286,7 +2286,8 @@ section {
 
     .advantages-grid,
     .reviews-grid,
-    .main-services-grid {
+    .main-services-grid,
+    .additional-services-grid {
         grid-template-columns: 1fr;
     }
 
