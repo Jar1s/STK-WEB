@@ -1094,15 +1094,15 @@ section {
     background: transparent;
     padding: 1.5rem 2rem;
     height: auto;
-    min-height: 200px;
+    min-height: 240px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .service-plate-image {
-    width: 220px;
-    height: 110px;
+    width: 300px;
+    height: 150px;
     object-fit: contain;
     display: block;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
@@ -2368,13 +2368,13 @@ section {
     }
 
     .main-service-header-plate {
-        min-height: 150px;
+        min-height: 180px;
         padding: 1rem;
     }
 
     .service-plate-image {
-        width: 160px;
-        height: 80px;
+        width: 220px;
+        height: 110px;
     }
 
     .main-service-icon {
@@ -2519,13 +2519,13 @@ section {
     }
 
     .main-service-header-plate {
-        min-height: 120px;
+        min-height: 150px;
         padding: 0.75rem;
     }
 
     .service-plate-image {
-        width: 140px;
-        height: 70px;
+        width: 180px;
+        height: 90px;
     }
 
     .main-service-icon {
