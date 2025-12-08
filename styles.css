@@ -928,7 +928,8 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 300px;
+    min-width: 280px;
+    max-width: 320px;
     flex-shrink: 0;
 }
 
@@ -968,6 +969,9 @@ section {
     color: var(--text-medium);
     line-height: 1.7;
     flex-grow: 1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 /* License Plates Section */
@@ -2230,6 +2234,13 @@ section {
         flex-direction: column;
     }
 
+    .btn-hero-cta {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 100%;
+    }
+
     .btn-large {
         width: 100%;
     }
@@ -2244,14 +2255,6 @@ section {
 
     .hero-subtitle {
         font-size: 1rem;
-    }
-
-    .hero-cta {
-        flex-direction: column;
-    }
-
-    .btn-large {
-        width: 100%;
     }
 
     .form-row {
@@ -2471,6 +2474,11 @@ section {
 
     .hero-title {
         font-size: 2rem;
+    }
+
+    .btn-hero-cta {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9rem;
     }
 
     .booking-card {
