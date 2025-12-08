@@ -437,6 +437,7 @@ body {
     width: fit-content;
     animation: scroll-hero-partners 30s linear infinite;
     align-items: center;
+    will-change: transform;
 }
 
 .hero-partners-scroll:hover {
