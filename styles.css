@@ -2402,11 +2402,15 @@ section {
 
     .hero-cta {
         flex-direction: column;
+        align-items: center;
     }
 
     .btn-hero-cta {
         padding: 0.75rem 1.5rem;
         font-size: 0.875rem;
+        width: auto;
+        max-width: none;
+        align-self: center;
     }
 
     .hero-partners-wrapper {
@@ -3023,6 +3027,19 @@ section {
         color: var(--dark-text-secondary) !important;
     }
 
+    .about-page-section .section-header h1,
+    .about-page-section .section-header p {
+        color: #ffffff !important;
+    }
+
+    .about-company-text p {
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+
+    .about-company-text h2 {
+        color: #ffffff !important;
+    }
+
     .booking-section,
     .advantages-section,
     .pricing-section,
@@ -3313,11 +3330,11 @@ section {
 
     /* About Page */
     .about-company-text p {
-        color: var(--dark-text-secondary);
+        color: rgba(255, 255, 255, 0.9) !important;
     }
 
     .about-company-text h2 {
-        color: var(--dark-text-primary) !important;
+        color: #ffffff !important;
     }
 
     .team-member {
