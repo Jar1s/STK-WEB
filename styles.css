@@ -23,6 +23,20 @@
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
     --gradient-hero: linear-gradient(135deg, #004d99 0%, #0066cc 100%);
+    
+    /* Dark Mode Variables */
+    --dark-bg-primary: #1a1a1a;
+    --dark-bg-secondary: #2a2a2a;
+    --dark-bg-card: #2d2d2d;
+    --dark-text-primary: #ffffff;
+    --dark-text-secondary: rgba(255, 255, 255, 0.9);
+    --dark-text-tertiary: rgba(255, 255, 255, 0.7);
+    --dark-border: rgba(255, 255, 255, 0.1);
+    --dark-border-light: rgba(255, 255, 255, 0.2);
+    --dark-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    --dark-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --dark-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+    --dark-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
 }
 
 html {
@@ -690,7 +704,7 @@ section {
 }
 
 .section-header h1 {
-    color: var(--text-dark) !important;
+    color: #1a1a1a !important;
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
@@ -698,7 +712,7 @@ section {
 
 .section-header p {
     font-size: 1.125rem;
-    color: var(--text-dark) !important;
+    color: #1a1a1a !important;
     font-weight: 400;
 }
 
@@ -2774,14 +2788,14 @@ section {
 .about-company-text h2 {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--text-dark);
+    color: #1a1a1a !important;
     margin-bottom: 1.5rem;
 }
 
 .about-company-text p {
     font-size: 1.125rem;
     line-height: 1.8;
-    color: var(--text-dark) !important;
+    color: #1a1a1a !important;
 }
 
 .team-section {
@@ -2934,12 +2948,19 @@ section {
 
 /* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
+    /* Body and Base Elements */
+    body {
+        background-color: var(--dark-bg-primary);
+        color: var(--dark-text-primary);
+    }
+
+    /* Navigation */
     .nav-menu {
-        background: #1a1a1a;
+        background: var(--dark-bg-primary);
     }
 
     .nav-menu .nav-link {
-        color: #ffffff !important;
+        color: var(--dark-text-primary) !important;
     }
 
     .nav-menu .nav-link:hover {
@@ -2948,40 +2969,427 @@ section {
     }
 
     .mobile-menu-toggle span {
-        background: #ffffff;
+        background: var(--dark-text-primary);
     }
 
     .logo h1 {
         color: var(--primary-color);
     }
 
+    .logo .tagline {
+        color: var(--dark-text-tertiary);
+    }
+
     .navbar {
-        background: #1a1a1a;
-        border-bottom-color: rgba(255, 255, 255, 0.1);
+        background: var(--dark-bg-primary);
+        border-bottom-color: var(--dark-border);
     }
 
     .nav-link {
-        color: rgba(255, 255, 255, 0.9);
+        color: var(--dark-text-secondary);
     }
 
     .nav-link:hover {
         color: var(--primary-color);
     }
 
-    .about-company-text p {
-        color: rgba(255, 255, 255, 0.9);
+    /* Sections */
+    section {
+        background-color: var(--dark-bg-primary);
     }
 
-    .about-company-text h2 {
-        color: #ffffff !important;
+    .section-header h2 {
+        color: var(--dark-text-primary) !important;
     }
 
     .section-header h1 {
-        color: #ffffff !important;
+        color: var(--dark-text-primary) !important;
     }
 
     .section-header p {
-        color: rgba(255, 255, 255, 0.9) !important;
+        color: var(--dark-text-secondary) !important;
+    }
+
+    .booking-section,
+    .advantages-section,
+    .pricing-section,
+    .reviews-section,
+    .services-section,
+    .main-services-section,
+    .additional-services-section,
+    .partners-section,
+    .about-section,
+    .charging-section,
+    .statistics-section {
+        background: var(--dark-bg-secondary);
+    }
+
+    .booking-page-section,
+    .about-page-section {
+        background: var(--dark-bg-secondary);
+    }
+
+    /* Cards */
+    .booking-card,
+    .info-card,
+    .service-card,
+    .review-card,
+    .advantage-card,
+    .main-service-card,
+    .service-link-card,
+    .partner-card,
+    .charging-card {
+        background: var(--dark-bg-card);
+        border-color: var(--dark-border);
+        box-shadow: var(--dark-shadow-lg);
+    }
+
+    .booking-card:hover,
+    .info-card:hover,
+    .review-card:hover,
+    .advantage-card:hover,
+    .main-service-card:hover,
+    .service-link-card:hover,
+    .partner-card:hover,
+    .charging-card:hover {
+        box-shadow: var(--dark-shadow-xl);
+        border-color: var(--primary-color);
+    }
+
+    .info-card h3,
+    .service-card h3,
+    .review-card .review-author,
+    .advantage-card h3,
+    .main-service-content > p:first-child,
+    .service-link-card h3,
+    .charging-info h3 {
+        color: var(--dark-text-primary);
+    }
+
+    .info-card p,
+    .service-card p,
+    .review-text,
+    .advantage-card p,
+    .service-details ul li,
+    .service-link-card p,
+    .charging-info > p {
+        color: var(--dark-text-secondary);
+    }
+
+    .service-details h3 {
+        color: var(--primary-color);
+    }
+
+    .service-info {
+        background: rgba(0, 102, 204, 0.15);
+        border-color: rgba(0, 102, 204, 0.3);
+    }
+
+    .service-info p {
+        color: var(--dark-text-secondary);
+    }
+
+    .service-info strong {
+        color: var(--dark-text-primary);
+    }
+
+    /* Forms */
+    .form-group label {
+        color: var(--dark-text-primary);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        background: var(--dark-bg-card);
+        border-color: var(--dark-border-light);
+        color: var(--dark-text-primary);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        color: var(--dark-text-tertiary);
+    }
+
+    /* Tables */
+    .pricing-content {
+        background: var(--dark-bg-card);
+        border-color: var(--dark-border);
+    }
+
+    .pricing-content h3 {
+        color: var(--dark-text-primary);
+        border-bottom-color: var(--dark-border);
+    }
+
+    .pricing-content h4 {
+        color: var(--primary-color);
+    }
+
+    .pricing-table table {
+        border-color: var(--dark-border);
+    }
+
+    .pricing-table td {
+        border-bottom-color: var(--dark-border);
+        color: var(--dark-text-secondary);
+    }
+
+    .pricing-table td:first-child {
+        color: var(--dark-text-primary);
+    }
+
+    .pricing-table tr:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .hours-table td {
+        border-bottom-color: var(--dark-border);
+        color: var(--dark-text-secondary);
+    }
+
+    .hours-table td:first-child {
+        color: var(--dark-text-primary);
+    }
+
+    .note-cell {
+        background: rgba(245, 158, 11, 0.2);
+        border-color: rgba(245, 158, 11, 0.4);
+        color: var(--dark-text-primary);
+    }
+
+    /* Pricing Tabs */
+    .pricing-tabs {
+        background: var(--dark-bg-card);
+        border-color: var(--dark-border);
+    }
+
+    .pricing-tab {
+        background: var(--dark-bg-card);
+        border-color: var(--dark-border);
+        color: var(--dark-text-primary);
+    }
+
+    .pricing-tab:hover {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+        background: rgba(0, 102, 204, 0.1);
+    }
+
+    .pricing-tab.active {
+        background: var(--primary-color);
+        color: var(--dark-text-primary);
+        border-color: var(--primary-color);
+    }
+
+    .pricing-intro {
+        background: var(--dark-bg-card);
+        border-color: var(--dark-border);
+    }
+
+    .pricing-intro p {
+        color: var(--dark-text-secondary);
+    }
+
+    .pricing-intro a {
+        color: var(--primary-color);
+    }
+
+    /* Announcements */
+    .announcements-banner {
+        background: var(--dark-bg-secondary);
+        border-bottom-color: var(--dark-border);
+    }
+
+    .announcement-text {
+        color: var(--dark-text-primary);
+    }
+
+    /* Statistics */
+    .statistics-header {
+        color: var(--dark-text-primary);
+    }
+
+    .statistic-label {
+        color: var(--dark-text-secondary);
+    }
+
+    .btn-statistics {
+        background: var(--dark-bg-card);
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+
+    .btn-statistics:hover {
+        background: var(--primary-color);
+        color: var(--dark-text-primary);
+    }
+
+    /* Buttons */
+    .btn-primary {
+        background: var(--primary-color);
+        color: var(--dark-text-primary);
+        border-color: var(--primary-color);
+    }
+
+    .btn-primary:hover {
+        background: var(--primary-dark);
+        border-color: var(--primary-dark);
+    }
+
+    .btn-outline {
+        color: var(--dark-text-primary);
+        border-color: var(--dark-border-light);
+    }
+
+    .btn-outline:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--dark-text-primary);
+    }
+
+    /* Links */
+    .service-link,
+    .contact-details a,
+    .back-link {
+        color: var(--primary-color);
+    }
+
+    .service-link:hover,
+    .contact-details a:hover,
+    .back-link:hover {
+        color: var(--primary-dark);
+    }
+
+    .contact-details h3 {
+        color: var(--dark-text-primary);
+    }
+
+    .contact-details p {
+        color: var(--dark-text-secondary);
+    }
+
+    .opening-hours {
+        background: var(--dark-bg-card);
+        border-color: var(--dark-border);
+    }
+
+    .opening-hours h3 {
+        color: var(--dark-text-primary);
+    }
+
+    /* Cookie Consent */
+    .cookie-consent {
+        background: var(--dark-bg-card);
+        box-shadow: var(--dark-shadow-xl);
+    }
+
+    .cookie-content h3 {
+        color: var(--dark-text-primary);
+    }
+
+    .cookie-content p {
+        color: var(--dark-text-secondary);
+    }
+
+    /* About Page */
+    .about-company-text p {
+        color: var(--dark-text-secondary);
+    }
+
+    .about-company-text h2 {
+        color: var(--dark-text-primary) !important;
+    }
+
+    .team-member {
+        background: var(--dark-bg-card);
+        box-shadow: var(--dark-shadow-md);
+    }
+
+    .team-member:hover {
+        box-shadow: var(--dark-shadow-lg);
+    }
+
+    .team-member-name {
+        color: var(--dark-text-primary);
+    }
+
+    .team-member-role {
+        color: var(--dark-text-secondary);
+    }
+
+    .team-category-title {
+        color: var(--dark-text-tertiary);
+    }
+
+    /* License Plates Section */
+    .license-plates-section {
+        background: var(--dark-bg-secondary);
+    }
+
+    .license-plates-text {
+        color: var(--dark-text-primary);
+    }
+
+    /* Footer */
+    .footer {
+        background: var(--dark-bg-primary);
+        border-top-color: var(--dark-border);
+    }
+
+    .footer-section a {
+        color: var(--dark-text-tertiary);
+    }
+
+    .footer-section a:hover {
+        color: var(--dark-text-primary);
+    }
+
+    .footer-bottom {
+        color: var(--dark-text-tertiary);
+        border-top-color: var(--dark-border);
+    }
+
+    /* Additional Elements */
+    .advantage-icon-wrapper {
+        background: rgba(0, 102, 204, 0.2);
+        color: var(--primary-color);
+    }
+
+    .advantage-card:hover .advantage-icon-wrapper {
+        background: var(--primary-color);
+        color: var(--dark-text-primary);
+    }
+
+    .main-service-header {
+        background: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+    }
+
+    .main-service-content > p:first-child {
+        color: var(--dark-text-primary);
+    }
+
+    .charging-info {
+        background: var(--dark-bg-card);
+    }
+
+    .feature-item {
+        background: var(--dark-bg-secondary);
+    }
+
+    /* Map Container */
+    .map-wrapper {
+        border-color: var(--dark-border);
+    }
+
+    .map-container h3 {
+        color: var(--dark-text-primary);
     }
 }
 
