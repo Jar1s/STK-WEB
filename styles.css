@@ -197,11 +197,17 @@ body {
     padding: 0.5rem 0;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .logo h1 {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--primary-color);
-    margin-bottom: 0.25rem;
+    margin: 0;
     letter-spacing: -0.02em;
 }
 
@@ -258,9 +264,16 @@ body {
 }
 
 .nav-plates-image {
-    height: 20px;
+    height: 24px;
     width: auto;
     display: block;
+}
+
+.logo .nav-link-plates {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    text-decoration: none;
 }
 
 .mobile-menu-toggle {

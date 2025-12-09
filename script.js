@@ -495,7 +495,7 @@ const translations = {
         'originality-control-desc': 'Kontrola originality (KO) je kontrola, ktorá sa vykonáva pri dovoze vozidla zo zahraničia, vývoze, zmenách vlastníctva alebo pri zmenách na vozidle (napr. zmena farby).',
         'originality-control-when': 'Kedy je potrebná:',
         'originality-control-what': 'Čo kontrolujeme:',
-        'section-services': 'Naše služby STK a poradenstvo',
+        'section-services': 'Doplnkové služby STK a poradenstvo',
         'section-services-sub': 'Kompletná ponuka služieb pre vaše vozidlo',
         'section-pricing': 'Cenník služieb',
         'section-pricing-sub': 'Transparentné ceny pre všetky naše služby',
