@@ -441,6 +441,9 @@ body {
     box-shadow: 0 6px 24px rgba(0, 102, 204, 0.5), 0 0 0 3px rgba(255, 255, 255, 0.2);
     border-radius: 50px;
     height: auto;
+    width: fit-content;
+    text-align: center;
+    display: inline-block;
 }
 
 .btn-hero-cta:hover {
@@ -2408,9 +2411,11 @@ section {
     .btn-hero-cta {
         padding: 0.75rem 1.5rem;
         font-size: 0.875rem;
-        width: auto;
+        width: fit-content;
         max-width: none;
         align-self: center;
+        white-space: nowrap;
+        text-align: center;
     }
 
     .hero-partners-wrapper {
@@ -2675,6 +2680,10 @@ section {
     .btn-hero-cta {
         padding: 0.625rem 1.25rem;
         font-size: 0.8125rem;
+        width: fit-content;
+        max-width: none;
+        white-space: nowrap;
+        text-align: center;
     }
 
     .booking-card {
