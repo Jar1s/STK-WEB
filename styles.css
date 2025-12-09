@@ -3401,6 +3401,10 @@ section {
         background: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
     }
 
+    .main-service-header-plate {
+        background: transparent !important;
+    }
+
     .main-service-content > p:first-child {
         color: var(--dark-text-primary);
     }
