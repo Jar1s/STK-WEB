@@ -2722,6 +2722,25 @@ section {
     margin-bottom: 4rem;
 }
 
+.about-company-text {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    text-align: center;
+}
+
+.about-company-text h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.about-company-text p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-medium);
+}
+
 .team-section {
     margin-top: 3rem;
 }
