@@ -2830,6 +2830,24 @@ section {
     border: 2px solid var(--bg-white);
 }
 
+.team-member-placeholder {
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-initials {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
 .team-member-info {
     padding: 1.5rem 1rem;
 }
