@@ -2232,6 +2232,11 @@ section {
     transform: translateY(0);
 }
 
+.about-page-section .section-header h1,
+.about-page-section .section-header p {
+    color: #1a1a1a !important;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .top-bar {
@@ -2777,6 +2782,14 @@ section {
 /* Team Section Styles */
 .about-page-header {
     margin-bottom: 4rem;
+}
+
+.about-page-header .section-header h1 {
+    color: #1a1a1a !important;
+}
+
+.about-page-header .section-header p {
+    color: #1a1a1a !important;
 }
 
 .about-company-text {
