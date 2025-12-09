@@ -401,7 +401,7 @@ body {
 }
 
 .btn-hero-cta {
-    background: #ff6600;
+    background: var(--primary-color);
     color: white;
     border: none;
     padding: 1.5rem 4rem;
@@ -410,14 +410,14 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     text-shadow: none;
-    box-shadow: 0 6px 24px rgba(255, 102, 0, 0.5), 0 0 0 3px rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
+    box-shadow: 0 6px 24px rgba(0, 102, 204, 0.5), 0 0 0 3px rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
 }
 
 .btn-hero-cta:hover {
-    background: #e55a00;
+    background: var(--primary-dark);
     transform: translateY(-4px);
-    box-shadow: 0 8px 32px rgba(255, 102, 0, 0.6), 0 0 0 3px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 102, 204, 0.6), 0 0 0 3px rgba(255, 255, 255, 0.3);
 }
 
 .hero-partners-wrapper {
