@@ -2327,8 +2327,23 @@ section {
         overflow-y: auto;
     }
 
+    .nav-menu li {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
     .nav-menu .nav-link {
         color: var(--text-dark);
+        display: block;
+        padding: 1rem;
+        font-size: 1rem;
+        width: 100%;
+        text-align: left;
+    }
+
+    .nav-menu .nav-link:hover {
+        background: var(--bg-light);
+        color: var(--primary-color);
     }
 
     .nav-plates-container {
@@ -2917,7 +2932,12 @@ section {
     }
 
     .nav-menu .nav-link {
-        color: #ffffff;
+        color: #ffffff !important;
+    }
+
+    .nav-menu .nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--primary-color) !important;
     }
 
     .mobile-menu-toggle span {
