@@ -2327,6 +2327,10 @@ section {
         overflow-y: auto;
     }
 
+    .nav-menu .nav-link {
+        color: var(--text-dark);
+    }
+
     .nav-plates-container {
         gap: 0.5rem;
     }
@@ -2362,8 +2366,7 @@ section {
     .btn-hero-cta {
         padding: 0.75rem 1.5rem;
         font-size: 0.875rem;
-        width: 100%;
-        max-width: 100%;
+        max-width: 90%;
     }
 
     .hero-partners-wrapper {
@@ -2886,6 +2889,46 @@ section {
 
     .team-member-role {
         font-size: 0.8125rem;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .nav-menu {
+        background: #1a1a1a;
+    }
+
+    .nav-menu .nav-link {
+        color: #ffffff;
+    }
+
+    .mobile-menu-toggle span {
+        background: #ffffff;
+    }
+
+    .logo h1 {
+        color: var(--primary-color);
+    }
+
+    .navbar {
+        background: #1a1a1a;
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .nav-link:hover {
+        color: var(--primary-color);
+    }
+
+    .about-company-text p {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .about-company-text h2 {
+        color: #ffffff;
     }
 }
 
