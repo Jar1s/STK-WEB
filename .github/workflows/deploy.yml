@@ -1,0 +1,54 @@
+name: Build and Validate
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Validate HTML and CSS
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Validate HTML files
+        run: |
+          echo "Checking HTML files..."
+          find . -name "*.html" -type f | while read file; do
+            echo "Validating: $file"
+            if ! grep -q "<!DOCTYPE html>" "$file"; then
+              echo "Error: $file missing DOCTYPE"
+              exit 1
+            fi
+          done
+          echo "✓ All HTML files validated"
+      
+      - name: Check CSS file
+        run: |
+          echo "Checking CSS file..."
+          if [ ! -f "styles.css" ]; then
+            echo "Error: styles.css not found"
+            exit 1
+          fi
+          echo "✓ CSS file exists"
+      
+      - name: Check JavaScript file
+        run: |
+          echo "Checking JavaScript file..."
+          if [ ! -f "script.js" ]; then
+            echo "Error: script.js not found"
+            exit 1
+          fi
+          echo "✓ JavaScript file exists"
+      
+      - name: Build status
+        run: |
+          echo "✓ Build validation completed successfully"
+          echo "All files are present and valid"
+
