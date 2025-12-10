@@ -647,12 +647,15 @@ body {
 /* Hero Announcements - Priesvitné notifikácie na hero videu */
 .hero-announcements-wrapper {
     position: absolute;
-    top: 2rem;
+    top: 0;
     left: 0;
     right: 0;
     overflow: hidden;
     z-index: 3;
     pointer-events: none;
+    background: linear-gradient(180deg, rgba(200, 30, 30, 0.95) 0%, rgba(180, 20, 20, 0.95) 100%);
+    padding: 0.75rem 0;
+    border-bottom: 2px solid rgba(150, 10, 10, 0.8);
 }
 
 .hero-announcements-carousel {
@@ -678,13 +681,13 @@ body {
 }
 
 .hero-announcement-text {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 1);
     font-size: 0.9375rem;
-    font-weight: 500;
+    font-weight: 600;
     white-space: nowrap;
     flex-shrink: 0;
     line-height: 1.6;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Section Styles */
@@ -2435,7 +2438,8 @@ section {
     }
 
     .hero-announcements-wrapper {
-        top: 1rem;
+        top: 0;
+        padding: 0.5rem 0;
     }
 
     .hero-announcements-carousel {
