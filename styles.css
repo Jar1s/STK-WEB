@@ -2431,7 +2431,7 @@ section {
     }
 
     .hero-scroll {
-        bottom: 5rem;
+        display: none;
     }
 
     .hero-announcements-wrapper {
@@ -2684,6 +2684,10 @@ section {
         max-width: none;
         white-space: nowrap;
         text-align: center;
+    }
+
+    .hero-scroll {
+        display: none;
     }
 
     .booking-card {
@@ -2946,6 +2950,40 @@ section {
 
     .about-page-section {
         padding: 6rem 0 3rem;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .about-page-header {
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    .about-company-text {
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    .about-company-text p {
+        color: #1a1a1a !important;
+    }
+
+    .team-section {
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    .team-category-title {
+        color: var(--text-light) !important;
+    }
+
+    .team-member-name {
+        color: var(--text-dark) !important;
+    }
+
+    .team-member-role {
+        color: var(--text-medium) !important;
     }
 }
 
