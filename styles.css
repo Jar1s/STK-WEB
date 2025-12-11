@@ -136,15 +136,18 @@ body {
     justify-content: center;
     width: 32px;
     height: 32px;
-    background: rgba(255, 255, 255, 0.1);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
     transition: all 0.3s ease;
     text-decoration: none;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 .navbar .social-icon:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     color: white;
+    border-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
 }
 
@@ -193,8 +196,8 @@ body {
 
 .navbar .lang-btn {
     padding: 0.25rem 0.75rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     color: rgba(255, 255, 255, 0.85);
     border-radius: 4px;
     cursor: pointer;
@@ -204,17 +207,19 @@ body {
     letter-spacing: 0.05em;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .navbar .lang-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 1);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 .navbar .lang-btn.active {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
     color: rgba(255, 255, 255, 1);
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 .language-switcher {
@@ -281,19 +286,48 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-size: 0.875rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    background: transparent;
 }
 
 .navbar .nav-link:hover {
     color: rgba(255, 255, 255, 1);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .navbar .nav-link::after {
     background: rgba(255, 255, 255, 0.5);
 }
 
+.navbar .nav-link.btn-primary {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.95);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.navbar .nav-link.btn-primary:hover {
+    background: rgba(0, 102, 204, 0.2);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: white;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
 .navbar.scrolled .nav-link,
 .navbar.fixed .nav-link {
     color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar.scrolled .nav-link.btn-primary {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.navbar.scrolled .nav-link.btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
 }
 
 .navbar .logo h1 {
@@ -575,7 +609,7 @@ body {
     max-width: 800px;
     padding: 2rem;
     animation: fadeInUp 1s ease;
-    margin-top: auto;
+    margin-top: 8rem;
     margin-bottom: auto;
 }
 
@@ -2674,6 +2708,10 @@ section {
     .navbar {
         background: rgba(10, 16, 26, 0.18);
         backdrop-filter: blur(10px);
+    }
+
+    .hero-content {
+        margin-top: 6rem;
     }
 
     .hero-title {
