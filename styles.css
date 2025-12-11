@@ -1517,15 +1517,16 @@ section {
 
 /* Main Services Section (Technical, Emission, Originality Control) */
 .main-services-section {
-    padding: 5rem 0;
+    padding: 2rem 0 5rem;
     background: #f5f7fa;
+    scroll-margin-top: 80px;
 }
 
 .main-services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2.5rem;
-    margin-top: 3rem;
+    margin-top: 0;
     align-items: stretch;
 }
 
