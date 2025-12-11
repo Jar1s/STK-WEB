@@ -251,12 +251,12 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(180deg, rgba(10, 16, 26, 0.45) 0%, rgba(10, 16, 26, 0.25) 55%, rgba(10, 16, 26, 0) 100%);
+    background: rgba(10, 16, 26, 0.15);
     backdrop-filter: blur(12px);
     box-shadow: none;
     z-index: 1000;
     transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: none;
     width: 100%;
 }
 
@@ -2672,7 +2672,7 @@ section {
     }
     
     .navbar {
-        background: linear-gradient(180deg, rgba(10, 16, 26, 0.5) 0%, rgba(10, 16, 26, 0.25) 60%, rgba(10, 16, 26, 0) 100%);
+        background: rgba(10, 16, 26, 0.18);
         backdrop-filter: blur(10px);
     }
 
@@ -3367,7 +3367,13 @@ section {
     }
 
     .navbar {
-        background: var(--dark-bg-primary);
+        background: rgba(10, 16, 26, 0.2);
+        backdrop-filter: blur(12px);
+        border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .navbar.scrolled {
+        background: rgba(26, 26, 26, 0.95);
         border-bottom-color: var(--dark-border);
     }
 
