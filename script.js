@@ -82,18 +82,16 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Navbar scroll effect - fixed len pri scrollnutí, stmaví sa a zostáva tmavé
+// Navbar scroll effect - zostáva viditeľné, stmaví sa pri scrollnutí
 const navbar = document.querySelector('.navbar');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
-    if (currentScroll > 100) {
-        navbar.classList.add('fixed');
+    if (currentScroll > 50) {
         navbar.classList.add('scrolled');
     } else {
-        navbar.classList.remove('fixed');
         navbar.classList.remove('scrolled');
     }
     
