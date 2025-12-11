@@ -801,6 +801,39 @@ body {
     border-bottom: 2px solid rgba(150, 10, 10, 0.8);
 }
 
+.hero-plates-wrapper {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    padding-top: calc(0.75rem + 1.5rem + 2px + 0.75rem);
+    padding-bottom: 0.5rem;
+    pointer-events: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.hero-plates-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hero-plates-link:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.hero-plates-image {
+    height: 60px;
+    width: auto;
+    display: block;
+}
+
 .hero-announcements-carousel {
     display: flex;
     gap: 4rem;
