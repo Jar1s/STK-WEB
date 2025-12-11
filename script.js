@@ -1,12 +1,47 @@
 // Mobile Menu Toggle
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-const navMenu = document.querySelector('.nav-menu');
+const navMenuLeft = document.querySelector('.nav-menu-left');
+const navMenuRight = document.querySelector('.nav-menu-right');
 const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
 
+// Create combined mobile menu
+let mobileNavMenu = null;
+document.addEventListener('DOMContentLoaded', () => {
+    // Create a single mobile menu that combines both left and right menus
+    if (navMenuLeft && navMenuRight && !document.querySelector('.nav-menu.mobile-only')) {
+        mobileNavMenu = document.createElement('ul');
+        mobileNavMenu.className = 'nav-menu mobile-only';
+        
+        // Clone left menu items
+        navMenuLeft.querySelectorAll('li').forEach(li => {
+            const clonedLi = li.cloneNode(true);
+            mobileNavMenu.appendChild(clonedLi);
+        });
+        
+        // Clone right menu items
+        navMenuRight.querySelectorAll('li').forEach(li => {
+            const clonedLi = li.cloneNode(true);
+            mobileNavMenu.appendChild(clonedLi);
+        });
+        
+        // Insert after nav-wrapper
+        const navWrapper = document.querySelector('.nav-wrapper');
+        if (navWrapper) {
+            navWrapper.appendChild(mobileNavMenu);
+        }
+    } else {
+        mobileNavMenu = document.querySelector('.nav-menu.mobile-only') || document.querySelector('.nav-menu');
+    }
+});
+
 function toggleMobileMenu() {
-    const isActive = navMenu.classList.contains('active');
-    navMenu.classList.toggle('active');
-    mobileMenuToggle.classList.toggle('active');
+    if (!mobileNavMenu) return;
+    
+    const isActive = mobileNavMenu.classList.contains('active');
+    mobileNavMenu.classList.toggle('active');
+    if (mobileMenuToggle) {
+        mobileMenuToggle.classList.toggle('active');
+    }
     if (mobileMenuOverlay) {
         mobileMenuOverlay.classList.toggle('active');
     }
@@ -19,8 +54,12 @@ function toggleMobileMenu() {
 }
 
 function closeMobileMenu() {
-    navMenu.classList.remove('active');
-    mobileMenuToggle.classList.remove('active');
+    if (!mobileNavMenu) return;
+    
+    mobileNavMenu.classList.remove('active');
+    if (mobileMenuToggle) {
+        mobileMenuToggle.classList.remove('active');
+    }
     if (mobileMenuOverlay) {
         mobileMenuOverlay.classList.remove('active');
     }
@@ -37,11 +76,10 @@ if (mobileMenuOverlay) {
 }
 
 // Close mobile menu when clicking on a link
-const navLinks = document.querySelectorAll('.nav-link');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.nav-link') && mobileNavMenu && mobileNavMenu.classList.contains('active')) {
         closeMobileMenu();
-    });
+    }
 });
 
 // Navbar scroll effect
@@ -51,7 +89,7 @@ let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
-    if (currentScroll > 100) {
+    if (currentScroll > 50) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
@@ -409,7 +447,53 @@ function animateCounter(element, target, suffix = '', duration = 2000) {
     updateCounter();
 }
 
-// Statistics counter observer
+// Hero Statistics counter observer
+let heroStatisticsAnimated = false;
+const heroStatisticsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !heroStatisticsAnimated) {
+            heroStatisticsAnimated = true;
+            
+            const statistics = entry.target.querySelectorAll('.hero-statistic-item');
+            statistics.forEach((stat, index) => {
+                const numberElement = stat.querySelector('.hero-statistic-number');
+                const originalText = numberElement.textContent.trim();
+                
+                // Extract number and suffix from text
+                const match = originalText.match(/([\d\s,]+)([+%]?)/);
+                if (match) {
+                    const numberStr = match[1].replace(/[\s,]/g, '');
+                    const suffix = match[2] || '';
+                    const targetNumber = parseInt(numberStr, 10);
+                    
+                    if (!isNaN(targetNumber) && !numberElement.hasAttribute('data-animated')) {
+                        // Mark as animated to prevent multiple triggers
+                        numberElement.setAttribute('data-animated', 'true');
+                        
+                        // Add animated class to item
+                        stat.classList.add('animated');
+                        
+                        // Reset to 0 initially - this will be visible immediately
+                        numberElement.textContent = '0' + suffix;
+                        
+                        // Start animation immediately with a small delay for staggered effect
+                        setTimeout(() => {
+                            animateCounter(numberElement, targetNumber, suffix, 2000);
+                        }, index * 200);
+                    }
+                }
+            });
+            
+            // Stop observing after animation starts
+            heroStatisticsObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px 0px 0px'
+});
+
+// Statistics counter observer (for old statistics section if it exists)
 let statisticsAnimated = false;
 const statisticsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -479,7 +563,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize language on page load
     updateLanguage(currentLang);
 
-    // Observe statistics section for animation
+    // Observe hero statistics for animation
+    const heroStatistics = document.querySelector('.hero-statistics');
+    if (heroStatistics) {
+        heroStatisticsObserver.observe(heroStatistics);
+    }
+
+    // Observe statistics section for animation (if it still exists)
     const statisticsSection = document.querySelector('.statistics-section');
     if (statisticsSection) {
         statisticsObserver.observe(statisticsSection);
@@ -749,6 +839,95 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Start auto-scroll on load
     startAutoScroll();
+});
+
+// Load notifications from API
+async function loadNotifications() {
+    const carousel = document.getElementById('hero-announcements-carousel');
+    const wrapper = document.getElementById('hero-announcements-wrapper');
+    
+    if (!carousel || !wrapper) return;
+
+    try {
+        const response = await fetch('/api/notifications');
+        const data = await response.json();
+
+        if (response.ok && data.notifications && data.notifications.length > 0) {
+            // Clear existing content
+            carousel.innerHTML = '';
+
+            // Create notification elements
+            data.notifications.forEach(notification => {
+                const span = document.createElement('span');
+                span.className = 'hero-announcement-text';
+                span.innerHTML = notification.text;
+                carousel.appendChild(span);
+            });
+
+            // Duplicate for seamless carousel effect
+            data.notifications.forEach(notification => {
+                const span = document.createElement('span');
+                span.className = 'hero-announcement-text';
+                span.innerHTML = notification.text;
+                carousel.appendChild(span);
+            });
+
+            // Apply custom colors from first notification (or use default)
+            if (data.notifications.length > 0) {
+                const firstNotification = data.notifications[0];
+                wrapper.style.background = `linear-gradient(180deg, ${firstNotification.backgroundColor} 0%, ${firstNotification.backgroundGradient} 100%)`;
+                wrapper.style.borderBottom = `2px solid ${firstNotification.borderColor}`;
+                
+                // Apply text color to all announcement texts
+                const announcementTexts = carousel.querySelectorAll('.hero-announcement-text');
+                announcementTexts.forEach(text => {
+                    text.style.color = firstNotification.textColor;
+                });
+            }
+        } else {
+            // Fallback to default notifications if API fails or returns empty
+            loadDefaultNotifications();
+        }
+    } catch (error) {
+        console.error('Error loading notifications:', error);
+        // Fallback to default notifications on error
+        loadDefaultNotifications();
+    }
+}
+
+// Fallback function with default notifications
+function loadDefaultNotifications() {
+    const carousel = document.getElementById('hero-announcements-carousel');
+    const wrapper = document.getElementById('hero-announcements-wrapper');
+    
+    if (!carousel || !wrapper) return;
+
+    const defaultNotifications = [
+        '📅 Celozávodná dovolenka: V dňoch <strong>31.12.2025 - 6.1.2026</strong> (vrátane) čerpáme celozávodnú dovolenku. Prajeme Vám príjemné prežitie vianočných sviatkov a šťastlivý Nový rok 2026. Tešíme sa na Vás <strong>07.01.2026</strong>.',
+        '💰 Úprava cien služieb STK: Od <strong>1.11.2025</strong> dochádza k úprave ceny STK a KO pre osobné motorové vozidlá z pôvodných <strong>89 € na 99 €</strong>.'
+    ];
+
+    carousel.innerHTML = '';
+    
+    defaultNotifications.forEach(text => {
+        const span = document.createElement('span');
+        span.className = 'hero-announcement-text';
+        span.innerHTML = text;
+        carousel.appendChild(span);
+    });
+
+    // Duplicate for seamless carousel
+    defaultNotifications.forEach(text => {
+        const span = document.createElement('span');
+        span.className = 'hero-announcement-text';
+        span.innerHTML = text;
+        carousel.appendChild(span);
+    });
+}
+
+// Load notifications when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    loadNotifications();
 });
 
 

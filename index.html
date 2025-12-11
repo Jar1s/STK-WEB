@@ -54,26 +54,41 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-wrapper">
+                <ul class="nav-menu nav-menu-left">
+                    <li><a href="o-nas.html" class="nav-link" data-translate="nav-about">O nás</a></li>
+                    <li><a href="#main-services" class="nav-link" data-translate="nav-services">Služby</a></li>
+                    <li><a href="#pricing" class="nav-link" data-translate="nav-pricing">Cenník</a></li>
+                </ul>
                 <div class="logo">
-                    <h1>JP Control s.r.o.</h1>
-                    <a href="#main-services" class="nav-link nav-link-plates">
-                        <img src="PTI_icons.webp" alt="TK EK KO" class="nav-plates-image">
+                    <a href="#home" class="logo-link">
+                        <div class="logo-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Shield/Frame -->
+                                <rect x="2" y="2" width="36" height="36" rx="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <!-- Buildings -->
+                                <rect x="6" y="12" width="6" height="14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                <rect x="14" y="10" width="6" height="16" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                <rect x="22" y="14" width="6" height="12" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                <!-- Windows -->
+                                <line x1="7" y1="18" x2="11" y2="18" stroke="currentColor" stroke-width="1"/>
+                                <line x1="15" y1="16" x2="19" y2="16" stroke="currentColor" stroke-width="1"/>
+                                <line x1="23" y1="20" x2="27" y2="20" stroke="currentColor" stroke-width="1"/>
+                            </svg>
+                        </div>
+                        <h1>JP Control s.r.o.</h1>
                     </a>
                 </div>
+                <ul class="nav-menu nav-menu-right">
+                    <li><a href="#reviews" class="nav-link" data-translate="nav-reviews">Recenzie</a></li>
+                    <li><a href="#contact" class="nav-link" data-translate="nav-contact">Kontakt</a></li>
+                    <li><a href="rezervacia.html" class="nav-link btn-primary" data-translate="nav-booking">Rezervovať</a></li>
+                </ul>
                 <button class="mobile-menu-toggle" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
                 <div class="mobile-menu-overlay"></div>
-                <ul class="nav-menu">
-                    <li><a href="o-nas.html" class="nav-link" data-translate="nav-about">O nás</a></li>
-                    <li><a href="#main-services" class="nav-link" data-translate="nav-services">Služby</a></li>
-                    <li><a href="#pricing" class="nav-link" data-translate="nav-pricing">Cenník</a></li>
-                    <li><a href="#reviews" class="nav-link" data-translate="nav-reviews">Recenzie</a></li>
-                    <li><a href="#contact" class="nav-link" data-translate="nav-contact">Kontakt</a></li>
-                    <li><a href="rezervacia.html" class="nav-link btn-primary" data-translate="nav-booking">Rezervovať</a></li>
-                </ul>
             </div>
         </div>
     </nav>
@@ -84,13 +99,9 @@
             <source src="Hero video.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
-        <div class="hero-announcements-wrapper">
-            <div class="hero-announcements-carousel">
-                <span class="hero-announcement-text">📅 Celozávodná dovolenka: V dňoch <strong>31.12.2025 - 6.1.2026</strong> (vrátane) čerpáme celozávodnú dovolenku. Prajeme Vám príjemné prežitie vianočných sviatkov a šťastlivý Nový rok 2026. Tešíme sa na Vás <strong>07.01.2026</strong>.</span>
-                <span class="hero-announcement-text">💰 Úprava cien služieb STK: Od <strong>1.11.2025</strong> dochádza k úprave ceny STK a KO pre osobné motorové vozidlá z pôvodných <strong>89 € na 99 €</strong>.</span>
-                <!-- Duplikované pre plynulý efekt -->
-                <span class="hero-announcement-text">📅 Celozávodná dovolenka: V dňoch <strong>31.12.2025 - 6.1.2026</strong> (vrátane) čerpáme celozávodnú dovolenku. Prajeme Vám príjemné prežitie vianočných sviatkov a šťastlivý Nový rok 2026. Tešíme sa na Vás <strong>07.01.2026</strong>.</span>
-                <span class="hero-announcement-text">💰 Úprava cien služieb STK: Od <strong>1.11.2025</strong> dochádza k úprave ceny STK a KO pre osobné motorové vozidlá z pôvodných <strong>89 € na 99 €</strong>.</span>
+        <div class="hero-announcements-wrapper" id="hero-announcements-wrapper">
+            <div class="hero-announcements-carousel" id="hero-announcements-carousel">
+                <!-- Notifications will be loaded dynamically from API -->
             </div>
         </div>
         <div class="container">
@@ -162,34 +173,27 @@
                 </div>
             </div>
         </div>
+        <!-- Statistics in Hero -->
+        <div class="hero-statistics">
+            <div class="hero-statistics-grid">
+                <div class="hero-statistic-item">
+                    <div class="hero-statistic-number">15 000+</div>
+                    <div class="hero-statistic-label">VYKONANÝCH KONTROL</div>
+                </div>
+                <div class="hero-statistic-item">
+                    <div class="hero-statistic-number">10+</div>
+                    <div class="hero-statistic-label">ROKOV SKÚSENOSTÍ</div>
+                </div>
+                <div class="hero-statistic-item">
+                    <div class="hero-statistic-number">98%</div>
+                    <div class="hero-statistic-label">SPOKOJNÝCH ZÁKAZNÍKOV</div>
+                </div>
+            </div>
+        </div>
         <div class="hero-scroll">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 5v14M19 12l-7 7-7-7"/>
             </svg>
-        </div>
-    </section>
-
-    <!-- Statistics Section -->
-    <section class="statistics-section">
-        <div class="container">
-            <h2 class="statistics-header">NAŠA PREVÁDZKA V ČÍSLACH</h2>
-            <div class="statistics-grid">
-                <div class="statistic-item">
-                    <div class="statistic-number">15 000+</div>
-                    <div class="statistic-label">VYKONANÝCH KONTROL</div>
-                </div>
-                <div class="statistic-item">
-                    <div class="statistic-number">10+</div>
-                    <div class="statistic-label">ROKOV SKÚSENOSTÍ</div>
-                </div>
-                <div class="statistic-item">
-                    <div class="statistic-number">98%</div>
-                    <div class="statistic-label">SPOKOJNÝCH ZÁKAZNÍKOV</div>
-                </div>
-            </div>
-            <div class="statistics-cta">
-                <a href="#contact" class="btn-statistics">ADRESA A KONTAKT</a>
-            </div>
         </div>
     </section>
 
