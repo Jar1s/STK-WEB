@@ -256,8 +256,8 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(10, 16, 26, 0.15);
-    backdrop-filter: blur(12px);
+    background: transparent;
+    backdrop-filter: none;
     box-shadow: none;
     z-index: 1000;
     transition: all 0.3s ease;
@@ -350,11 +350,25 @@ body {
 .nav-wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 0.5rem 0;
     gap: 1.5rem;
     flex-wrap: wrap;
     width: 100%;
+}
+
+.navbar-left-extras {
+    order: 0;
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.navbar-right-extras {
+    order: 5;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
 }
 
 .nav-menu-left,
@@ -367,19 +381,17 @@ body {
     padding: 0;
 }
 
+.nav-menu-left {
+    order: 1;
+}
+
 .logo {
+    order: 2;
     margin: 0;
 }
 
-.language-switcher-item,
-.social-icons-item {
-    display: flex;
-    align-items: center;
-}
-
-.language-switcher-item .language-switcher,
-.social-icons-item .social-icons {
-    margin: 0;
+.nav-menu-right {
+    order: 3;
 }
 
 .logo {
@@ -437,6 +449,7 @@ body {
     list-style: none;
     gap: 1.25rem;
     align-items: center;
+    background: transparent;
 }
 
 /* Mobile menu will use .nav-menu class */
@@ -2706,8 +2719,8 @@ section {
     }
     
     .navbar {
-        background: rgba(10, 16, 26, 0.18);
-        backdrop-filter: blur(10px);
+        background: transparent;
+        backdrop-filter: none;
     }
 
     .hero-content {
