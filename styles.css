@@ -180,12 +180,12 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(8px);
+    background: transparent;
+    backdrop-filter: none;
     box-shadow: none;
     z-index: 1000;
     transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
 }
 
 .navbar.fixed {
@@ -794,7 +794,7 @@ body {
     left: 0;
     right: 0;
     overflow: hidden;
-    z-index: 3;
+    z-index: 1001;
     pointer-events: none;
     background: linear-gradient(180deg, rgba(200, 30, 30, 0.95) 0%, rgba(180, 20, 20, 0.95) 100%);
     padding: 0.75rem 0;
