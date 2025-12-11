@@ -82,7 +82,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Navbar scroll effect - fixed len pri scrollnutí
+// Navbar scroll effect - fixed len pri scrollnutí, stmaví sa a zostáva tmavé
 const navbar = document.querySelector('.navbar');
 let lastScroll = 0;
 
