@@ -379,6 +379,7 @@ body {
     align-items: center;
     margin: 0;
     padding: 0;
+    background: transparent;
 }
 
 .nav-menu-left {
@@ -450,6 +451,17 @@ body {
     gap: 1.25rem;
     align-items: center;
     background: transparent;
+}
+
+.nav-menu li {
+    display: flex;
+    align-items: center;
+    background: transparent;
+}
+
+.navbar .nav-menu li a {
+    background: transparent !important;
+    box-shadow: none;
 }
 
 /* Mobile menu will use .nav-menu class */
@@ -3393,7 +3405,7 @@ section {
 
     /* Navigation */
     .nav-menu {
-        background: var(--dark-bg-primary);
+        background: transparent;
     }
 
     .nav-menu .nav-link {
@@ -3401,7 +3413,7 @@ section {
     }
 
     .nav-menu .nav-link:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: transparent;
         color: var(--primary-color) !important;
     }
 
