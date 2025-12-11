@@ -243,7 +243,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 0.5rem 0;
-    gap: 1.5rem;
+    gap: 1rem;
     flex-wrap: wrap;
 }
 
@@ -251,7 +251,7 @@ body {
 .nav-menu-right {
     display: flex;
     list-style: none;
-    gap: 1.5rem;
+    gap: 1rem;
     align-items: center;
     margin: 0;
     padding: 0;
@@ -442,7 +442,8 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 1001;
+    width: 100%;
 }
 
 .hero-video {
@@ -831,7 +832,7 @@ body {
 
 .hero-announcements-wrapper {
     position: absolute;
-    top: 60px;
+    top: 80px;
     left: 0;
     right: 0;
     overflow: hidden;
