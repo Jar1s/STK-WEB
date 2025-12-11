@@ -86,6 +86,15 @@ document.addEventListener('click', (e) => {
 const navbar = document.querySelector('.navbar');
 let lastScroll = 0;
 
+// Uistíme sa, že navbar je fixed od začiatku
+if (navbar) {
+    navbar.style.position = 'fixed';
+    navbar.style.top = '0';
+    navbar.style.left = '0';
+    navbar.style.right = '0';
+    navbar.style.zIndex = '1000';
+}
+
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
