@@ -82,16 +82,18 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Navbar scroll effect
+// Navbar scroll effect - fixed len pri scrollnutí
 const navbar = document.querySelector('.navbar');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
-    if (currentScroll > 50) {
+    if (currentScroll > 100) {
+        navbar.classList.add('fixed');
         navbar.classList.add('scrolled');
     } else {
+        navbar.classList.remove('fixed');
         navbar.classList.remove('scrolled');
     }
     
