@@ -84,28 +84,33 @@ document.addEventListener('click', (e) => {
 
 // Navbar scroll effect - zostáva viditeľné, stmaví sa pri scrollnutí
 const navbar = document.querySelector('.navbar');
+const heroSection = document.querySelector('.hero');
 let lastScroll = 0;
 
-// Uistíme sa, že navbar je fixed od začiatku
+// Uistíme sa, že navbar je fixed od začiatku a stmavne po odscrollovaní z hero
+const navScrollThreshold = 60;
+function updateNavbarState() {
+    if (!navbar) return;
+    const currentScroll = window.pageYOffset;
+    const shouldDarken = heroSection ? currentScroll > navScrollThreshold : true;
+    if (shouldDarken) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+    lastScroll = currentScroll;
+}
+
 if (navbar) {
     navbar.style.position = 'fixed';
     navbar.style.top = '0';
     navbar.style.left = '0';
     navbar.style.right = '0';
     navbar.style.zIndex = '1000';
+    updateNavbarState();
+    window.addEventListener('scroll', updateNavbarState);
+    window.addEventListener('load', updateNavbarState);
 }
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
-});
 
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -851,5 +856,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Notifications removed - hero announcements wrapper removed to not obstruct hero video
-
 

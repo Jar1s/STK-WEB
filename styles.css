@@ -251,12 +251,12 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: transparent;
-    backdrop-filter: none;
+    background: linear-gradient(180deg, rgba(10, 16, 26, 0.45) 0%, rgba(10, 16, 26, 0.25) 55%, rgba(10, 16, 26, 0) 100%);
+    backdrop-filter: blur(12px);
     box-shadow: none;
     z-index: 1000;
     transition: all 0.3s ease;
-    border-bottom: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     width: 100%;
 }
 
@@ -2672,15 +2672,8 @@ section {
     }
     
     .navbar {
-        background: rgba(26, 26, 26, 0.95);
-    }
-    
-    .nav-menu {
-        background: rgba(26, 26, 26, 0.98);
-    }
-    
-    .nav-menu .nav-link {
-        color: rgba(255, 255, 255, 0.9);
+        background: linear-gradient(180deg, rgba(10, 16, 26, 0.5) 0%, rgba(10, 16, 26, 0.25) 60%, rgba(10, 16, 26, 0) 100%);
+        backdrop-filter: blur(10px);
     }
 
     .hero-title {
@@ -3802,4 +3795,3 @@ section {
         color: var(--dark-text-primary);
     }
 }
-
