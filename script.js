@@ -1032,6 +1032,8 @@ async function loadPartners() {
                 span.textContent = p.name || 'Partner';
                 div.appendChild(span);
             }
+            // Repeat each partner twice so logo sa zobrazí častejšie
+            items.push(div.cloneNode(true));
             items.push(div);
         });
         // Keep placeholders to fill the lane
@@ -1067,7 +1069,7 @@ async function loadHeroNotifications() {
         }
 
         // Build items (duplicate for smooth scrolling)
-        const items = [...notifications, ...notifications];
+        const items = [...notifications, ...notifications, ...notifications];
         carousel.innerHTML = '';
         items.forEach((n) => {
             const span = document.createElement('span');

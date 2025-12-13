@@ -1335,7 +1335,8 @@ body {
     display: flex;
     gap: 4rem;
     width: fit-content;
-    animation: scroll-hero-announcements 30s linear infinite;
+    min-width: 200%;
+    animation: scroll-hero-announcements 20s linear infinite;
     will-change: transform;
     align-items: center;
 }
