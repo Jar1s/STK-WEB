@@ -1120,6 +1120,9 @@ body {
     z-index: 4;
     padding: 0 2rem;
 }
+.hero-statistics.loading {
+    opacity: 0;
+}
 
 .hero-statistics-grid {
     display: flex;

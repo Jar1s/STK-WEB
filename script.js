@@ -957,6 +957,8 @@ function animateHeroStatsNow() {
 }
 
 async function loadDynamicStatistics() {
+    const container = document.querySelector('.hero-statistics');
+    if (container) container.classList.add('loading');
     try {
         const res = await fetch('/api/statistics');
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -986,8 +988,10 @@ async function loadDynamicStatistics() {
             if (v2 !== null) sectionNumbers[1].textContent = `${v2}+`;
             if (v3 !== null) sectionNumbers[2].textContent = `${v3}%`;
         }
+        if (container) container.classList.remove('loading');
     } catch (err) {
         console.warn('Failed to load statistics', err);
+        if (container) container.classList.remove('loading');
     }
 }
 
