@@ -29,7 +29,14 @@ export default async function handler(req, res) {
       googlePlaceId: body.googlePlaceId
     };
     const result = await saveStatistics(stats);
-    if (!result.ok) return res.status(500).json({ error: 'Failed to save statistics', reason: result.reason });
+    if (!result.ok) {
+      return res.status(500).json({
+        error: 'Failed to save statistics',
+        reason: result.reason,
+        detail: result.detail,
+        code: result.code
+      });
+    }
     return res.status(200).json({ ok: true });
   }
 

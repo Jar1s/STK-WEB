@@ -27,8 +27,9 @@ export default async function handler(req, res) {
 
   if (req.method === 'POST') {
     if (!requireAdmin(req, res)) return;
-    const { text, backgroundColor, backgroundGradient, borderColor, textColor, active } = req.body || {};
+    const { id: bodyId, text, backgroundColor, backgroundGradient, borderColor, textColor, active } = req.body || {};
     const result = await upsertNotification({
+      id: bodyId,
       text,
       backgroundColor,
       backgroundGradient,
@@ -36,7 +37,14 @@ export default async function handler(req, res) {
       textColor,
       active
     });
-    if (!result.ok) return res.status(500).json({ error: 'Failed to create notification', reason: result.reason });
+    if (!result.ok) {
+      return res.status(500).json({
+        error: 'Failed to create notification',
+        reason: result.reason,
+        detail: result.detail,
+        code: result.code
+      });
+    }
     return res.status(201).json({ ok: true });
   }
 
@@ -52,7 +60,14 @@ export default async function handler(req, res) {
       ...(textColor !== undefined ? { textColor } : {}),
       ...(active !== undefined ? { active } : {})
     });
-    if (!result.ok) return res.status(500).json({ error: 'Failed to update notification', reason: result.reason });
+    if (!result.ok) {
+      return res.status(500).json({
+        error: 'Failed to update notification',
+        reason: result.reason,
+        detail: result.detail,
+        code: result.code
+      });
+    }
     return res.status(200).json({ ok: true });
   }
 
@@ -60,7 +75,14 @@ export default async function handler(req, res) {
     if (!requireAdmin(req, res)) return;
     if (!id) return res.status(400).json({ error: 'Missing id' });
     const result = await deleteNotification(id);
-    if (!result.ok) return res.status(500).json({ error: 'Failed to delete notification', reason: result.reason });
+    if (!result.ok) {
+      return res.status(500).json({
+        error: 'Failed to delete notification',
+        reason: result.reason,
+        detail: result.detail,
+        code: result.code
+      });
+    }
     return res.status(200).json({ ok: true });
   }
 
