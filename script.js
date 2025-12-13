@@ -1004,15 +1004,14 @@ async function loadPartners() {
         const partners = data.partners || [];
         if (partners.length > 0) {
             container.innerHTML = '';
-            partners.forEach((p) => {
+            const items = [...partners, ...partners]; // duplicate for smooth scroll
+            items.forEach((p) => {
                 const div = document.createElement('div');
                 div.className = 'hero-partner-item';
                 if (p.logoUrl) {
                     const img = document.createElement('img');
                     img.src = p.logoUrl;
                     img.alt = p.name || 'Partner';
-                    img.style.maxHeight = '38px';
-                    img.style.objectFit = 'contain';
                     div.appendChild(img);
                 } else {
                     const span = document.createElement('span');
