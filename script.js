@@ -1011,11 +1011,8 @@ async function loadPartners() {
         const data = await res.json();
         const partners = data.partners || [];
 
-        // Build the lane from placeholders + live partners; keep it long for smooth scroll
+        // Build the lane; partners first so nové logá sú viditeľné hneď, potom placeholders
         const items = [];
-        // Start with placeholders
-        defaultPartnerNodes.forEach((node) => items.push(node.cloneNode(true)));
-        // Add live partners
         partners.forEach((p) => {
             const div = document.createElement('div');
             div.className = 'hero-partner-item';
@@ -1031,6 +1028,8 @@ async function loadPartners() {
             }
             items.push(div);
         });
+        // Keep placeholders to fill the lane
+        defaultPartnerNodes.forEach((node) => items.push(node.cloneNode(true)));
 
         // Duplicate for continuous loop
         const lane = [...items, ...items];
