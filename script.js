@@ -994,34 +994,48 @@ async function loadDynamicStatistics() {
 document.addEventListener('DOMContentLoaded', loadDynamicStatistics);
 
 // ---- Dynamic partners loading ----
+let defaultPartnerNodes = null;
+
 async function loadPartners() {
     const container = document.querySelector('.hero-partners-scroll');
     if (!container) return;
+
+    // Cache the initial placeholder items so we can keep them even when API data arrives
+    if (!defaultPartnerNodes) {
+        defaultPartnerNodes = Array.from(container.children).map((n) => n.cloneNode(true));
+    }
+
     try {
         const res = await fetch('/api/partners');
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         const partners = data.partners || [];
-        if (partners.length > 0) {
-            // Keep scroll smooth by making the lane long enough and duplicating entries
-            container.innerHTML = '';
-            const items = [...partners, ...partners, ...partners]; // triple for length
-            items.forEach((p) => {
-                const div = document.createElement('div');
-                div.className = 'hero-partner-item';
-                if (p.logoUrl) {
-                    const img = document.createElement('img');
-                    img.src = p.logoUrl;
-                    img.alt = p.name || 'Partner';
-                    div.appendChild(img);
-                } else {
-                    const span = document.createElement('span');
-                    span.textContent = p.name || 'Partner';
-                    div.appendChild(span);
-                }
-                container.appendChild(div);
-            });
-        }
+
+        // Build the lane from placeholders + live partners; keep it long for smooth scroll
+        const items = [];
+        // Start with placeholders
+        defaultPartnerNodes.forEach((node) => items.push(node.cloneNode(true)));
+        // Add live partners
+        partners.forEach((p) => {
+            const div = document.createElement('div');
+            div.className = 'hero-partner-item';
+            if (p.logoUrl) {
+                const img = document.createElement('img');
+                img.src = p.logoUrl;
+                img.alt = p.name || 'Partner';
+                div.appendChild(img);
+            } else {
+                const span = document.createElement('span');
+                span.textContent = p.name || 'Partner';
+                div.appendChild(span);
+            }
+            items.push(div);
+        });
+
+        // Duplicate for continuous loop
+        const lane = [...items, ...items];
+        container.innerHTML = '';
+        lane.forEach((node) => container.appendChild(node));
     } catch (err) {
         console.warn('Failed to load partners', err);
     }
