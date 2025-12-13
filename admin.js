@@ -45,9 +45,9 @@ async function loadNotifications() {
         </div>
         <div class="muted" style="margin:6px 0;">${n.text}</div>
         <div class="inline">
-          <button class="btn-secondary" data-edit="${n.id}">Upraviť</button>
-          <button class="btn-secondary" data-toggle="${n.id}">${n.active ? 'Deaktivovať' : 'Aktivovať'}</button>
-          <button class="btn-danger" data-del="${n.id}">Zmazať</button>
+          <button type="button" class="btn-secondary" data-edit="${n.id}">Upraviť</button>
+          <button type="button" class="btn-secondary" data-toggle="${n.id}">${n.active ? 'Deaktivovať' : 'Aktivovať'}</button>
+          <button type="button" class="btn-danger" data-del="${n.id}">Zmazať</button>
         </div>
       `;
       list.appendChild(div);
