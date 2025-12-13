@@ -1013,6 +1013,9 @@ async function loadPartners() {
 
         // Build the lane; partners first so nové logá sú viditeľné hneď, potom placeholders
         const items = [];
+        // Start with placeholders (Partner 1, Partner 2, ...)
+        defaultPartnerNodes.forEach((node) => items.push(node.cloneNode(true)));
+        // Then add each live partner exactly once
         partners.forEach((p) => {
             const div = document.createElement('div');
             div.className = 'hero-partner-item';
@@ -1032,14 +1035,10 @@ async function loadPartners() {
                 span.textContent = p.name || 'Partner';
                 div.appendChild(span);
             }
-            // Repeat each partner twice so logo sa zobrazí častejšie
-            items.push(div.cloneNode(true));
             items.push(div);
         });
-        // Keep placeholders to fill the lane
-        defaultPartnerNodes.forEach((node) => items.push(node.cloneNode(true)));
 
-        // Duplicate for continuous loop
+        // Duplicate the whole lane once for continuous scroll (each item still lenovo krát)
         const lane = [...items, ...items];
         container.innerHTML = '';
         lane.forEach((node) => container.appendChild(node));
