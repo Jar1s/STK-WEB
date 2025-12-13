@@ -928,5 +928,75 @@ document.addEventListener('DOMContentLoaded', () => {
     startAutoScroll();
 });
 
-// Notifications removed - hero announcements wrapper removed to not obstruct hero video
+// ---- Dynamic statistics loading ----
+function formatStat(value) {
+    const num = Number(value);
+    if (isNaN(num)) return null;
+    return num.toLocaleString('sk-SK').replace(/,/g, ' ');
+}
 
+function triggerHeroStatsAnimation() {
+    const container = document.querySelector('.hero-statistics');
+    if (!container) return;
+    heroStatisticsAnimated = false;
+
+    const statistics = container.querySelectorAll('.hero-statistic-item');
+    statistics.forEach((stat, index) => {
+        const numberElement = stat.querySelector('.hero-statistic-number');
+        if (!numberElement) return;
+        const originalText = numberElement.textContent.trim();
+        const match = originalText.match(/([\d\s,]+)([+%]?)/);
+        if (!match) return;
+        const numberStr = match[1].replace(/[\s,]/g, '');
+        const suffix = match[2] || '';
+        const targetNumber = parseInt(numberStr, 10);
+        if (isNaN(targetNumber)) return;
+
+        numberElement.removeAttribute('data-animated');
+        stat.classList.remove('animated');
+        numberElement.textContent = '0' + suffix;
+
+        setTimeout(() => {
+            animateCounter(numberElement, targetNumber, suffix, 2000);
+        }, index * 200);
+    });
+
+    heroStatisticsAnimated = true;
+}
+
+async function loadDynamicStatistics() {
+    try {
+        const res = await fetch('/api/statistics');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+
+        const { performedInspections, yearsExperience, satisfactionPercentage } = data;
+
+        const heroNumbers = document.querySelectorAll('.hero-statistic-number');
+        if (heroNumbers.length >= 3) {
+            const v1 = formatStat(performedInspections);
+            const v2 = formatStat(yearsExperience);
+            const v3 = formatStat(satisfactionPercentage);
+            if (v1 !== null) heroNumbers[0].textContent = `${v1}+`;
+            if (v2 !== null) heroNumbers[1].textContent = `${v2}+`;
+            if (v3 !== null) heroNumbers[2].textContent = `${v3}%`;
+            triggerHeroStatsAnimation();
+        }
+
+        const sectionNumbers = document.querySelectorAll('.statistic-number');
+        if (sectionNumbers.length >= 3) {
+            const v1 = formatStat(performedInspections);
+            const v2 = formatStat(yearsExperience);
+            const v3 = formatStat(satisfactionPercentage);
+            if (v1 !== null) sectionNumbers[0].textContent = `${v1}+`;
+            if (v2 !== null) sectionNumbers[1].textContent = `${v2}+`;
+            if (v3 !== null) sectionNumbers[2].textContent = `${v3}%`;
+        }
+    } catch (err) {
+        console.warn('Failed to load statistics', err);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadDynamicStatistics);
+
+// Notifications removed - hero announcements wrapper removed to not obstruct hero video
