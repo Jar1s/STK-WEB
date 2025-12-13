@@ -1068,7 +1068,7 @@ async function loadHeroNotifications() {
         }
 
         // Build items (duplicate for smooth scrolling)
-        const items = [...notifications, ...notifications, ...notifications];
+        const items = [...notifications, ...notifications, ...notifications]; // keep long lane
         carousel.innerHTML = '';
         items.forEach((n) => {
             const span = document.createElement('span');
@@ -1079,6 +1079,11 @@ async function loadHeroNotifications() {
 
         // Ensure wrapper is visible
         wrapper.style.display = 'block';
+        // Reset animation by toggling a class to force reflow on mobile Safari
+        carousel.classList.remove('running');
+        // eslint-disable-next-line no-unused-expressions
+        carousel.offsetHeight; // force reflow
+        carousel.classList.add('running');
     } catch (err) {
         console.warn('Failed to load hero notifications', err);
     }

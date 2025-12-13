@@ -1344,6 +1344,9 @@ body {
 .hero-announcements-carousel:hover {
     animation-play-state: paused;
 }
+.hero-announcements-carousel.running {
+    animation-play-state: running;
+}
 
 @keyframes scroll-hero-announcements {
     0% {
