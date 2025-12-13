@@ -1,0 +1,10 @@
+{
+  "name": "stk-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "JP Control web with Supabase-backed API routes",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.43.4"
+  }
+}
