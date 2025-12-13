@@ -1003,8 +1003,9 @@ async function loadPartners() {
         const data = await res.json();
         const partners = data.partners || [];
         if (partners.length > 0) {
+            // Keep scroll smooth by making the lane long enough and duplicating entries
             container.innerHTML = '';
-            const items = [...partners, ...partners]; // duplicate for smooth scroll
+            const items = [...partners, ...partners, ...partners]; // triple for length
             items.forEach((p) => {
                 const div = document.createElement('div');
                 div.className = 'hero-partner-item';

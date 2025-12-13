@@ -1070,7 +1070,7 @@ body {
     display: flex;
     gap: 4rem;
     width: fit-content;
-    animation: scroll-hero-partners 30s linear infinite;
+    animation: scroll-hero-partners 20s linear infinite alternate;
     align-items: center;
     will-change: transform;
 }
