@@ -1020,6 +1020,12 @@ async function loadPartners() {
                 const img = document.createElement('img');
                 img.src = p.logoUrl;
                 img.alt = p.name || 'Partner';
+                img.onerror = () => {
+                    img.remove();
+                    const span = document.createElement('span');
+                    span.textContent = p.name || 'Partner';
+                    div.appendChild(span);
+                };
                 div.appendChild(img);
             } else {
                 const span = document.createElement('span');
