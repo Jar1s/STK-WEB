@@ -1,7 +1,10 @@
 const API = {
   notifications: '/api/notifications',
   notification: (id) => `/api/notifications?id=${encodeURIComponent(id)}`,
-  statistics: '/api/statistics'
+  statistics: '/api/statistics',
+  partners: '/api/partners',
+  partner: (id) => `/api/partners?id=${encodeURIComponent(id)}`,
+  partnerUpload: '/api/partners/upload'
 };
 
 function getToken() {
@@ -174,3 +177,131 @@ document.getElementById('stats-form').addEventListener('submit', submitStats);
 setToken(getToken());
 loadNotifications();
 loadStats();
+
+// ---- Partners ----
+function partnerStatus(text) {
+  const el = document.getElementById('partner-msg');
+  el.textContent = text || '';
+}
+
+async function loadPartners() {
+  const list = document.getElementById('partners-list');
+  const err = document.getElementById('partners-error');
+  list.innerHTML = '';
+  err.textContent = '';
+  try {
+    const data = await apiFetch(API.partners);
+    data.partners.forEach((p) => {
+      const div = document.createElement('div');
+      div.className = 'item';
+      div.innerHTML = `
+        <div class="inline">
+          <strong>#${p.id}</strong>
+          <span class="badge">${p.active ? 'Aktívny' : 'Neaktívny'}</span>
+          <span class="badge">Poradie: ${p.sortOrder ?? 0}</span>
+        </div>
+        <div style="margin:6px 0;">
+          <div><strong>${p.name}</strong></div>
+          ${p.logoUrl ? `<div class="muted">Logo: ${p.logoUrl}</div>` : ''}
+          ${p.link ? `<div class="muted">Link: ${p.link}</div>` : ''}
+        </div>
+        <div class="inline">
+          <button type="button" class="btn-secondary" data-partner-edit="${p.id}">Upraviť</button>
+          <button type="button" class="btn-secondary" data-partner-toggle="${p.id}">${p.active ? 'Deaktivovať' : 'Aktivovať'}</button>
+          <button type="button" class="btn-danger" data-partner-del="${p.id}">Zmazať</button>
+        </div>
+      `;
+      list.appendChild(div);
+    });
+  } catch (e) {
+    err.textContent = e.message;
+  }
+}
+
+function fillPartnerForm(p) {
+  document.getElementById('partner-id').value = p?.id || '';
+  document.getElementById('partner-name').value = p?.name || '';
+  document.getElementById('partner-link').value = p?.link || '';
+  document.getElementById('partner-order').value = p?.sortOrder ?? 0;
+  document.getElementById('partner-active').value = p?.active ? 'true' : 'false';
+  document.getElementById('partner-logo').value = '';
+  partnerStatus('');
+}
+
+async function uploadLogoIfNeeded(fileInput) {
+  const file = fileInput.files[0];
+  if (!file) return null;
+  const base64 = await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+  const payload = {
+    fileName: file.name,
+    fileType: file.type,
+    dataBase64: base64
+  };
+  const res = await apiFetch(API.partnerUpload, {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  });
+  return res.url;
+}
+
+async function submitPartner(e) {
+  e.preventDefault();
+  partnerStatus('');
+  const id = document.getElementById('partner-id').value;
+  const payload = {
+    id: id || undefined,
+    name: document.getElementById('partner-name').value,
+    link: document.getElementById('partner-link').value || null,
+    sortOrder: Number(document.getElementById('partner-order').value || 0),
+    active: document.getElementById('partner-active').value === 'true'
+  };
+  try {
+    const logoUrl = await uploadLogoIfNeeded(document.getElementById('partner-logo'));
+    if (logoUrl) payload.logoUrl = logoUrl;
+
+    const method = id ? 'PUT' : 'POST';
+    const url = id ? API.partner(id) : API.partners;
+    await apiFetch(url, { method, body: JSON.stringify(payload) });
+    partnerStatus('Partner uložený');
+    fillPartnerForm({});
+    loadPartners();
+  } catch (err) {
+    partnerStatus(err.message);
+  }
+}
+
+async function handlePartnerActions(e) {
+  const t = e.target;
+  if (t.dataset.partnerEdit) {
+    const id = t.dataset.partnerEdit;
+    const data = await apiFetch(API.partners);
+    const p = data.partners.find((x) => x.id.toString() === id.toString());
+    if (p) fillPartnerForm(p);
+  }
+  if (t.dataset.partnerToggle) {
+    const id = t.dataset.partnerToggle;
+    const data = await apiFetch(API.partners);
+    const p = data.partners.find((x) => x.id.toString() === id.toString());
+    if (p) {
+      await apiFetch(API.partner(id), { method: 'PUT', body: JSON.stringify({ active: !p.active }) });
+      loadPartners();
+    }
+  }
+  if (t.dataset.partnerDel) {
+    const id = t.dataset.partnerDel;
+    if (confirm(`Zmazať partnera #${id}?`)) {
+      await apiFetch(API.partner(id), { method: 'DELETE' });
+      loadPartners();
+    }
+  }
+}
+
+document.getElementById('partner-form').addEventListener('submit', submitPartner);
+document.getElementById('partner-reset').addEventListener('click', () => fillPartnerForm({}));
+document.getElementById('partners-list').addEventListener('click', handlePartnerActions);
+loadPartners();

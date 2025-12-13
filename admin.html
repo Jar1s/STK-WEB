@@ -91,6 +91,34 @@
           <div id="stats-msg" class="muted" style="margin-top:8px;"></div>
         </form>
       </div>
+
+      <div class="card">
+        <h3>Partneri</h3>
+        <div id="partners-list" class="list"></div>
+        <div id="partners-error" class="error"></div>
+        <hr style="margin:12px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.08);" />
+        <form id="partner-form">
+          <input type="hidden" id="partner-id">
+          <label for="partner-name">Názov</label>
+          <input id="partner-name" required>
+          <label for="partner-link">Odkaz (voliteľný)</label>
+          <input id="partner-link">
+          <label for="partner-order">Poradie</label>
+          <input type="number" id="partner-order" value="0" step="1">
+          <label for="partner-active">Aktívny?</label>
+          <select id="partner-active">
+            <option value="true" selected>Áno</option>
+            <option value="false">Nie</option>
+          </select>
+          <label for="partner-logo">Logo (PNG/JPG, max 5MB)</label>
+          <input type="file" id="partner-logo" accept="image/*">
+          <div class="inline" style="margin-top:10px;">
+            <button type="submit" class="btn-primary">Uložiť partnera</button>
+            <button type="button" class="btn-secondary" id="partner-reset">Reset</button>
+          </div>
+          <div id="partner-msg" class="muted" style="margin-top:8px;"></div>
+        </form>
+      </div>
     </div>
   </div>
   <script src="admin.js?v=2"></script>
