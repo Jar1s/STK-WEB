@@ -552,12 +552,14 @@ body {
     .navbar-right-extras {
         order: 2;
         margin-left: 0;
+        margin-right: 0;
         flex-shrink: 0;
     }
     
     .mobile-menu-toggle {
         order: 3;
-        margin-left: 0.5rem;
+        margin-left: 0.25rem;
+        margin-right: 0;
     }
 }
 
@@ -3011,12 +3013,14 @@ section {
     .navbar-right-extras {
         order: 2;
         margin-left: 0;
+        margin-right: 0;
         flex-shrink: 0;
     }
 
     .mobile-menu-toggle {
         order: 3;
-        margin-left: 0.5rem;
+        margin-left: 0.25rem;
+        margin-right: 0;
     }
 
     .logo .tagline {
@@ -3222,6 +3226,7 @@ section {
 
     .hero-partners-wrapper {
         padding: 1.5rem 0;
+        bottom: 0;
     }
 
     .hero-partners-scroll {
@@ -3233,9 +3238,10 @@ section {
     }
 
     .hero-statistics {
-        bottom: 2rem;
+        bottom: 7rem;
         padding: 0 1rem;
-        position: relative;
+        position: absolute;
+        z-index: 5;
     }
 
     .hero-statistics-grid {
@@ -3535,12 +3541,14 @@ section {
     }
 
     .hero-statistics {
-        bottom: 2rem;
+        bottom: 6.5rem;
         padding: 0 1rem;
+        position: absolute;
+        z-index: 5;
     }
 
     .hero-statistics-grid {
-        gap: 1.5rem;
+        gap: 1rem;
         flex-direction: column;
         padding-left: 0;
         align-items: center;
@@ -3552,6 +3560,7 @@ section {
 
     .hero-statistic-label {
         font-size: 0.7rem;
+        text-align: center;
     }
 
     .hero-scroll {
