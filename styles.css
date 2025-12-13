@@ -3197,8 +3197,6 @@ section {
         padding-top: 0;
         padding-bottom: 0;
         min-height: 100vh;
-        justify-content: flex-start;
-        align-items: center;
     }
     
     .hero .navbar {
@@ -3207,27 +3205,26 @@ section {
     }
 
     .hero-content {
-        margin-top: 0.5rem;
-        padding: 0.5rem 1rem;
-        width: 100%;
+        margin-top: 3.5rem;
+        padding: 1rem;
     }
 
     .hero-title {
-        font-size: 1.75rem;
+        font-size: 2rem;
         line-height: 1.2;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
     }
 
     .hero-subtitle {
-        font-size: 0.85rem;
-        padding: 0 0.5rem;
-        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        padding: 0 1rem;
+        margin-bottom: 2rem;
     }
 
     .hero-cta {
         flex-direction: column;
         align-items: center;
-        margin-bottom: 0.75rem;
+        margin-bottom: 2rem;
     }
 
     .btn-hero-cta {
@@ -3241,10 +3238,9 @@ section {
     }
 
     .hero-partners-wrapper {
-        position: relative;
-        padding: 0.75rem 0;
-        bottom: auto;
-        margin-top: 0.5rem;
+        position: absolute;
+        padding: 1.5rem 0;
+        bottom: 0;
     }
 
     .hero-partners-scroll {
@@ -3256,26 +3252,25 @@ section {
     }
 
     .hero-statistics {
-        position: relative;
-        padding: 0.75rem 1rem;
-        margin-top: 0.5rem;
+        position: absolute;
+        bottom: 7rem;
+        padding: 0 1rem;
         z-index: 5;
-        bottom: auto;
     }
 
     .hero-statistics-grid {
-        gap: 1rem;
+        gap: 1.5rem;
         flex-wrap: wrap;
         padding-left: 0;
         justify-content: center;
     }
 
     .hero-statistic-number {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     .hero-statistic-label {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
     }
 
     .hero-scroll {
@@ -3550,30 +3545,24 @@ section {
         padding: 0 15px;
     }
 
-    .hero {
-        justify-content: flex-start;
-        align-items: center;
-    }
-
     .hero-content {
         margin-top: 3rem;
-        padding: 0.5rem 0.75rem;
-        width: 100%;
+        padding: 1rem;
     }
 
     .hero-title {
-        font-size: 1.75rem;
-        margin-bottom: 0.4rem;
+        font-size: 2rem;
+        margin-bottom: 1rem;
     }
 
     .hero-subtitle {
-        font-size: 0.8rem;
-        margin-bottom: 0.75rem;
-        padding: 0 0.5rem;
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
     }
 
     .hero-cta {
-        margin-bottom: 0.5rem;
+        margin-bottom: 2rem;
     }
 
     .btn-hero-cta {
@@ -3586,34 +3575,32 @@ section {
     }
 
     .hero-statistics {
-        position: relative;
-        bottom: auto;
-        padding: 0.5rem 0.75rem;
-        margin-top: 0.25rem;
+        position: absolute;
+        bottom: 6.5rem;
+        padding: 0 1rem;
         z-index: 5;
     }
 
     .hero-statistics-grid {
-        gap: 0.75rem;
+        gap: 1rem;
         flex-direction: column;
         padding-left: 0;
         align-items: center;
     }
 
     .hero-statistic-number {
-        font-size: 1.75rem;
+        font-size: 2.5rem;
     }
 
     .hero-statistic-label {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
         text-align: center;
     }
 
     .hero-partners-wrapper {
-        position: relative;
-        padding: 0.5rem 0;
-        bottom: auto;
-        margin-top: 0.25rem;
+        position: absolute;
+        padding: 1.5rem 0;
+        bottom: 0;
     }
 
     .hero-announcements-wrapper {
