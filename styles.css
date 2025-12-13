@@ -350,8 +350,8 @@ body {
     box-sizing: border-box;
 }
 
-/* Desktop menu optimization */
-@media (min-width: 1025px) {
+/* Desktop menu optimization - veľké obrazovky (1151px+) */
+@media (min-width: 1151px) {
     .nav-wrapper {
         flex-wrap: nowrap;
         gap: 2rem;
@@ -422,6 +422,7 @@ body {
     background: transparent;
     flex-wrap: nowrap;
     flex-shrink: 0;
+    overflow: visible;
 }
 
 .nav-menu-left {
@@ -613,6 +614,78 @@ body {
     .lang-btn {
         padding: 0.3rem 0.5rem;
         font-size: 0.7rem;
+    }
+}
+
+/* Medium-large screens - optimalizácia pre 1087px a podobné (1025px - 1150px) */
+@media (max-width: 1150px) and (min-width: 1025px) {
+    .navbar .container {
+        padding: 0 1.5rem;
+    }
+    
+    .nav-wrapper {
+        gap: 1rem;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    
+    .nav-menu-left,
+    .nav-menu-right {
+        gap: 0.7rem;
+        flex-shrink: 0;
+    }
+    
+    .navbar .nav-link {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+        white-space: nowrap;
+    }
+    
+    .navbar .nav-link.btn-primary {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+    
+    .logo h1 {
+        font-size: 1.1rem;
+    }
+    
+    .navbar-left-extras,
+    .navbar-right-extras {
+        flex-shrink: 0;
+    }
+    
+    .social-icon {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .social-icon svg {
+        width: 15px;
+        height: 15px;
+    }
+    
+    .language-switcher {
+        gap: 0.35rem;
+    }
+    
+    .lang-btn {
+        padding: 0.3rem 0.55rem;
+        font-size: 0.75rem;
+    }
+    
+    /* Zajistiť, že menu sa neprekrýva */
+    .nav-menu-left {
+        max-width: fit-content;
+    }
+    
+    .nav-menu-right {
+        max-width: fit-content;
+    }
+    
+    .logo {
+        flex-shrink: 0;
+        min-width: fit-content;
     }
 }
 
