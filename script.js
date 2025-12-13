@@ -1030,3 +1030,34 @@ async function loadPartners() {
 document.addEventListener('DOMContentLoaded', loadPartners);
 
 // Notifications removed - hero announcements wrapper removed to not obstruct hero video
+
+// ---- Dynamic hero notifications (announcements) ----
+async function loadHeroNotifications() {
+    const wrapper = document.getElementById('hero-announcements-wrapper');
+    const carousel = document.getElementById('hero-announcements-carousel');
+    if (!wrapper || !carousel) return;
+    try {
+        const res = await fetch('/api/notifications');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const notifications = (data.notifications || []).filter((n) => n.active);
+        if (notifications.length === 0) return;
+
+        // Build items (duplicate for smooth scrolling)
+        const items = [...notifications, ...notifications];
+        carousel.innerHTML = '';
+        items.forEach((n) => {
+            const span = document.createElement('span');
+            span.className = 'hero-announcement-text';
+            span.innerHTML = n.text;
+            carousel.appendChild(span);
+        });
+
+        // Ensure wrapper is visible
+        wrapper.style.display = 'block';
+    } catch (err) {
+        console.warn('Failed to load hero notifications', err);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadHeroNotifications);
