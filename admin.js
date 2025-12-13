@@ -1,8 +1,7 @@
 const API = {
   notifications: '/api/notifications',
-  notificationsAll: '/api/notifications/all',
-  notification: (id) => `/api/notifications/${id}`,
-  statistics: '/api/statistics/admin'
+  notification: (id) => `/api/notifications?id=${encodeURIComponent(id)}`,
+  statistics: '/api/statistics'
 };
 
 function getToken() {
@@ -34,7 +33,7 @@ async function loadNotifications() {
   list.innerHTML = '';
   err.textContent = '';
   try {
-    const data = await apiFetch(API.notificationsAll);
+    const data = await apiFetch(API.notifications);
     data.notifications.forEach((n) => {
       const div = document.createElement('div');
       div.className = 'item';
@@ -105,7 +104,7 @@ async function handleNotifActions(e) {
   const target = e.target;
   if (target.dataset.edit) {
     const id = target.dataset.edit;
-    const data = await apiFetch(API.notificationsAll);
+    const data = await apiFetch(API.notifications);
     const n = data.notifications.find((x) => x.id.toString() === id.toString());
     if (n) fillNotifForm(n);
   }
@@ -114,10 +113,7 @@ async function handleNotifActions(e) {
     const data = await apiFetch(API.notificationsAll);
     const n = data.notifications.find((x) => x.id.toString() === id.toString());
     if (n) {
-      await apiFetch(API.notification(id), {
-        method: 'PUT',
-        body: JSON.stringify({ active: !n.active })
-      });
+      await apiFetch(API.notification(id), { method: 'PUT', body: JSON.stringify({ active: !n.active }) });
       loadNotifications();
     }
   }
@@ -156,10 +152,7 @@ async function submitStats(e) {
     googlePlaceId: document.getElementById('stats-place').value || null
   };
   try {
-    await apiFetch(API.statistics, {
-      method: 'PUT',
-      body: JSON.stringify(payload)
-    });
+    await apiFetch(API.statistics, { method: 'PUT', body: JSON.stringify(payload) });
     msg.textContent = 'Štatistiky uložené';
   } catch (err) {
     msg.textContent = err.message;
