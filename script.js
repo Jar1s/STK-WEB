@@ -935,35 +935,6 @@ function formatStat(value) {
     return num.toLocaleString('sk-SK').replace(/,/g, ' ');
 }
 
-function triggerHeroStatsAnimation() {
-    const container = document.querySelector('.hero-statistics');
-    if (!container) return;
-    heroStatisticsAnimated = false;
-
-    const statistics = container.querySelectorAll('.hero-statistic-item');
-    statistics.forEach((stat, index) => {
-        const numberElement = stat.querySelector('.hero-statistic-number');
-        if (!numberElement) return;
-        const originalText = numberElement.textContent.trim();
-        const match = originalText.match(/([\d\s,]+)([+%]?)/);
-        if (!match) return;
-        const numberStr = match[1].replace(/[\s,]/g, '');
-        const suffix = match[2] || '';
-        const targetNumber = parseInt(numberStr, 10);
-        if (isNaN(targetNumber)) return;
-
-        numberElement.removeAttribute('data-animated');
-        stat.classList.remove('animated');
-        numberElement.textContent = '0' + suffix;
-
-        setTimeout(() => {
-            animateCounter(numberElement, targetNumber, suffix, 2000);
-        }, index * 200);
-    });
-
-    heroStatisticsAnimated = true;
-}
-
 async function loadDynamicStatistics() {
     try {
         const res = await fetch('/api/statistics');
@@ -980,7 +951,9 @@ async function loadDynamicStatistics() {
             if (v1 !== null) heroNumbers[0].textContent = `${v1}+`;
             if (v2 !== null) heroNumbers[1].textContent = `${v2}+`;
             if (v3 !== null) heroNumbers[2].textContent = `${v3}%`;
-            triggerHeroStatsAnimation();
+            // allow intersection observer to animate with updated values
+            heroStatisticsAnimated = false;
+            heroNumbers.forEach((el) => el.removeAttribute('data-animated'));
         }
 
         const sectionNumbers = document.querySelectorAll('.statistic-number');
