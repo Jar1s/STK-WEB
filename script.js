@@ -1040,7 +1040,11 @@ async function loadHeroNotifications() {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         const notifications = (data.notifications || []).filter((n) => n.active);
-        if (notifications.length === 0) return;
+        if (notifications.length === 0) {
+            carousel.innerHTML = '';
+            wrapper.style.display = 'none';
+            return;
+        }
 
         // Build items (duplicate for smooth scrolling)
         const items = [...notifications, ...notifications];
