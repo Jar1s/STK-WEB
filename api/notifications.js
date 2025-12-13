@@ -1,5 +1,5 @@
 import { deleteNotification, getNotifications, updateNotification, upsertNotification } from '../lib/kv.js';
-import { requireAdmin } from '../lib/auth.js';
+import { requireAdmin, isAdminRequest } from '../lib/auth.js';
 
 function extractId(req) {
   // Try query param first
@@ -21,7 +21,8 @@ export default async function handler(req, res) {
   const id = extractId(req);
 
   if (req.method === 'GET') {
-    const data = await getNotifications(true);
+    const isAdmin = isAdminRequest(req);
+    const data = await getNotifications(isAdmin ? false : true);
     return res.status(200).json(data);
   }
 
