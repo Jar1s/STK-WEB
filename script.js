@@ -1002,24 +1002,26 @@ async function loadPartners() {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         const partners = data.partners || [];
-        container.innerHTML = '';
-        partners.forEach((p) => {
-            const div = document.createElement('div');
-            div.className = 'hero-partner-item';
-            if (p.logoUrl) {
-                const img = document.createElement('img');
-                img.src = p.logoUrl;
-                img.alt = p.name || 'Partner';
-                img.style.maxHeight = '38px';
-                img.style.objectFit = 'contain';
-                div.appendChild(img);
-            } else {
-                const span = document.createElement('span');
-                span.textContent = p.name || 'Partner';
-                div.appendChild(span);
-            }
-            container.appendChild(div);
-        });
+        if (partners.length > 0) {
+            container.innerHTML = '';
+            partners.forEach((p) => {
+                const div = document.createElement('div');
+                div.className = 'hero-partner-item';
+                if (p.logoUrl) {
+                    const img = document.createElement('img');
+                    img.src = p.logoUrl;
+                    img.alt = p.name || 'Partner';
+                    img.style.maxHeight = '38px';
+                    img.style.objectFit = 'contain';
+                    div.appendChild(img);
+                } else {
+                    const span = document.createElement('span');
+                    span.textContent = p.name || 'Partner';
+                    div.appendChild(span);
+                }
+                container.appendChild(div);
+            });
+        }
     } catch (err) {
         console.warn('Failed to load partners', err);
     }
