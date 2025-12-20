@@ -41,6 +41,8 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
 }
 
 body {
@@ -59,6 +61,8 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Top Bar - Removed to not obstruct hero video */
@@ -263,6 +267,8 @@ body {
     transition: all 0.3s ease;
     border-bottom: none;
     width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 .navbar.scrolled {
@@ -391,8 +397,10 @@ body {
     gap: 1.5rem;
     flex-wrap: wrap;
     width: 100%;
+    max-width: 100%;
     position: relative;
     min-height: 60px;
+    box-sizing: border-box;
 }
 
 .navbar-left-extras {
@@ -909,8 +917,10 @@ body {
     padding-top: 0;
     padding-bottom: 0;
     overflow: hidden;
+    overflow-x: hidden;
     margin-top: 0;
     width: 100%;
+    max-width: 100vw;
 }
 
 .hero .navbar {
@@ -920,6 +930,8 @@ body {
     right: 0;
     z-index: 1001;
     width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 .hero-video {
@@ -1070,9 +1082,11 @@ body {
     display: flex;
     gap: 4rem;
     width: fit-content;
+    max-width: 100%;
     animation: scroll-hero-partners 20s linear infinite alternate;
     align-items: center;
     will-change: transform;
+    overflow: hidden;
 }
 
 .hero-partners-scroll:hover {
@@ -1119,6 +1133,9 @@ body {
     right: 0;
     z-index: 4;
     padding: 0 2rem;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 .hero-statistics.loading {
     opacity: 0;
@@ -1131,6 +1148,8 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding-left: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .hero-statistic-item {
@@ -1325,11 +1344,14 @@ body {
     left: 0;
     right: 0;
     overflow: hidden;
+    overflow-x: hidden;
     z-index: 999;
     pointer-events: none;
     background: linear-gradient(180deg, rgba(200, 30, 30, 0.95) 0%, rgba(180, 20, 20, 0.95) 100%);
     padding: 0.75rem 0;
     border-bottom: 2px solid rgba(150, 10, 10, 0.8);
+    width: 100%;
+    max-width: 100vw;
 }
 
 /* Hero plates wrapper removed - plates are now in navbar */
@@ -1339,9 +1361,11 @@ body {
     gap: 4rem;
     width: fit-content;
     min-width: 200%;
+    max-width: none;
     animation: scroll-hero-announcements 20s linear infinite;
     will-change: transform;
     align-items: center;
+    overflow: hidden;
 }
 
 .hero-announcements-carousel:hover {
@@ -3214,6 +3238,9 @@ section {
     .hero-content {
         margin-top: 0;
         padding: 0.25rem 0.5rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     .hero-title {
@@ -3248,17 +3275,27 @@ section {
 
     .hero-partners-wrapper {
         position: absolute;
-        padding: 1.5rem 0;
+        padding: 0.75rem 0;
         bottom: 0;
         z-index: 6;
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden;
+        overflow-x: hidden;
+        left: 0;
+        right: 0;
     }
 
     .hero-partners-scroll {
-        gap: 2rem;
+        gap: 1.5rem;
+        max-width: 100%;
     }
 
     .hero-partner-item {
         font-size: 0.75rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+        max-width: fit-content;
     }
 
     .hero-statistics {
@@ -3266,21 +3303,27 @@ section {
         padding: 0 0.5rem 0.5rem;
         margin-top: 0;
         z-index: 5;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     .hero-statistics-grid {
-        gap: 0.5rem;
+        gap: 0.4rem;
         flex-direction: row;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         padding-left: 0;
         justify-content: center;
         align-items: center;
+        width: 100%;
+        max-width: 100%;
     }
 
     .hero-statistic-item {
-        flex: 1;
+        flex: 1 1 auto;
         min-width: 0;
-        max-width: none;
+        max-width: calc(33.333% - 0.3rem);
+        text-align: center;
     }
 
     .hero-statistic-number {
@@ -3292,6 +3335,9 @@ section {
         font-size: 0.5rem;
         line-height: 1.1;
         margin-top: 0.15rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
     }
 
     .hero-scroll {
@@ -3302,6 +3348,9 @@ section {
         top: 50px;
         padding: 0.3rem 0;
         z-index: 998;
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
     }
 
     .hero-content {
@@ -3310,6 +3359,7 @@ section {
 
     .hero-announcements-carousel {
         gap: 1.5rem;
+        max-width: none;
     }
 
     .hero-announcement-text {
