@@ -3236,41 +3236,41 @@ section {
     }
 
     .hero-content {
-        margin-top: 0;
-        padding: 0.2rem 0.5rem;
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
+        margin-top: 0 !important;
+        padding: 0.15rem 0.5rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .hero-title {
-        font-size: 1rem;
-        line-height: 1.1;
-        margin-bottom: 0.2rem;
+        font-size: 0.9rem !important;
+        line-height: 1.1 !important;
+        margin-bottom: 0.15rem !important;
     }
 
     .hero-subtitle {
-        font-size: 0.55rem;
-        padding: 0 0.5rem;
-        margin-bottom: 0.5rem;
-        line-height: 1.2;
+        font-size: 0.5rem !important;
+        padding: 0 0.5rem !important;
+        margin-bottom: 0.4rem !important;
+        line-height: 1.2 !important;
     }
 
     .hero-cta {
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 0.5rem;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-bottom: 0.4rem !important;
     }
 
     .btn-hero-cta {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.6rem;
-        width: auto;
-        max-width: 80%;
-        align-self: center;
-        white-space: normal;
-        text-align: center;
-        line-height: 1.2;
+        padding: 0.35rem 0.5rem !important;
+        font-size: 0.55rem !important;
+        width: auto !important;
+        max-width: 75% !important;
+        align-self: center !important;
+        white-space: normal !important;
+        text-align: center !important;
+        line-height: 1.2 !important;
     }
 
     .hero-partners-wrapper {
@@ -3299,44 +3299,44 @@ section {
     }
 
     .hero-statistics {
-        position: static;
-        padding: 0 0.5rem 0.5rem;
-        margin-top: 0;
-        z-index: 5;
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
+        position: static !important;
+        padding: 0 0.5rem 0.4rem !important;
+        margin-top: 0 !important;
+        z-index: 5 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .hero-statistics-grid {
-        gap: 0.3rem;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        padding-left: 0;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-width: 100%;
+        gap: 0.25rem !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        padding-left: 0 !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
     }
 
     .hero-statistic-item {
-        flex: 1;
-        min-width: 0;
-        max-width: none;
-        text-align: center;
+        flex: 1 !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        text-align: center !important;
     }
 
     .hero-statistic-number {
-        font-size: 1rem;
-        line-height: 1;
+        font-size: 0.9rem !important;
+        line-height: 1 !important;
     }
 
     .hero-statistic-label {
-        font-size: 0.45rem;
-        line-height: 1.1;
-        margin-top: 0.1rem;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
+        font-size: 0.4rem !important;
+        line-height: 1.1 !important;
+        margin-top: 0.1rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
     }
 
     .hero-scroll {
@@ -3352,9 +3352,6 @@ section {
         overflow-x: hidden;
     }
 
-    .hero-content {
-        margin-top: 0;
-    }
 
     .hero-announcements-carousel {
         gap: 1.5rem;
@@ -3372,14 +3369,6 @@ section {
 
     .nav-menu.active {
         transform: translateX(0);
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
     }
 
     .form-row {
