@@ -1359,13 +1359,13 @@ body {
     border-bottom: 2px solid rgba(150, 10, 10, 0.8);
     width: 100%;
     max-width: 100vw;
-    margin-top: 75px;
+    margin-top: 60px;
 }
 
 /* Adjust margin-top based on navbar height */
 @media (max-width: 900px) {
     .hero-announcements-wrapper {
-        margin-top: 70px;
+        margin-top: 55px;
     }
 }
 
@@ -3560,7 +3560,7 @@ section {
 
     .hero-announcements-wrapper {
         position: relative;
-        margin-top: 50px;
+        margin-top: 45px;
         padding: 0.35rem 0;
     }
 
@@ -4456,7 +4456,7 @@ section {
 
     .hero-announcements-wrapper {
         position: relative !important;
-        margin-top: 50px !important;
+        margin-top: 45px !important;
         padding: 0.3rem 0 !important;
         z-index: 3 !important;
         width: 100% !important;
