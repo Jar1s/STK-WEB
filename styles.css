@@ -3237,36 +3237,36 @@ section {
 
     .hero-content {
         margin-top: 0;
-        padding: 0.25rem 0.5rem;
+        padding: 0.2rem 0.5rem;
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
     }
 
     .hero-title {
-        font-size: 1.25rem;
+        font-size: 1rem;
         line-height: 1.1;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.2rem;
     }
 
     .hero-subtitle {
-        font-size: 0.65rem;
-        padding: 0 0.25rem;
-        margin-bottom: 0.75rem;
+        font-size: 0.55rem;
+        padding: 0 0.5rem;
+        margin-bottom: 0.5rem;
         line-height: 1.2;
     }
 
     .hero-cta {
         flex-direction: column;
         align-items: center;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.5rem;
     }
 
     .btn-hero-cta {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.65rem;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.6rem;
         width: auto;
-        max-width: 85%;
+        max-width: 80%;
         align-self: center;
         white-space: normal;
         text-align: center;
@@ -3309,9 +3309,9 @@ section {
     }
 
     .hero-statistics-grid {
-        gap: 0.4rem;
+        gap: 0.3rem;
         flex-direction: row;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         padding-left: 0;
         justify-content: center;
         align-items: center;
@@ -3320,24 +3320,23 @@ section {
     }
 
     .hero-statistic-item {
-        flex: 1 1 auto;
+        flex: 1;
         min-width: 0;
-        max-width: calc(33.333% - 0.3rem);
+        max-width: none;
         text-align: center;
     }
 
     .hero-statistic-number {
-        font-size: 1.25rem;
+        font-size: 1rem;
         line-height: 1;
     }
 
     .hero-statistic-label {
-        font-size: 0.5rem;
+        font-size: 0.45rem;
         line-height: 1.1;
-        margin-top: 0.15rem;
+        margin-top: 0.1rem;
         word-wrap: break-word;
         overflow-wrap: break-word;
-        hyphens: auto;
     }
 
     .hero-scroll {
