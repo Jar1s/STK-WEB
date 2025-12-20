@@ -1340,18 +1340,32 @@ body {
 
 .hero-announcements-wrapper {
     position: absolute;
-    top: 70px;
+    top: 0;
     left: 0;
     right: 0;
     overflow: hidden;
     overflow-x: hidden;
-    z-index: 999;
-    pointer-events: none;
+    z-index: 1002;
+    pointer-events: auto;
     background: linear-gradient(180deg, rgba(200, 30, 30, 0.95) 0%, rgba(180, 20, 20, 0.95) 100%);
     padding: 0.75rem 0;
     border-bottom: 2px solid rgba(150, 10, 10, 0.8);
     width: 100%;
     max-width: 100vw;
+    margin-top: 60px;
+}
+
+/* Adjust top position based on navbar height */
+@media (max-width: 900px) {
+    .hero-announcements-wrapper {
+        margin-top: 55px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-announcements-wrapper {
+        margin-top: 50px;
+    }
 }
 
 /* Hero plates wrapper removed - plates are now in navbar */
@@ -4433,12 +4447,14 @@ section {
     }
 
     .hero-announcements-wrapper {
-        top: 45px !important;
+        top: 0 !important;
+        margin-top: 45px !important;
         padding: 0.3rem 0 !important;
-        z-index: 998 !important;
+        z-index: 1002 !important;
         width: 100% !important;
         max-width: 100vw !important;
         overflow-x: hidden !important;
+        position: absolute !important;
     }
 
     .hero-announcement-text {
