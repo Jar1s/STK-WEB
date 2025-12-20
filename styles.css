@@ -3237,40 +3237,40 @@ section {
 
     .hero-content {
         margin-top: 0 !important;
-        padding: 0.15rem 0.5rem !important;
+        padding: 0.1rem 0.5rem !important;
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
     }
 
     .hero-title {
-        font-size: 0.9rem !important;
-        line-height: 1.1 !important;
-        margin-bottom: 0.15rem !important;
+        font-size: 0.75rem !important;
+        line-height: 1 !important;
+        margin-bottom: 0.1rem !important;
     }
 
     .hero-subtitle {
-        font-size: 0.5rem !important;
+        font-size: 0.45rem !important;
         padding: 0 0.5rem !important;
-        margin-bottom: 0.4rem !important;
-        line-height: 1.2 !important;
+        margin-bottom: 0.3rem !important;
+        line-height: 1.1 !important;
     }
 
     .hero-cta {
         flex-direction: column !important;
         align-items: center !important;
-        margin-bottom: 0.4rem !important;
+        margin-bottom: 0.3rem !important;
     }
 
     .btn-hero-cta {
-        padding: 0.35rem 0.5rem !important;
-        font-size: 0.55rem !important;
+        padding: 0.3rem 0.4rem !important;
+        font-size: 0.5rem !important;
         width: auto !important;
-        max-width: 75% !important;
+        max-width: 70% !important;
         align-self: center !important;
         white-space: normal !important;
         text-align: center !important;
-        line-height: 1.2 !important;
+        line-height: 1.1 !important;
     }
 
     .hero-partners-wrapper {
@@ -3309,7 +3309,7 @@ section {
     }
 
     .hero-statistics-grid {
-        gap: 0.25rem !important;
+        gap: 0.2rem !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         padding-left: 0 !important;
@@ -3327,14 +3327,14 @@ section {
     }
 
     .hero-statistic-number {
-        font-size: 0.9rem !important;
+        font-size: 0.8rem !important;
         line-height: 1 !important;
     }
 
     .hero-statistic-label {
-        font-size: 0.4rem !important;
-        line-height: 1.1 !important;
-        margin-top: 0.1rem !important;
+        font-size: 0.35rem !important;
+        line-height: 1 !important;
+        margin-top: 0.05rem !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
     }
@@ -3599,7 +3599,7 @@ section {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) and (orientation: portrait) {
     .container {
         padding: 0 15px;
     }
