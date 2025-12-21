@@ -1103,9 +1103,8 @@ function syncHeroAnnouncementOffset() {
     if (!wrapper) return;
     const rect = navbar.getBoundingClientRect();
     const navHeight = rect.height || navbar.offsetHeight || 0;
-    const navTop = (rect.top + window.scrollY) || 0;
-    const baseOffset = navHeight + navTop + 16; // extra breathing room under header
-    const offset = Math.max(72, Math.ceil(baseOffset));
+    const navTop = rect.top + window.scrollY || 0;
+    const offset = Math.max(60, Math.ceil(navHeight + navTop));
     document.documentElement.style.setProperty('--hero-announcement-offset', `${offset}px`);
 }
 
@@ -1119,15 +1118,6 @@ window.addEventListener('orientationchange', () => {
     clearTimeout(announcementResizeTimer);
     announcementResizeTimer = setTimeout(syncHeroAnnouncementOffset, 250);
 });
-
-let announcementScrollTimer;
-window.addEventListener('scroll', () => {
-    // Recompute on scroll mainly for mobile/landscape where browser UI changes heights
-    if (window.innerWidth <= 1280) {
-        clearTimeout(announcementScrollTimer);
-        announcementScrollTimer = setTimeout(syncHeroAnnouncementOffset, 75);
-    }
-}, { passive: true });
 
 window.addEventListener('load', syncHeroAnnouncementOffset);
 document.addEventListener('DOMContentLoaded', syncHeroAnnouncementOffset);
