@@ -1103,8 +1103,8 @@ function syncHeroAnnouncementOffset() {
     if (!wrapper) return;
     const rect = navbar.getBoundingClientRect();
     const navHeight = rect.height || navbar.offsetHeight || 0;
-    const navTop = rect.top + window.scrollY || 0;
-    const offset = Math.max(50, Math.ceil(navHeight + navTop + 8));
+    // Keep offset stable while scrolling; base only on navbar height
+    const offset = Math.max(60, Math.ceil(navHeight + 8));
     document.documentElement.style.setProperty('--hero-announcement-offset', `${offset}px`);
 }
 
