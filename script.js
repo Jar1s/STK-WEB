@@ -171,17 +171,15 @@ function updateNavbarState() {
     }
     const announcements = document.getElementById('hero-announcements-wrapper');
     if (announcements) {
-        // On mobile necháme pás viditeľný (Safari UI posúva viewport)
-        if (window.innerWidth <= 900) {
-            announcements.classList.remove('is-hidden');
+        const headerHeightVar = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-total-height')) || 0;
+        const navHeight = navbar ? navbar.offsetHeight || 0 : 0;
+        const headerHeight = headerHeightVar > 0 ? headerHeightVar : navHeight + 60;
+        const heroHeight = heroSection ? heroSection.offsetHeight || 0 : 0;
+        const hideThreshold = Math.max(0, heroHeight - headerHeight);
+        if (currentScroll > hideThreshold) {
+            announcements.classList.add('is-hidden');
         } else {
-            const navHeight = navbar ? navbar.offsetHeight || 0 : 0;
-            const hideThreshold = navHeight + 60;
-            if (currentScroll > hideThreshold) {
-                announcements.classList.add('is-hidden');
-            } else {
-                announcements.classList.remove('is-hidden');
-            }
+            announcements.classList.remove('is-hidden');
         }
     }
     lastScroll = currentScroll;
