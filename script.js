@@ -1057,10 +1057,24 @@ async function loadPartners() {
             items.push(div);
         });
 
-        // Duplicate the whole lane once for continuous scroll (each item still lenovo krát)
-        const lane = [...items, ...items];
         container.innerHTML = '';
-        lane.forEach((node) => container.appendChild(node));
+
+        const appendSet = () => {
+            items.forEach((node) => container.appendChild(node.cloneNode(true)));
+        };
+
+        // Always at least two full sets
+        appendSet();
+        appendSet();
+
+        // Ensure total width significantly exceeds viewport to avoid gaps when looping
+        const viewportWidth = container.parentElement ? container.parentElement.offsetWidth : window.innerWidth;
+        const maxCopies = 6; // safety cap
+        let copies = 2;
+        while (container.scrollWidth < viewportWidth * 2.2 && copies < maxCopies) {
+            appendSet();
+            copies += 1;
+        }
 
         // Restart animation so the new width (with logos) loops smoothly
         container.classList.remove('running');
