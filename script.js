@@ -171,7 +171,9 @@ function updateNavbarState() {
     }
     const announcements = document.getElementById('hero-announcements-wrapper');
     if (announcements) {
-        const hideThreshold = (navbar ? navbar.offsetHeight : 80) + 20;
+        const navHeight = navbar ? navbar.offsetHeight || 0 : 0;
+        const mobileExtra = window.innerWidth <= 900 ? 120 : 0;
+        const hideThreshold = navHeight + 60 + mobileExtra;
         if (currentScroll > hideThreshold) {
             announcements.classList.add('is-hidden');
         } else {
@@ -1055,6 +1057,13 @@ async function loadPartners() {
         const lane = [...items, ...items];
         container.innerHTML = '';
         lane.forEach((node) => container.appendChild(node));
+
+        // Restart animation so the new width (with logos) loops smoothly
+        container.classList.remove('running');
+        // Force reflow
+        // eslint-disable-next-line no-unused-expressions
+        container.offsetHeight;
+        container.classList.add('running');
     } catch (err) {
         console.warn('Failed to load partners', err);
     }

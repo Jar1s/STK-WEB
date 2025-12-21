@@ -1094,15 +1094,17 @@ body {
     display: flex;
     gap: 4rem;
     width: fit-content;
-    min-width: 200%;
     max-width: none;
-    animation: scroll-hero-partners 25s linear infinite;
     align-items: center;
     will-change: transform;
     overflow: hidden;
 }
 
-.hero-partners-scroll:hover {
+.hero-partners-scroll.running {
+    animation: scroll-hero-partners 25s linear infinite;
+}
+
+.hero-partners-scroll.running:hover {
     animation-play-state: paused;
 }
 
