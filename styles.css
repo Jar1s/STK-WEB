@@ -915,7 +915,7 @@ body {
     justify-content: center;
     color: white;
     text-align: center;
-    padding-top: calc(var(--hero-announcement-offset) + 24px);
+    padding-top: var(--hero-announcement-offset);
     padding-bottom: 0;
     overflow: hidden;
     overflow-x: hidden;
@@ -1387,7 +1387,7 @@ body {
     }
     
     .hero {
-        padding-top: calc(var(--hero-announcement-offset) + 20px);
+        padding-top: var(--hero-announcement-offset);
     }
 }
 
@@ -1401,7 +1401,7 @@ body {
     }
     
     .hero {
-        padding-top: calc(var(--hero-announcement-offset) + 16px);
+        padding-top: var(--hero-announcement-offset);
     }
 }
 
@@ -3599,7 +3599,7 @@ section {
     }
     
     .hero {
-        padding-top: calc(var(--hero-announcement-offset) + 16px);
+        padding-top: var(--hero-announcement-offset);
     }
 
     .hero-scroll {
