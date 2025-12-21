@@ -169,10 +169,10 @@ function updateNavbarState() {
     } else {
         navbar.classList.remove('scrolled');
     }
-
     const announcements = document.getElementById('hero-announcements-wrapper');
     if (announcements) {
-        if (shouldDarken) {
+        const hideThreshold = (navbar ? navbar.offsetHeight : 80) + 20;
+        if (currentScroll > hideThreshold) {
             announcements.classList.add('is-hidden');
         } else {
             announcements.classList.remove('is-hidden');
