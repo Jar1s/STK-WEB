@@ -1354,7 +1354,7 @@ body {
 /* Hero Announcements - Removed to not obstruct hero video */
 
 .hero-announcements-wrapper {
-    position: absolute;
+    position: fixed;
     top: var(--hero-announcement-offset);
     left: 0;
     right: 0;
