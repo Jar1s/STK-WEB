@@ -1360,7 +1360,7 @@ body {
     right: 0;
     overflow: hidden;
     overflow-x: hidden;
-    z-index: 900;
+    z-index: 800; /* keep below navbar */
     pointer-events: auto;
     background: linear-gradient(180deg, rgba(200, 30, 30, 0.95) 0%, rgba(180, 20, 20, 0.95) 100%);
     padding: 0.45rem 0;
