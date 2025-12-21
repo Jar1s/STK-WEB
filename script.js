@@ -171,13 +171,17 @@ function updateNavbarState() {
     }
     const announcements = document.getElementById('hero-announcements-wrapper');
     if (announcements) {
-        const navHeight = navbar ? navbar.offsetHeight || 0 : 0;
-        const mobileExtra = window.innerWidth <= 900 ? 120 : 0;
-        const hideThreshold = navHeight + 60 + mobileExtra;
-        if (currentScroll > hideThreshold) {
-            announcements.classList.add('is-hidden');
-        } else {
+        // On mobile necháme pás viditeľný (Safari UI posúva viewport)
+        if (window.innerWidth <= 900) {
             announcements.classList.remove('is-hidden');
+        } else {
+            const navHeight = navbar ? navbar.offsetHeight || 0 : 0;
+            const hideThreshold = navHeight + 60;
+            if (currentScroll > hideThreshold) {
+                announcements.classList.add('is-hidden');
+            } else {
+                announcements.classList.remove('is-hidden');
+            }
         }
     }
     lastScroll = currentScroll;
