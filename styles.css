@@ -24,7 +24,6 @@
     --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
     --gradient-hero: linear-gradient(135deg, #004d99 0%, #0066cc 100%);
     --hero-announcement-offset: 60px;
-    --hero-content-offset: 120px;
     
     /* Dark Mode Variables */
     --dark-bg-primary: #1a1a1a;
@@ -916,7 +915,7 @@ body {
     justify-content: center;
     color: white;
     text-align: center;
-    padding-top: calc(var(--hero-announcement-offset) + var(--hero-content-offset));
+    padding-top: calc(var(--hero-announcement-offset) + 24px);
     padding-bottom: 0;
     overflow: hidden;
     overflow-x: hidden;
@@ -1095,8 +1094,9 @@ body {
     display: flex;
     gap: 4rem;
     width: fit-content;
-    max-width: 100%;
-    animation: scroll-hero-partners 20s linear infinite alternate;
+    min-width: 200%;
+    max-width: none;
+    animation: scroll-hero-partners 25s linear infinite;
     align-items: center;
     will-change: transform;
     overflow: hidden;
@@ -1378,7 +1378,6 @@ body {
 @media (max-width: 900px) {
     :root {
         --hero-announcement-offset: 55px;
-        --hero-content-offset: 90px;
     }
 
     .hero-announcements-wrapper {
@@ -1386,18 +1385,21 @@ body {
     }
     
     .hero {
-        padding-top: calc(var(--hero-announcement-offset) + var(--hero-content-offset));
+        padding-top: calc(var(--hero-announcement-offset) + 20px);
     }
 }
 
 @media (max-width: 480px) {
     :root {
         --hero-announcement-offset: 50px;
-        --hero-content-offset: 75px;
     }
 
     .hero-announcements-wrapper {
         top: var(--hero-announcement-offset);
+    }
+    
+    .hero {
+        padding-top: calc(var(--hero-announcement-offset) + 16px);
     }
 }
 
@@ -3523,7 +3525,6 @@ section {
 @media (max-width: 480px) and (orientation: portrait) {
     :root {
         --hero-announcement-offset: 45px;
-        --hero-content-offset: 70px;
     }
 
     .container {
@@ -3596,7 +3597,7 @@ section {
     }
     
     .hero {
-        padding-top: calc(var(--hero-announcement-offset) + var(--hero-content-offset));
+        padding-top: calc(var(--hero-announcement-offset) + 16px);
     }
 
     .hero-scroll {
@@ -4398,7 +4399,6 @@ section {
 @media (max-width: 900px) and (max-height: 500px) {
     :root {
         --hero-announcement-offset: 45px;
-        --hero-content-offset: 60px;
     }
 
     .hero-content {
