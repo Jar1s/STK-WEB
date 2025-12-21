@@ -1059,22 +1059,28 @@ async function loadPartners() {
 
         container.innerHTML = '';
 
-        const appendSet = () => {
-            items.forEach((node) => container.appendChild(node.cloneNode(true)));
-        };
-
-        // Always at least two full sets
-        appendSet();
-        appendSet();
-
-        // Ensure total width significantly exceeds viewport to avoid gaps when looping
+        // Build a base lane that is wider than the viewport, then duplicate it once for a seamless loop
         const viewportWidth = container.parentElement ? container.parentElement.offsetWidth : window.innerWidth;
-        const maxCopies = 6; // safety cap
-        let copies = 2;
-        while (container.scrollWidth < viewportWidth * 2.2 && copies < maxCopies) {
-            appendSet();
-            copies += 1;
+        const baseNodes = [];
+        const baseFragment = document.createDocumentFragment();
+        items.forEach((node) => {
+            const clone = node.cloneNode(true);
+            baseNodes.push(clone);
+            baseFragment.appendChild(clone);
+        });
+        container.appendChild(baseFragment);
+
+        // Repeat base until it's comfortably wider than the viewport (avoid gaps when looping)
+        const safetyCap = 6;
+        let repeats = 1;
+        while (container.scrollWidth < viewportWidth * 1.2 && repeats < safetyCap) {
+            baseNodes.forEach((node) => container.appendChild(node.cloneNode(true)));
+            repeats += 1;
         }
+
+        // Duplicate the whole lane once for smooth translateX(-50%) loop
+        const currentNodes = Array.from(container.children);
+        currentNodes.forEach((node) => container.appendChild(node.cloneNode(true)));
 
         // Restart animation so the new width (with logos) loops smoothly
         container.classList.remove('running');
