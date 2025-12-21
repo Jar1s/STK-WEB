@@ -1055,6 +1055,25 @@ document.addEventListener('DOMContentLoaded', loadPartners);
 
 // Notifications removed - hero announcements wrapper removed to not obstruct hero video
 
+function syncHeroAnnouncementOffset() {
+    if (!navbar) return;
+    const wrapper = document.getElementById('hero-announcements-wrapper');
+    if (!wrapper) return;
+    const navHeight = navbar.getBoundingClientRect().height || navbar.offsetHeight || 0;
+    if (navHeight > 0) {
+        document.documentElement.style.setProperty('--hero-announcement-offset', `${Math.ceil(navHeight)}px`);
+    }
+}
+
+let announcementResizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(announcementResizeTimer);
+    announcementResizeTimer = setTimeout(syncHeroAnnouncementOffset, 150);
+});
+
+window.addEventListener('load', syncHeroAnnouncementOffset);
+document.addEventListener('DOMContentLoaded', syncHeroAnnouncementOffset);
+
 // ---- Dynamic hero notifications (announcements) ----
 async function loadHeroNotifications() {
     const wrapper = document.getElementById('hero-announcements-wrapper');
