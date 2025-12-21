@@ -1101,16 +1101,22 @@ function syncHeroAnnouncementOffset() {
     if (!navbar) return;
     const wrapper = document.getElementById('hero-announcements-wrapper');
     if (!wrapper) return;
-    const navHeight = navbar.getBoundingClientRect().height || navbar.offsetHeight || 0;
-    if (navHeight > 0) {
-        document.documentElement.style.setProperty('--hero-announcement-offset', `${Math.ceil(navHeight)}px`);
-    }
+    const rect = navbar.getBoundingClientRect();
+    const navHeight = rect.height || navbar.offsetHeight || 0;
+    const navTop = rect.top + window.scrollY || 0;
+    const offset = Math.max(50, Math.ceil(navHeight + navTop + 8));
+    document.documentElement.style.setProperty('--hero-announcement-offset', `${offset}px`);
 }
 
 let announcementResizeTimer;
 window.addEventListener('resize', () => {
     clearTimeout(announcementResizeTimer);
     announcementResizeTimer = setTimeout(syncHeroAnnouncementOffset, 150);
+});
+
+window.addEventListener('orientationchange', () => {
+    clearTimeout(announcementResizeTimer);
+    announcementResizeTimer = setTimeout(syncHeroAnnouncementOffset, 250);
 });
 
 window.addEventListener('load', syncHeroAnnouncementOffset);
