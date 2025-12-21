@@ -1132,15 +1132,32 @@ async function loadHeroNotifications() {
             return;
         }
 
-        // Build items (duplicate for smooth scrolling)
-        const items = [...notifications, ...notifications, ...notifications]; // keep long lane
-        carousel.innerHTML = '';
-        items.forEach((n) => {
+        // Build items and ensure the lane is longer than the viewport for a seamless loop
+        const baseNodes = notifications.map((n) => {
             const span = document.createElement('span');
             span.className = 'hero-announcement-text';
             span.innerHTML = n.text;
-            carousel.appendChild(span);
+            return span;
         });
+
+        carousel.innerHTML = '';
+        const appendBase = () => {
+            baseNodes.forEach((node) => carousel.appendChild(node.cloneNode(true)));
+        };
+
+        appendBase();
+
+        const viewportWidth = wrapper ? wrapper.offsetWidth : window.innerWidth;
+        let repeats = 1;
+        const maxRepeats = 8;
+        while (carousel.scrollWidth < viewportWidth * 2.2 && repeats < maxRepeats) {
+            appendBase();
+            repeats += 1;
+        }
+
+        // Duplicate whole lane once more for translateX(-50%) loop
+        const currentNodes = Array.from(carousel.children);
+        currentNodes.forEach((node) => carousel.appendChild(node.cloneNode(true)));
 
         // Ensure wrapper is visible
         wrapper.style.display = 'block';

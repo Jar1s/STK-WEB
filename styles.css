@@ -1411,9 +1411,7 @@ body {
     display: flex;
     gap: 4rem;
     width: fit-content;
-    min-width: 200%;
     max-width: none;
-    animation: scroll-hero-announcements 20s linear infinite;
     will-change: transform;
     align-items: center;
     overflow: hidden;
@@ -1423,7 +1421,7 @@ body {
     animation-play-state: paused;
 }
 .hero-announcements-carousel.running {
-    animation-play-state: running;
+    animation: scroll-hero-announcements 22s linear infinite;
 }
 
 @keyframes scroll-hero-announcements {
