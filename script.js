@@ -185,6 +185,17 @@ function updateNavbarState() {
     lastScroll = currentScroll;
 }
 
+function scheduleNavbarState() {
+    if (!navbar) return;
+    if (scheduleNavbarState.rafPending) return;
+    scheduleNavbarState.rafPending = true;
+    requestAnimationFrame(() => {
+        scheduleNavbarState.rafPending = false;
+        updateNavbarState();
+    });
+}
+scheduleNavbarState.rafPending = false;
+
 if (navbar) {
     navbar.style.position = 'fixed';
     navbar.style.top = '0';
@@ -192,7 +203,7 @@ if (navbar) {
     navbar.style.right = '0';
     navbar.style.zIndex = '1000';
     updateNavbarState();
-    window.addEventListener('scroll', updateNavbarState);
+    window.addEventListener('scroll', scheduleNavbarState, { passive: true });
     window.addEventListener('load', updateNavbarState);
 }
 
@@ -1170,6 +1181,7 @@ async function loadHeroNotifications() {
 
         // Ensure wrapper is visible
         wrapper.style.display = 'block';
+        syncHeroAnnouncementOffset();
         // Reset animation by toggling a class to force reflow on mobile Safari
         carousel.classList.remove('running');
         // eslint-disable-next-line no-unused-expressions
