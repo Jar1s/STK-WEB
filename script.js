@@ -1103,9 +1103,14 @@ function syncHeroAnnouncementOffset() {
     if (!wrapper) return;
     const rect = navbar.getBoundingClientRect();
     const navHeight = rect.height || navbar.offsetHeight || 0;
-    const baseOffset = navHeight + 12; // keep banner just below header
-    const offset = Math.max(72, Math.ceil(baseOffset));
-    document.documentElement.style.setProperty('--hero-announcement-offset', `${offset}px`);
+    const wrapperRect = wrapper.getBoundingClientRect();
+    const announcementHeight = wrapperRect.height || wrapper.offsetHeight || 0;
+    const safeNav = Math.max(48, Math.ceil(navHeight));
+    const safeAnn = Math.max(36, Math.ceil(announcementHeight));
+    const headerTotal = safeNav + safeAnn;
+    document.documentElement.style.setProperty('--navbar-height', `${safeNav}px`);
+    document.documentElement.style.setProperty('--announcement-height', `${safeAnn}px`);
+    document.documentElement.style.setProperty('--header-total-height', `${headerTotal}px`);
 }
 
 let announcementResizeTimer;
