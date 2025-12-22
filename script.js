@@ -61,8 +61,10 @@
     const navbar = dom.navbar;
     const heroSection = dom.heroSection;
     const desktopMenus = [navMenuLeft, navMenuRight].filter(Boolean);
+    const isMobileViewport = () => window.innerWidth <= 900 || window.innerHeight <= 500;
 
     const closeMobileMenu = () => {
+      if (!isMobileViewport()) return;
       if (!state.mobileNavMenu) return;
       state.isMenuOpen = false;
       state.mobileNavMenu.classList.remove('active');
@@ -82,6 +84,7 @@
     };
 
     const openMobileMenu = () => {
+      if (!isMobileViewport()) return;
       if (!state.mobileNavMenu) return;
       state.isMenuOpen = true;
       state.mobileNavMenu.style.display = 'flex';
@@ -98,11 +101,9 @@
     };
 
     const toggleMobileMenu = () => {
-      if (state.isMenuOpen) {
-        closeMobileMenu();
-      } else {
-        openMobileMenu();
-      }
+      if (!isMobileViewport()) return;
+      if (state.isMenuOpen) closeMobileMenu();
+      else openMobileMenu();
     };
 
     const buildMobileMenu = () => {
@@ -204,7 +205,7 @@
     }
 
     const onResize = rafThrottle(() => {
-      if (window.innerWidth > 768 && state.isMenuOpen) {
+      if (!isMobileViewport() && state.isMenuOpen) {
         closeMobileMenu();
       }
       computeHeaderHeights();
