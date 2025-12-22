@@ -7,13 +7,16 @@
     isMenuOpen: false,
     heroStatsAnimated: false,
     statsAnimated: false,
-    defaultPartnerNodes: null
+    defaultPartnerNodes: null,
+    partnersData: []
   };
 
   const dom = {
     navbar: $('.navbar'),
     heroSection: $('.hero'),
-    announcementsWrapper: $('#hero-announcements-wrapper')
+    announcementsWrapper: $('#hero-announcements-wrapper'),
+    heroPartners: $('.hero-partners-scroll'),
+    partnersTrack: $('#partners-scroll')
   };
 
   const rafThrottle = (fn) => {
@@ -25,6 +28,14 @@
         ticking = false;
         fn(...args);
       });
+    };
+  };
+
+  const debounce = (fn, delay = 180) => {
+    let t = null;
+    return (...args) => {
+      clearTimeout(t);
+      t = setTimeout(() => fn(...args), delay);
     };
   };
 
@@ -780,112 +791,156 @@
     }
   }
 
+  const buildLoopingTrack = (container, nodes, options = {}) => {
+    const {
+      minWidthFactor = 1.25,
+      runningClass = null,
+      durationVar = null,
+      shiftVar = null,
+      speed = 120,
+      safetyCap = 8
+    } = options;
+
+    if (!container) return;
+
+    container.innerHTML = '';
+    if (!nodes || nodes.length === 0) {
+      if (runningClass) container.classList.remove(runningClass);
+      return;
+    }
+
+    const wrapperWidth = container.parentElement?.offsetWidth || window.innerWidth;
+    const fragment = document.createDocumentFragment();
+    nodes.forEach((node) => fragment.appendChild(node.cloneNode(true)));
+    container.appendChild(fragment);
+
+    const baseNodes = Array.from(container.children);
+    let repeats = 1;
+    while (container.scrollWidth < wrapperWidth * minWidthFactor && repeats < safetyCap) {
+      baseNodes.forEach((node) => container.appendChild(node.cloneNode(true)));
+      repeats += 1;
+    }
+
+    const currentNodes = Array.from(container.children);
+    currentNodes.forEach((node) => container.appendChild(node.cloneNode(true)));
+
+    const halfWidth = container.scrollWidth / 2;
+    if (shiftVar) container.style.setProperty(shiftVar, `${halfWidth}px`);
+    if (durationVar) {
+      const duration = Math.max(18, Math.min(45, halfWidth / speed));
+      container.style.setProperty(durationVar, `${duration}s`);
+    }
+
+    if (runningClass) {
+      container.classList.remove(runningClass);
+      // eslint-disable-next-line no-unused-expressions
+      container.offsetHeight;
+      container.classList.add(runningClass);
+    }
+  };
+
+  const renderHeroPartners = (partners) => {
+    const heroContainer = dom.heroPartners || $('.hero-partners-scroll');
+    if (!heroContainer) return;
+
+    const heroItems = (partners || []).map((p) => {
+      const div = document.createElement('div');
+      div.className = 'hero-partner-item';
+      if (p.logoUrl) {
+        const img = document.createElement('img');
+        img.src = p.logoUrl;
+        img.alt = p.name || 'Partner';
+        img.onerror = () => {
+          img.remove();
+          const span = document.createElement('span');
+          span.textContent = p.name || 'Partner';
+          div.appendChild(span);
+        };
+        div.appendChild(img);
+      } else {
+        const span = document.createElement('span');
+        span.textContent = p.name || 'Partner';
+        div.appendChild(span);
+      }
+      return div;
+    });
+
+    buildLoopingTrack(heroContainer, heroItems, {
+      minWidthFactor: 1.2,
+      runningClass: 'running',
+      durationVar: '--hero-partners-duration',
+      shiftVar: '--hero-partners-shift',
+      speed: 120
+    });
+  };
+
+  const renderPartnersSection = (partners) => {
+    const partnersContainer = dom.partnersTrack || $('#partners-scroll');
+    if (!partnersContainer) return;
+
+    const partnerCards = (partners || []).map((p) => {
+      const card = document.createElement('div');
+      card.className = 'partner-card';
+      if (p.link) {
+        card.dataset.link = p.link;
+      }
+      if (p.logoUrl) {
+        const img = document.createElement('img');
+        img.src = p.logoUrl;
+        img.alt = p.name || 'Partner';
+        img.onerror = () => {
+          const placeholder = document.createElement('div');
+          placeholder.className = 'partner-placeholder';
+          const span = document.createElement('span');
+          span.textContent = p.name || 'Partner';
+          placeholder.appendChild(span);
+          card.innerHTML = '';
+          card.appendChild(placeholder);
+        };
+        card.appendChild(img);
+      } else {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'partner-placeholder';
+        const span = document.createElement('span');
+        span.textContent = p.name || 'Partner';
+        placeholder.appendChild(span);
+        card.appendChild(placeholder);
+      }
+      return card;
+    });
+
+    buildLoopingTrack(partnersContainer, partnerCards, {
+      minWidthFactor: 1.2,
+      runningClass: 'running',
+      durationVar: '--partners-duration',
+      shiftVar: '--partners-shift',
+      speed: 115
+    });
+
+    partnersContainer.querySelectorAll('.partner-card[data-link]').forEach((card) => {
+      const link = card.dataset.link;
+      if (!link) return;
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => {
+        window.open(link, '_blank', 'noopener,noreferrer');
+      });
+    });
+  };
+
+  const rebuildPartnersTracks = debounce(() => {
+    if (!state.partnersData || state.partnersData.length === 0) return;
+    renderHeroPartners(state.partnersData);
+    renderPartnersSection(state.partnersData);
+  }, 250);
+
   async function loadPartners() {
-    const heroContainer = $('.hero-partners-scroll');
-    const partnersContainer = $('#partners-scroll');
-    
     try {
       const res = await fetch('/api/partners');
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      const partners = data.partners || [];
-      
-      // Load hero partners
-      if (heroContainer) {
-        const heroItems = partners.map((p) => {
-          const div = document.createElement('div');
-          div.className = 'hero-partner-item';
-          if (p.logoUrl) {
-            const img = document.createElement('img');
-            img.src = p.logoUrl;
-            img.alt = p.name || 'Partner';
-            img.onerror = () => {
-              img.remove();
-              const span = document.createElement('span');
-              span.textContent = p.name || 'Partner';
-              div.appendChild(span);
-            };
-            div.appendChild(img);
-          } else {
-            const span = document.createElement('span');
-            span.textContent = p.name || 'Partner';
-            div.appendChild(span);
-          }
-          return div;
-        });
-
-        heroContainer.innerHTML = '';
-        const viewportWidth = heroContainer.parentElement ? heroContainer.parentElement.offsetWidth : window.innerWidth;
-        const baseNodes = [];
-        const baseFragment = document.createDocumentFragment();
-        heroItems.forEach((node) => {
-          const clone = node.cloneNode(true);
-          baseNodes.push(clone);
-          baseFragment.appendChild(clone);
-        });
-        heroContainer.appendChild(baseFragment);
-
-        const safetyCap = 6;
-        let repeats = 1;
-        while (heroContainer.scrollWidth < viewportWidth * 1.2 && repeats < safetyCap) {
-          baseNodes.forEach((node) => heroContainer.appendChild(node.cloneNode(true)));
-          repeats += 1;
-        }
-
-        const currentNodes = Array.from(heroContainer.children);
-        currentNodes.forEach((node) => heroContainer.appendChild(node.cloneNode(true)));
-
-        heroContainer.classList.remove('running');
-        // eslint-disable-next-line no-unused-expressions
-        heroContainer.offsetHeight;
-        heroContainer.classList.add('running');
-      }
-      
-      // Load partners section
-      if (partnersContainer) {
-        const partnerCards = partners.map((p) => {
-          const card = document.createElement('div');
-          card.className = 'partner-card';
-          if (p.link) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-              window.open(p.link, '_blank', 'noopener,noreferrer');
-            });
-          }
-          if (p.logoUrl) {
-            const img = document.createElement('img');
-            img.src = p.logoUrl;
-            img.alt = p.name || 'Partner';
-            img.onerror = () => {
-              const placeholder = document.createElement('div');
-              placeholder.className = 'partner-placeholder';
-              const span = document.createElement('span');
-              span.textContent = p.name || 'Partner';
-              placeholder.appendChild(span);
-              card.innerHTML = '';
-              card.appendChild(placeholder);
-            };
-            card.appendChild(img);
-          } else {
-            const placeholder = document.createElement('div');
-            placeholder.className = 'partner-placeholder';
-            const span = document.createElement('span');
-            span.textContent = p.name || 'Partner';
-            placeholder.appendChild(span);
-            card.appendChild(placeholder);
-          }
-          return card;
-        });
-        
-        partnersContainer.innerHTML = '';
-        const baseFragment = document.createDocumentFragment();
-        partnerCards.forEach((card) => baseFragment.appendChild(card));
-        partnersContainer.appendChild(baseFragment);
-        
-        // Duplicate for seamless scroll
-        const currentCards = Array.from(partnersContainer.children);
-        currentCards.forEach((card) => partnersContainer.appendChild(card.cloneNode(true)));
-      }
+      state.partnersData = data.partners || [];
+      renderHeroPartners(state.partnersData);
+      renderPartnersSection(state.partnersData);
     } catch (err) {
       console.warn('Failed to load partners', err);
     }
@@ -957,6 +1012,8 @@
     initAdvantagesCarousel();
     initStatisticsObservers();
     loadDynamicStatistics();
+    window.addEventListener('resize', rebuildPartnersTracks);
+    window.addEventListener('orientationchange', rebuildPartnersTracks);
     loadPartners();
     initCookieAwareFeatures();
   }
