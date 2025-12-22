@@ -1279,7 +1279,7 @@ body {
     inset: 0;
     background-size: cover;
     background-position: center;
-    filter: brightness(0.85);
+    filter: brightness(0.95);
     opacity: 0;
     transform: scale(1.02);
     transition: opacity 1.2s ease;
@@ -1293,7 +1293,7 @@ body {
 .about-hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(4, 12, 24, 0.65) 0%, rgba(8, 16, 30, 0.75) 60%, rgba(8, 16, 30, 0.85) 100%);
+    background: linear-gradient(180deg, rgba(4, 12, 24, 0.35) 0%, rgba(8, 16, 30, 0.45) 60%, rgba(8, 16, 30, 0.55) 100%);
     z-index: 1;
 }
 
