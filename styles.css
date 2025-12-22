@@ -3408,8 +3408,14 @@ section {
 
 /* Landscape orientation on mobile - using max-height for iOS compatibility */
 @media (max-width: 900px) and (max-height: 500px) {
+    .nav-menu:not(.mobile-only),
     .nav-menu-left,
     .nav-menu-right {
+        display: none !important;
+    }
+
+    .navbar-left-extras,
+    .navbar-right-extras {
         display: none !important;
     }
 
@@ -3419,6 +3425,7 @@ section {
 
     .nav-menu.mobile-only {
         display: flex;
+        right: -100%;
     }
 
     .nav-menu.mobile-only {
