@@ -60,14 +60,17 @@
     const navWrapper = $('.nav-wrapper');
     const navbar = dom.navbar;
     const heroSection = dom.heroSection;
+    const desktopMenus = [navMenuLeft, navMenuRight].filter(Boolean);
 
     const closeMobileMenu = () => {
       if (!state.mobileNavMenu) return;
       state.isMenuOpen = false;
       state.mobileNavMenu.classList.remove('active');
+       state.mobileNavMenu.style.display = '';
       mobileMenuToggle?.classList.remove('active');
       mobileMenuToggle?.setAttribute('aria-expanded', 'false');
       mobileMenuOverlay?.classList.remove('active');
+       desktopMenus.forEach((menu) => { menu.style.display = ''; });
       document.body.classList.remove('menu-open');
       const scrollY = document.body.style.top;
       document.body.style.position = '';
@@ -81,10 +84,12 @@
     const openMobileMenu = () => {
       if (!state.mobileNavMenu) return;
       state.isMenuOpen = true;
+      state.mobileNavMenu.style.display = 'flex';
       state.mobileNavMenu.classList.add('active');
       mobileMenuToggle?.classList.add('active');
       mobileMenuToggle?.setAttribute('aria-expanded', 'true');
       mobileMenuOverlay?.classList.add('active');
+       desktopMenus.forEach((menu) => { menu.style.display = 'none'; });
       const scrollY = window.scrollY;
       document.body.classList.add('menu-open');
       document.body.style.position = 'fixed';

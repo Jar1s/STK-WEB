@@ -520,11 +520,11 @@ body {
 
 /* Mobile menu will use .nav-menu class */
 .nav-menu.mobile-only {
-    display: flex;
+    display: none;
 }
 
 /* Medium screens - show mobile menu (874px and similar) */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
     .nav-menu-left,
     .nav-menu-right {
         display: none !important;
@@ -541,6 +541,10 @@ body {
     
     .navbar .container {
         padding: 0 1rem;
+    }
+    
+    .nav-wrapper {
+        justify-content: space-between;
     }
     
     .logo h1 {
@@ -571,6 +575,10 @@ body {
         order: 3;
         margin-left: 0.25rem;
         margin-right: 0;
+    }
+
+    .nav-menu.mobile-only {
+        display: flex;
     }
 }
 
