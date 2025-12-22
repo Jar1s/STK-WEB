@@ -4678,16 +4678,18 @@ section {
         display: none !important;
     }
 
-    .logo {
-        display: none !important;
-    }
-
     .nav-wrapper {
-        justify-content: flex-end;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .mobile-menu-toggle {
         display: flex !important;
+    }
+
+    .logo {
+        display: flex !important;
+        align-items: center;
     }
 
     .nav-menu.mobile-only {
