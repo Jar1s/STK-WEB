@@ -649,7 +649,9 @@
     document.documentElement.lang = lang;
     localStorage.setItem('language', lang);
     $$('.lang-btn').forEach((btn) => {
-      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      const isActive = btn.getAttribute('data-lang') === lang;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive.toString());
     });
     $$('[data-translate]').forEach((element) => {
       if (element.querySelector('.nav-plates-container')) return;
@@ -779,65 +781,111 @@
   }
 
   async function loadPartners() {
-    const container = $('.hero-partners-scroll');
-    if (!container) return;
-    if (!state.defaultPartnerNodes) {
-      state.defaultPartnerNodes = Array.from(container.children).map((n) => n.cloneNode(true));
-    }
+    const heroContainer = $('.hero-partners-scroll');
+    const partnersContainer = $('#partners-scroll');
+    
     try {
       const res = await fetch('/api/partners');
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       const partners = data.partners || [];
-      const items = [];
-      state.defaultPartnerNodes.forEach((node) => items.push(node.cloneNode(true)));
-      partners.forEach((p) => {
-        const div = document.createElement('div');
-        div.className = 'hero-partner-item';
-        if (p.logoUrl) {
-          const img = document.createElement('img');
-          img.src = p.logoUrl;
-          img.alt = p.name || 'Partner';
-          img.onerror = () => {
-            img.remove();
+      
+      // Load hero partners
+      if (heroContainer) {
+        const heroItems = partners.map((p) => {
+          const div = document.createElement('div');
+          div.className = 'hero-partner-item';
+          if (p.logoUrl) {
+            const img = document.createElement('img');
+            img.src = p.logoUrl;
+            img.alt = p.name || 'Partner';
+            img.onerror = () => {
+              img.remove();
+              const span = document.createElement('span');
+              span.textContent = p.name || 'Partner';
+              div.appendChild(span);
+            };
+            div.appendChild(img);
+          } else {
             const span = document.createElement('span');
             span.textContent = p.name || 'Partner';
             div.appendChild(span);
-          };
-          div.appendChild(img);
-        } else {
-          const span = document.createElement('span');
-          span.textContent = p.name || 'Partner';
-          div.appendChild(span);
+          }
+          return div;
+        });
+
+        heroContainer.innerHTML = '';
+        const viewportWidth = heroContainer.parentElement ? heroContainer.parentElement.offsetWidth : window.innerWidth;
+        const baseNodes = [];
+        const baseFragment = document.createDocumentFragment();
+        heroItems.forEach((node) => {
+          const clone = node.cloneNode(true);
+          baseNodes.push(clone);
+          baseFragment.appendChild(clone);
+        });
+        heroContainer.appendChild(baseFragment);
+
+        const safetyCap = 6;
+        let repeats = 1;
+        while (heroContainer.scrollWidth < viewportWidth * 1.2 && repeats < safetyCap) {
+          baseNodes.forEach((node) => heroContainer.appendChild(node.cloneNode(true)));
+          repeats += 1;
         }
-        items.push(div);
-      });
 
-      container.innerHTML = '';
-      const viewportWidth = container.parentElement ? container.parentElement.offsetWidth : window.innerWidth;
-      const baseNodes = [];
-      const baseFragment = document.createDocumentFragment();
-      items.forEach((node) => {
-        const clone = node.cloneNode(true);
-        baseNodes.push(clone);
-        baseFragment.appendChild(clone);
-      });
-      container.appendChild(baseFragment);
+        const currentNodes = Array.from(heroContainer.children);
+        currentNodes.forEach((node) => heroContainer.appendChild(node.cloneNode(true)));
 
-      const safetyCap = 6;
-      let repeats = 1;
-      while (container.scrollWidth < viewportWidth * 1.2 && repeats < safetyCap) {
-        baseNodes.forEach((node) => container.appendChild(node.cloneNode(true)));
-        repeats += 1;
+        heroContainer.classList.remove('running');
+        // eslint-disable-next-line no-unused-expressions
+        heroContainer.offsetHeight;
+        heroContainer.classList.add('running');
       }
-
-      const currentNodes = Array.from(container.children);
-      currentNodes.forEach((node) => container.appendChild(node.cloneNode(true)));
-
-      container.classList.remove('running');
-      // eslint-disable-next-line no-unused-expressions
-      container.offsetHeight;
-      container.classList.add('running');
+      
+      // Load partners section
+      if (partnersContainer) {
+        const partnerCards = partners.map((p) => {
+          const card = document.createElement('div');
+          card.className = 'partner-card';
+          if (p.link) {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', () => {
+              window.open(p.link, '_blank', 'noopener,noreferrer');
+            });
+          }
+          if (p.logoUrl) {
+            const img = document.createElement('img');
+            img.src = p.logoUrl;
+            img.alt = p.name || 'Partner';
+            img.onerror = () => {
+              const placeholder = document.createElement('div');
+              placeholder.className = 'partner-placeholder';
+              const span = document.createElement('span');
+              span.textContent = p.name || 'Partner';
+              placeholder.appendChild(span);
+              card.innerHTML = '';
+              card.appendChild(placeholder);
+            };
+            card.appendChild(img);
+          } else {
+            const placeholder = document.createElement('div');
+            placeholder.className = 'partner-placeholder';
+            const span = document.createElement('span');
+            span.textContent = p.name || 'Partner';
+            placeholder.appendChild(span);
+            card.appendChild(placeholder);
+          }
+          return card;
+        });
+        
+        partnersContainer.innerHTML = '';
+        const baseFragment = document.createDocumentFragment();
+        partnerCards.forEach((card) => baseFragment.appendChild(card));
+        partnersContainer.appendChild(baseFragment);
+        
+        // Duplicate for seamless scroll
+        const currentCards = Array.from(partnersContainer.children);
+        currentCards.forEach((card) => partnersContainer.appendChild(card.cloneNode(true)));
+      }
     } catch (err) {
       console.warn('Failed to load partners', err);
     }

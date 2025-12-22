@@ -1,11 +1,16 @@
 import { getStatistics, saveStatistics } from '../lib/kv.js';
 import { requireAdmin } from '../lib/auth.js';
+import { validateStatistics } from '../lib/validation.js';
+import { getCorsHeaders, handleCorsPreflight } from '../lib/cors.js';
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  if (req.method === 'OPTIONS') return res.status(200).end();
+  const corsHeaders = getCorsHeaders(req.headers.origin);
+  Object.keys(corsHeaders).forEach(key => {
+    res.setHeader(key, corsHeaders[key]);
+  });
+  if (req.method === 'OPTIONS') {
+    return handleCorsPreflight(req, res);
+  }
 
   if (req.method === 'GET') {
     const stats = await getStatistics();
@@ -28,6 +33,10 @@ export default async function handler(req, res) {
       satisfactionPercentage: body.satisfactionPercentage,
       googlePlaceId: body.googlePlaceId
     };
+    const validation = validateStatistics(stats);
+    if (!validation.valid) {
+      return res.status(400).json({ error: 'Validation failed', errors: validation.errors });
+    }
     const result = await saveStatistics(stats);
     if (!result.ok) {
       return res.status(500).json({
@@ -43,6 +52,8 @@ export default async function handler(req, res) {
   res.setHeader('Allow', ['GET', 'PUT']);
   return res.status(405).json({ error: `Method ${req.method} not allowed` });
 }
+
+
 
 
 

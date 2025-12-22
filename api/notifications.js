@@ -1,5 +1,7 @@
 import { deleteNotification, getNotifications, updateNotification, upsertNotification } from '../lib/kv.js';
 import { requireAdmin, isAdminRequest } from '../lib/auth.js';
+import { validateNotification } from '../lib/validation.js';
+import { getCorsHeaders, handleCorsPreflight } from '../lib/cors.js';
 
 function extractId(req) {
   // Try query param first
@@ -13,10 +15,13 @@ function extractId(req) {
 }
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  if (req.method === 'OPTIONS') return res.status(200).end();
+  const corsHeaders = getCorsHeaders(req.headers.origin);
+  Object.keys(corsHeaders).forEach(key => {
+    res.setHeader(key, corsHeaders[key]);
+  });
+  if (req.method === 'OPTIONS') {
+    return handleCorsPreflight(req, res);
+  }
 
   const id = extractId(req);
 
@@ -29,14 +34,18 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     if (!requireAdmin(req, res)) return;
     const { id: bodyId, text, backgroundColor, backgroundGradient, borderColor, textColor, active } = req.body || {};
+    const validation = validateNotification({ text, backgroundColor, backgroundGradient, borderColor, textColor, active });
+    if (!validation.valid) {
+      return res.status(400).json({ error: 'Validation failed', errors: validation.errors });
+    }
     const result = await upsertNotification({
       id: bodyId,
-      text,
+      text: text?.trim(),
       backgroundColor,
       backgroundGradient,
       borderColor,
       textColor,
-      active
+      active: active ?? true
     });
     if (!result.ok) {
       return res.status(500).json({
@@ -53,8 +62,12 @@ export default async function handler(req, res) {
     if (!requireAdmin(req, res)) return;
     if (!id) return res.status(400).json({ error: 'Missing id' });
     const { text, backgroundColor, backgroundGradient, borderColor, textColor, active } = req.body || {};
+    const validation = validateNotification({ text, backgroundColor, backgroundGradient, borderColor, textColor, active });
+    if (!validation.valid) {
+      return res.status(400).json({ error: 'Validation failed', errors: validation.errors });
+    }
     const result = await updateNotification(id, {
-      ...(text !== undefined ? { text } : {}),
+      ...(text !== undefined ? { text: text.trim() } : {}),
       ...(backgroundColor !== undefined ? { backgroundColor } : {}),
       ...(backgroundGradient !== undefined ? { backgroundGradient } : {}),
       ...(borderColor !== undefined ? { borderColor } : {}),

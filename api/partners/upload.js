@@ -1,5 +1,6 @@
 import { supabase, hasSupabase, hasServiceRole } from '../../lib/supabase.js';
 import { requireAdmin } from '../../lib/auth.js';
+import { getCorsHeaders, handleCorsPreflight } from '../../lib/cors.js';
 
 const BUCKET = 'partners';
 const MAX_SIZE = 5 * 1024 * 1024; // 5MB
@@ -19,10 +20,13 @@ export const config = {
 };
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  if (req.method === 'OPTIONS') return res.status(200).end();
+  const corsHeaders = getCorsHeaders(req.headers.origin);
+  Object.keys(corsHeaders).forEach(key => {
+    res.setHeader(key, corsHeaders[key]);
+  });
+  if (req.method === 'OPTIONS') {
+    return handleCorsPreflight(req, res);
+  }
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
     return res.status(405).json({ error: `Method ${req.method} not allowed` });

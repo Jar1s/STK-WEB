@@ -33,10 +33,11 @@ async function apiFetch(url, options = {}) {
 async function loadNotifications() {
   const list = document.getElementById('notif-list');
   const err = document.getElementById('notif-error');
-  list.innerHTML = '';
+  list.innerHTML = '<div class="muted">Načítavam...</div>';
   err.textContent = '';
   try {
     const data = await apiFetch(API.notifications);
+    list.innerHTML = '';
     data.notifications.forEach((n) => {
       const div = document.createElement('div');
       div.className = 'item';
@@ -187,10 +188,11 @@ function partnerStatus(text) {
 async function loadPartners() {
   const list = document.getElementById('partners-list');
   const err = document.getElementById('partners-error');
-  list.innerHTML = '';
+  list.innerHTML = '<div class="muted">Načítavam...</div>';
   err.textContent = '';
   try {
     const data = await apiFetch(API.partners);
+    list.innerHTML = '';
     data.partners.forEach((p) => {
       const div = document.createElement('div');
       div.className = 'item';
@@ -252,15 +254,23 @@ async function uploadLogoIfNeeded(fileInput) {
 async function submitPartner(e) {
   e.preventDefault();
   partnerStatus('');
-  const id = document.getElementById('partner-id').value;
-  const payload = {
-    id: id || undefined,
-    name: document.getElementById('partner-name').value,
-    link: document.getElementById('partner-link').value || null,
-    sortOrder: Number(document.getElementById('partner-order').value || 0),
-    active: document.getElementById('partner-active').value === 'true'
-  };
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+  const originalText = submitBtn?.textContent || 'Uložiť partnera';
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Ukladám...';
+  }
+  
   try {
+    const id = document.getElementById('partner-id').value;
+    const payload = {
+      id: id || undefined,
+      name: document.getElementById('partner-name').value,
+      link: document.getElementById('partner-link').value || null,
+      sortOrder: Number(document.getElementById('partner-order').value || 0),
+      active: document.getElementById('partner-active').value === 'true'
+    };
+    
     const logoUrl = await uploadLogoIfNeeded(document.getElementById('partner-logo'));
     if (logoUrl) payload.logoUrl = logoUrl;
 
@@ -269,9 +279,28 @@ async function submitPartner(e) {
     await apiFetch(url, { method, body: JSON.stringify(payload) });
     partnerStatus('Partner uložený');
     fillPartnerForm({});
-    loadPartners();
+    await loadPartners();
   } catch (err) {
-    partnerStatus(err.message);
+    const errorMsg = err.message || 'Chyba pri ukladaní';
+    if (err.message && err.message.includes('Validation failed')) {
+      try {
+        const errorData = JSON.parse(err.message.split(':')[1] || '{}');
+        if (errorData.errors && Array.isArray(errorData.errors)) {
+          partnerStatus('Chyby validácie: ' + errorData.errors.join(', '));
+        } else {
+          partnerStatus(errorMsg);
+        }
+      } catch {
+        partnerStatus(errorMsg);
+      }
+    } else {
+      partnerStatus(errorMsg);
+    }
+  } finally {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
   }
 }
 

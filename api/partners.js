@@ -1,5 +1,7 @@
 import { deletePartner, getPartners, upsertPartner } from '../lib/kv.js';
 import { requireAdmin } from '../lib/auth.js';
+import { validatePartner } from '../lib/validation.js';
+import { getCorsHeaders, handleCorsPreflight } from '../lib/cors.js';
 
 function extractId(req) {
   if (req.query?.id) return req.query.id;
@@ -11,10 +13,13 @@ function extractId(req) {
 }
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  if (req.method === 'OPTIONS') return res.status(200).end();
+  const corsHeaders = getCorsHeaders(req.headers.origin);
+  Object.keys(corsHeaders).forEach(key => {
+    res.setHeader(key, corsHeaders[key]);
+  });
+  if (req.method === 'OPTIONS') {
+    return handleCorsPreflight(req, res);
+  }
 
   const id = extractId(req);
 
@@ -26,13 +31,17 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     if (!requireAdmin(req, res)) return;
     const { id: bodyId, name, logoUrl, link, sortOrder, active } = req.body || {};
+    const validation = validatePartner({ name, logoUrl, link, sortOrder, active });
+    if (!validation.valid) {
+      return res.status(400).json({ error: 'Validation failed', errors: validation.errors });
+    }
     const result = await upsertPartner({
       id: bodyId,
-      name,
-      logoUrl,
-      link,
-      sortOrder,
-      active
+      name: name.trim(),
+      logoUrl: logoUrl?.trim() || null,
+      link: link?.trim() || null,
+      sortOrder: sortOrder ?? 0,
+      active: active ?? true
     });
     if (!result.ok) {
       return res.status(500).json({ error: 'Failed to save partner', reason: result.reason, detail: result.detail, code: result.code });
@@ -44,13 +53,17 @@ export default async function handler(req, res) {
     if (!requireAdmin(req, res)) return;
     if (!id) return res.status(400).json({ error: 'Missing id' });
     const { name, logoUrl, link, sortOrder, active } = req.body || {};
+    const validation = validatePartner({ name, logoUrl, link, sortOrder, active });
+    if (!validation.valid) {
+      return res.status(400).json({ error: 'Validation failed', errors: validation.errors });
+    }
     const result = await upsertPartner({
       id,
-      name,
-      logoUrl,
-      link,
-      sortOrder,
-      active
+      name: name?.trim(),
+      logoUrl: logoUrl?.trim() || null,
+      link: link?.trim() || null,
+      sortOrder: sortOrder ?? 0,
+      active: active ?? true
     });
     if (!result.ok) {
       return res.status(500).json({ error: 'Failed to update partner', reason: result.reason, detail: result.detail, code: result.code });

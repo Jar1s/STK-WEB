@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="STK JP Control s.r.o. - Technická kontrola, emisná kontrola a kontrola originality vozidiel v Bratislavskom kraji">
+    <meta name="keywords" content="STK, technická kontrola, emisná kontrola, kontrola originality, Pezinok, Bratislavský kraj, vozidlá">
+    <meta name="author" content="JP Control s.r.o.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="STK JP Control s.r.o. | Technická kontrola vozidiel">
+    <meta property="og:description" content="Vaša spoľahlivá stanica technickej kontroly v Bratislavskom kraji">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kontrolavozidiel.sk">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="STK JP Control s.r.o. | Technická kontrola vozidiel">
+    <meta name="twitter:description" content="Vaša spoľahlivá stanica technickej kontroly v Bratislavskom kraji">
     <title>STK JP Control s.r.o. | Technická kontrola vozidiel</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -16,6 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a href="#main-content" class="skip-to-main" aria-label="Preskočiť na hlavný obsah">Preskočiť na hlavný obsah</a>
     <!-- Hero Section -->
     <section id="home" class="hero">
         <!-- Navigation -->
@@ -23,15 +34,15 @@
             <div class="container">
                 <div class="nav-wrapper">
                     <div class="navbar-left-extras">
-                        <div class="language-switcher">
-                            <button class="lang-btn active" data-lang="sk">SK</button>
-                            <button class="lang-btn" data-lang="en">EN</button>
+                        <div class="language-switcher" role="group" aria-label="Výber jazyka">
+                            <button class="lang-btn active" data-lang="sk" aria-label="Prepnúť na slovenčinu" aria-pressed="true">SK</button>
+                            <button class="lang-btn" data-lang="en" aria-label="Prepnúť na angličtinu" aria-pressed="false">EN</button>
                         </div>
                     </div>
-                    <ul class="nav-menu nav-menu-left">
-                        <li><a href="o-nas.html" class="nav-link" data-translate="nav-about">O nás</a></li>
-                        <li><a href="#main-services" class="nav-link" data-translate="nav-services">Služby</a></li>
-                        <li><a href="#pricing" class="nav-link" data-translate="nav-pricing">Cenník</a></li>
+                    <ul class="nav-menu nav-menu-left" role="menubar">
+                        <li role="none"><a href="o-nas.html" class="nav-link" data-translate="nav-about" role="menuitem" aria-label="Prejsť na stránku O nás">O nás</a></li>
+                        <li role="none"><a href="#main-services" class="nav-link" data-translate="nav-services" role="menuitem" aria-label="Prejsť na sekciu Služby">Služby</a></li>
+                        <li role="none"><a href="#pricing" class="nav-link" data-translate="nav-pricing" role="menuitem" aria-label="Prejsť na sekciu Cenník">Cenník</a></li>
                     </ul>
                     <div class="logo">
                         <a href="#home" class="logo-link">
@@ -41,10 +52,10 @@
                             <img src="PTI_icons.webp" alt="TK EK KO" class="nav-plates-image">
                         </a>
                     </div>
-                    <ul class="nav-menu nav-menu-right">
-                        <li><a href="#reviews" class="nav-link" data-translate="nav-reviews">Recenzie</a></li>
-                        <li><a href="#contact" class="nav-link" data-translate="nav-contact">Kontakt</a></li>
-                        <li><a href="rezervacia.html" class="nav-link btn-primary" data-translate="nav-booking">Rezervovať</a></li>
+                    <ul class="nav-menu nav-menu-right" role="menubar">
+                        <li role="none"><a href="#reviews" class="nav-link" data-translate="nav-reviews" role="menuitem" aria-label="Prejsť na sekciu Recenzie">Recenzie</a></li>
+                        <li role="none"><a href="#contact" class="nav-link" data-translate="nav-contact" role="menuitem" aria-label="Prejsť na sekciu Kontakt">Kontakt</a></li>
+                        <li role="none"><a href="rezervacia.html" class="nav-link btn-primary" data-translate="nav-booking" role="menuitem" aria-label="Rezervovať termín">Rezervovať</a></li>
                     </ul>
                     <div class="navbar-right-extras">
                         <div class="social-icons">
@@ -65,10 +76,10 @@
                             </a>
                         </div>
                     </div>
-                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <button class="mobile-menu-toggle" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
                     </button>
                     <div class="mobile-menu-overlay"></div>
                 </div>
@@ -92,68 +103,13 @@
                 <h1 class="hero-title" data-translate="hero-title">JP Control s.r.o.</h1>
                 <p class="hero-subtitle" data-translate="hero-subtitle">Vaša spoľahlivá stanica technickej kontroly v Bratislavskom kraji</p>
                 <div class="hero-cta">
-                    <a href="rezervacia.html" class="btn btn-large btn-hero-cta" data-translate="hero-cta">REZERVOVAŤ TERMÍN ONLINE</a>
+                    <a href="rezervacia.html" class="btn btn-large btn-hero-cta" data-translate="hero-cta" aria-label="Rezervovať termín online">REZERVOVAŤ TERMÍN ONLINE</a>
                 </div>
             </div>
         </div>
         <div class="hero-partners-wrapper">
             <div class="hero-partners-scroll">
-                <div class="hero-partner-item">
-                    <span>Partner 1</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 2</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 3</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 4</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 5</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 6</span>
-                </div>
-                <!-- Duplikované pre plynulý efekt -->
-                <div class="hero-partner-item">
-                    <span>Partner 1</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 2</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 3</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 4</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 5</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 6</span>
-                </div>
-                <!-- Duplikované pre plynulý efekt -->
-                <div class="hero-partner-item">
-                    <span>Partner 1</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 2</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 3</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 4</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 5</span>
-                </div>
-                <div class="hero-partner-item">
-                    <span>Partner 6</span>
-                </div>
+                <!-- Partners will be loaded dynamically via JavaScript -->
             </div>
         </div>
         <!-- Statistics in Hero -->
@@ -180,20 +136,22 @@
         </div>
     </section>
 
+    <!-- Main Content Start -->
+    <main id="main-content">
     <!-- Advantages Section -->
-    <section id="advantages" class="advantages-section">
+    <section id="advantages" class="advantages-section" aria-labelledby="advantages-heading">
         <div class="container">
             <div class="section-header">
-                <h2 data-translate="section-advantages">Výhody u nás</h2>
+                <h2 id="advantages-heading" data-translate="section-advantages">Výhody u nás</h2>
                 <p data-translate="section-advantages-sub">Prečo si vybrať práve nás</p>
             </div>
             <div class="advantages-carousel-wrapper">
-                <button class="carousel-btn carousel-btn-prev" aria-label="Predchádzajúca výhoda">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <button class="carousel-btn carousel-btn-prev" aria-label="Predchádzajúca výhoda" type="button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M15 18l-6-6 6-6"/>
                     </svg>
                 </button>
-                <div class="advantages-carousel">
+                <div class="advantages-carousel" role="region" aria-label="Karusel výhod">
                     <div class="advantage-card">
                     <div class="advantage-icon-wrapper">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -280,8 +238,8 @@
                         <p data-translate="advantage-4-text">Pre potreby KO a STK v rámci SR</p>
                     </div>
                 </div>
-                <button class="carousel-btn carousel-btn-next" aria-label="Ďalšia výhoda">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <button class="carousel-btn carousel-btn-next" aria-label="Ďalšia výhoda" type="button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M9 18l6-6-6-6"/>
                     </svg>
                 </button>
@@ -290,7 +248,7 @@
     </section>
 
     <!-- Main Services: Technical, Emission, Originality Control -->
-    <section id="main-services" class="main-services-section">
+    <section id="main-services" class="main-services-section" aria-labelledby="main-services-heading">
         <div class="container">
             <div class="main-services-grid">
                 <!-- Technická kontrola -->
@@ -1020,68 +978,8 @@
                 <p data-translate="section-partners-sub">Spolupracujeme s overenými partnermi</p>
             </div>
             <div class="partners-scroll-wrapper">
-                <div class="partners-scroll">
-                    <div class="partner-card">
-                        <div class="partner-placeholder">
-                            <span>Partner 1</span>
-                        </div>
-                    </div>
-                    <div class="partner-card">
-                        <div class="partner-placeholder">
-                            <span>Partner 2</span>
-                        </div>
-                    </div>
-                    <div class="partner-card">
-                        <div class="partner-placeholder">
-                            <span>Partner 3</span>
-                        </div>
-                    </div>
-                    <div class="partner-card">
-                        <div class="partner-placeholder">
-                            <span>Partner 4</span>
-                        </div>
-                    </div>
-                    <div class="partner-card">
-                        <div class="partner-placeholder">
-                            <span>Partner 5</span>
-                        </div>
-                    </div>
-                    <div class="partner-card">
-                        <div class="partner-placeholder">
-                            <span>Partner 6</span>
-                        </div>
-                    </div>
-                    <!-- Duplikované pre plynulý efekt -->
-                    <div class="partner-card">
-                        <div class="partner-placeholder">
-                            <span>Partner 1</span>
-                        </div>
-                    </div>
-                    <div class="partner-card">
-                        <div class="partner-placeholder">
-                            <span>Partner 2</span>
-                        </div>
-                    </div>
-                    <div class="partner-card">
-                        <div class="partner-placeholder">
-                            <span>Partner 3</span>
-                        </div>
-                    </div>
-                    <div class="partner-card">
-                        <div class="partner-placeholder">
-                            <span>Partner 4</span>
-                        </div>
-                    </div>
-                    <div class="partner-card">
-                        <div class="partner-placeholder">
-                            <span>Partner 5</span>
-                        </div>
-                    </div>
-                    <div class="partner-card">
-                        <div class="partner-placeholder">
-                            <span>Partner 6</span>
-                        </div>
-                    </div>
+                <div class="partners-scroll" id="partners-scroll">
+                    <!-- Partners will be loaded dynamically via JavaScript -->
                 </div>
             </div>
         </div>
@@ -1169,8 +1067,8 @@
             </div>
         </div>
     </section>
-        </div>
-    </section>
+    </main>
+    <!-- Main Content End -->
 
     <!-- Footer -->
     <footer class="footer">
@@ -1218,6 +1116,45 @@
         </div>
     </div>
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutomotiveBusiness",
+      "name": "JP Control s.r.o.",
+      "description": "Stanica technickej kontroly vozidiel",
+      "url": "https://www.kontrolavozidiel.sk",
+      "telephone": "+421948888088",
+      "email": "stk@kontrolavozidiel.sk",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Šenkvická cesta 14/F",
+        "addressLocality": "Pezinok",
+        "postalCode": "902 01",
+        "addressCountry": "SK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "48.2875",
+        "longitude": "17.2667"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Monday",
+          "opens": "06:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "06:00",
+          "closes": "16:00"
+        }
+      ],
+      "priceRange": "€€",
+      "serviceType": ["Technická kontrola", "Emisná kontrola", "Kontrola originality"]
+    }
+    </script>
     <script src="script.js?v=3"></script>
 </body>
 </html>
