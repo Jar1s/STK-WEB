@@ -3320,6 +3320,7 @@ section {
     }
 
     .nav-menu.mobile-only {
+        display: flex;
         position: fixed;
         top: 0;
         right: -100%;
