@@ -1251,7 +1251,7 @@ body {
 /* About Hero */
 .about-hero {
     position: relative;
-    min-height: 70vh;
+    min-height: calc(100vh - var(--header-total-height, 0px));
     padding: calc(var(--header-total-height, 100px) + 1.5rem) 0 4rem;
     display: flex;
     align-items: center;
@@ -1260,6 +1260,9 @@ body {
     overflow: hidden;
     color: white;
     background: #0a1727;
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 .about-hero-slides {
@@ -3999,7 +4002,7 @@ section {
 
 @media (max-width: 900px) {
     .about-hero {
-        min-height: 60vh;
+        min-height: calc(100vh - var(--header-total-height, 0px));
         padding: calc(var(--header-total-height, 90px) + 1rem) 0 3rem;
     }
 
@@ -4019,7 +4022,7 @@ section {
 
 @media (max-width: 600px) {
     .about-hero {
-        min-height: 55vh;
+        min-height: calc(100vh - var(--header-total-height, 0px));
         padding: calc(var(--header-total-height, 90px) + 0.75rem) 0 2.5rem;
     }
 
