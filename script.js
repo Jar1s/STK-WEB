@@ -114,7 +114,7 @@
       desktopMenus.forEach((menu) => { if (menu) menu.style.display = mobile ? 'none' : ''; });
       if (navbarLeftExtras) navbarLeftExtras.style.display = mobile ? 'none' : '';
       if (navbarRightExtras) navbarRightExtras.style.display = mobile ? 'none' : '';
-      if (logoEl) logoEl.style.display = mobile ? 'none' : '';
+      if (logoEl) logoEl.style.display = '';
       if (mobileMenuToggle) mobileMenuToggle.style.display = mobile ? 'flex' : '';
       if (!mobile) {
         closeMobileMenu();
