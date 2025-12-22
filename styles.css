@@ -1252,7 +1252,7 @@ body {
 .about-hero {
     position: relative;
     min-height: 70vh;
-    padding: calc(var(--header-total-height, 100px) + 1.5rem) 1.5rem 4rem;
+    padding: calc(var(--header-total-height, 100px) + 1.5rem) 0 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1295,6 +1295,7 @@ body {
 .about-hero .container {
     position: relative;
     z-index: 2;
+    padding: 0 1.5rem;
 }
 
 .about-hero-content {
@@ -1334,6 +1335,43 @@ body {
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.92);
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.about-hero-controls {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.about-hero-nav {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(0, 0, 0, 0.35);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    pointer-events: auto;
+    backdrop-filter: blur(8px);
+}
+
+.about-hero-nav:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.about-hero-nav svg {
+    display: block;
 }
 
 /* Buttons */
@@ -3962,7 +4000,16 @@ section {
 @media (max-width: 900px) {
     .about-hero {
         min-height: 60vh;
-        padding: calc(var(--header-total-height, 90px) + 1rem) 1rem 3rem;
+        padding: calc(var(--header-total-height, 90px) + 1rem) 0 3rem;
+    }
+
+    .about-hero-controls {
+        padding: 0 0.75rem;
+    }
+
+    .about-hero-nav {
+        width: 42px;
+        height: 42px;
     }
 
     .about-hero-subtitle {
@@ -3973,7 +4020,12 @@ section {
 @media (max-width: 600px) {
     .about-hero {
         min-height: 55vh;
-        padding: calc(var(--header-total-height, 90px) + 0.75rem) 1rem 2.5rem;
+        padding: calc(var(--header-total-height, 90px) + 0.75rem) 0 2.5rem;
+    }
+
+    .about-hero-nav {
+        width: 38px;
+        height: 38px;
     }
 
     .about-hero-title {

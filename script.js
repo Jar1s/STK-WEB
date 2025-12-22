@@ -416,6 +416,8 @@
   function initAboutHeroSlider() {
     const slider = $('.about-hero');
     const slides = slider ? $$('.about-hero-slide', slider) : [];
+    const prevBtn = slider ? slider.querySelector('.about-hero-prev') : null;
+    const nextBtn = slider ? slider.querySelector('.about-hero-next') : null;
     if (!slider || slides.length === 0) return;
 
     let activeIndex = slides.findIndex((slide) => slide.classList.contains('is-active'));
@@ -425,23 +427,34 @@
     }
 
     const setActive = (nextIndex) => {
-      if (nextIndex === activeIndex) return;
+      if (nextIndex === activeIndex || !slides[nextIndex]) return;
       slides[activeIndex]?.classList.remove('is-active');
       activeIndex = nextIndex;
       slides[activeIndex]?.classList.add('is-active');
     };
 
     const next = () => setActive((activeIndex + 1) % slides.length);
+    const prev = () => setActive((activeIndex - 1 + slides.length) % slides.length);
 
     let timer = null;
     const start = () => {
+      if (slides.length <= 1) return;
       clearInterval(timer);
-      timer = setInterval(next, 6000);
+      timer = setInterval(next, 6500);
     };
     const stop = () => {
       clearInterval(timer);
       timer = null;
     };
+
+    const handleNav = (dir) => {
+      if (dir === 'next') next();
+      if (dir === 'prev') prev();
+      if (slides.length > 1) start();
+    };
+
+    if (nextBtn) nextBtn.addEventListener('click', () => handleNav('next'));
+    if (prevBtn) prevBtn.addEventListener('click', () => handleNav('prev'));
 
     slider.addEventListener('mouseenter', stop);
     slider.addEventListener('mouseleave', start);
@@ -452,6 +465,13 @@
         start();
       }
     });
+
+    const controls = [prevBtn, nextBtn].filter(Boolean);
+    if (controls.length) {
+      controls.forEach((btn) => {
+        btn.style.display = slides.length > 1 ? 'inline-flex' : 'none';
+      });
+    }
 
     start();
   }
