@@ -3420,8 +3420,7 @@ section {
     }
 
     .navbar-left-extras,
-    .navbar-right-extras,
-    .logo {
+    .navbar-right-extras {
         display: none !important;
     }
 
@@ -4628,6 +4627,31 @@ section {
 
     .map-container h3 {
         color: var(--dark-text-primary);
+    }
+}
+
+/* Final guard: force desktop nav hidden and hamburger-only on small/landscape */
+@media (max-width: 1200px) {
+    .nav-menu-left,
+    .nav-menu-right,
+    .navbar-left-extras,
+    .navbar-right-extras,
+    .nav-menu:not(.mobile-only) {
+        display: none !important;
+    }
+
+    .mobile-menu-toggle {
+        display: flex !important;
+    }
+
+    .nav-menu.mobile-only {
+        display: none !important;
+        right: -100%;
+    }
+
+    .nav-menu.mobile-only.active {
+        display: flex !important;
+        right: 0;
     }
 }
 
