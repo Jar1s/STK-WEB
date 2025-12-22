@@ -13,7 +13,7 @@
 
   const dom = {
     navbar: $('.navbar'),
-    heroSection: $('.hero'),
+    heroSection: $('.hero') || $('.about-hero'),
     announcementsWrapper: $('#hero-announcements-wrapper'),
     heroPartners: $('.hero-partners-scroll'),
     partnersTrack: $('#partners-scroll')
@@ -411,6 +411,49 @@
     setTimeout(() => {
       if (heroVideo.paused) playVideo();
     }, 500);
+  }
+
+  function initAboutHeroSlider() {
+    const slider = $('.about-hero');
+    const slides = slider ? $$('.about-hero-slide', slider) : [];
+    if (!slider || slides.length === 0) return;
+
+    let activeIndex = slides.findIndex((slide) => slide.classList.contains('is-active'));
+    if (activeIndex < 0) {
+      activeIndex = 0;
+      slides[0].classList.add('is-active');
+    }
+
+    const setActive = (nextIndex) => {
+      if (nextIndex === activeIndex) return;
+      slides[activeIndex]?.classList.remove('is-active');
+      activeIndex = nextIndex;
+      slides[activeIndex]?.classList.add('is-active');
+    };
+
+    const next = () => setActive((activeIndex + 1) % slides.length);
+
+    let timer = null;
+    const start = () => {
+      clearInterval(timer);
+      timer = setInterval(next, 6000);
+    };
+    const stop = () => {
+      clearInterval(timer);
+      timer = null;
+    };
+
+    slider.addEventListener('mouseenter', stop);
+    slider.addEventListener('mouseleave', start);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stop();
+      } else {
+        start();
+      }
+    });
+
+    start();
   }
 
   function initHeroScrollButton() {
@@ -1005,6 +1048,7 @@
     initSmoothScroll();
     initAnimations();
     initHeroVideo();
+    initAboutHeroSlider();
     initHeroScrollButton();
     initForms();
     initPricingTabs();
