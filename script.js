@@ -62,6 +62,9 @@
     const heroSection = dom.heroSection;
     const desktopMenus = [navMenuLeft, navMenuRight].filter(Boolean);
     const isMobileViewport = () => window.innerWidth <= 1200 || window.innerHeight <= 500;
+    const navbarLeftExtras = $('.navbar-left-extras');
+    const navbarRightExtras = $('.navbar-right-extras');
+    const logoEl = navWrapper?.querySelector('.logo');
 
     const closeMobileMenu = () => {
       if (!isMobileViewport()) return;
@@ -104,6 +107,18 @@
       if (!isMobileViewport()) return;
       if (state.isMenuOpen) closeMobileMenu();
       else openMobileMenu();
+    };
+
+    const applyNavVisibility = () => {
+      const mobile = isMobileViewport();
+      desktopMenus.forEach((menu) => { if (menu) menu.style.display = mobile ? 'none' : ''; });
+      if (navbarLeftExtras) navbarLeftExtras.style.display = mobile ? 'none' : '';
+      if (navbarRightExtras) navbarRightExtras.style.display = mobile ? 'none' : '';
+      if (logoEl) logoEl.style.display = mobile ? 'none' : '';
+      if (mobileMenuToggle) mobileMenuToggle.style.display = mobile ? 'flex' : '';
+      if (!mobile) {
+        closeMobileMenu();
+      }
     };
 
     const buildMobileMenu = () => {
@@ -153,6 +168,7 @@
     };
 
     buildMobileMenu();
+    applyNavVisibility();
 
     mobileMenuToggle?.setAttribute('aria-label', 'Toggle navigation menu');
     mobileMenuToggle?.setAttribute('aria-expanded', 'false');
@@ -208,6 +224,7 @@
       if (!isMobileViewport() && state.isMenuOpen) {
         closeMobileMenu();
       }
+      applyNavVisibility();
       computeHeaderHeights();
     });
     window.addEventListener('resize', onResize);
