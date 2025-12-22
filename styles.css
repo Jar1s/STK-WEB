@@ -524,7 +524,7 @@ body {
 }
 
 /* Medium screens - show mobile menu (874px and similar) */
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
     .nav-menu-left,
     .nav-menu-right {
         display: none !important;
@@ -546,7 +546,7 @@ body {
     .nav-wrapper {
         justify-content: space-between;
     }
-    
+
     .logo h1 {
         font-size: 1rem;
     }

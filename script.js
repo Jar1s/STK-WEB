@@ -66,7 +66,7 @@
       if (!state.mobileNavMenu) return;
       state.isMenuOpen = false;
       state.mobileNavMenu.classList.remove('active');
-       state.mobileNavMenu.style.display = '';
+      state.mobileNavMenu.style.display = '';
       mobileMenuToggle?.classList.remove('active');
       mobileMenuToggle?.setAttribute('aria-expanded', 'false');
       mobileMenuOverlay?.classList.remove('active');
