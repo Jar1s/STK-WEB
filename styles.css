@@ -3415,8 +3415,13 @@ section {
     }
 
     .navbar-left-extras,
-    .navbar-right-extras {
+    .navbar-right-extras,
+    .logo {
         display: none !important;
+    }
+
+    .nav-wrapper {
+        justify-content: flex-end;
     }
 
     .mobile-menu-toggle {
