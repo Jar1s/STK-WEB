@@ -61,7 +61,7 @@
     const navbar = dom.navbar;
     const heroSection = dom.heroSection;
     const desktopMenus = [navMenuLeft, navMenuRight].filter(Boolean);
-    const isMobileViewport = () => window.innerWidth <= 1200 || window.innerHeight <= 500;
+    const isMobileViewport = () => window.innerWidth <= 900 || window.innerHeight <= 500;
     const navbarLeftExtras = $('.navbar-left-extras');
     const navbarRightExtras = $('.navbar-right-extras');
     const logoEl = navWrapper?.querySelector('.logo');

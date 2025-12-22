@@ -588,8 +588,8 @@ body {
         align-items: center;
     }
 
-    .nav-menu.mobile-only {
-        display: flex;
+.nav-menu.mobile-only {
+    display: none;
     }
 }
 
@@ -3364,9 +3364,10 @@ section {
         will-change: right;
     }
 
-    .nav-menu.mobile-only.active {
-        right: 0;
-    }
+.nav-menu.mobile-only.active {
+    display: flex;
+    right: 0;
+}
     
     /* Prevent body scroll when menu is open */
     body.menu-open {
@@ -4642,31 +4643,6 @@ section {
     }
 }
 
-/* Final guard: force desktop nav hidden and hamburger-only on small/landscape */
-@media (max-width: 1200px) {
-    .nav-menu-left,
-    .nav-menu-right,
-    .navbar-left-extras,
-    .navbar-right-extras,
-    .nav-menu:not(.mobile-only) {
-        display: none !important;
-    }
-
-    .mobile-menu-toggle {
-        display: flex !important;
-    }
-
-    .nav-menu.mobile-only {
-        display: none !important;
-        right: -100%;
-    }
-
-    .nav-menu.mobile-only.active {
-        display: flex !important;
-        right: 0;
-    }
-}
-
 /* Landscape orientation on mobile - MOVED TO END FOR HIGHEST PRIORITY */
 /* Using max-height instead of orientation for better iOS compatibility */
 @media (max-width: 900px) and (max-height: 500px) {
@@ -4693,8 +4669,13 @@ section {
     }
 
     .nav-menu.mobile-only {
-        display: flex;
+        display: none;
         right: -100%;
+    }
+
+    .nav-menu.mobile-only.active {
+        display: flex;
+        right: 0;
     }
 
     :root {
