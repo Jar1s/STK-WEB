@@ -927,20 +927,35 @@
 
   const renderHeroPartners = (partners) => {
     const heroContainer = dom.heroPartners || $('.hero-partners-scroll');
-    if (!heroContainer) return;
+    if (!heroContainer) {
+      console.warn('Hero partners container not found');
+      return;
+    }
 
-    const heroItems = (partners || []).map((p) => {
+    const activePartners = (partners || []).filter((p) => p.active !== false);
+    if (activePartners.length === 0) {
+      heroContainer.innerHTML = '';
+      heroContainer.classList.remove('running');
+      return;
+    }
+
+    const heroItems = activePartners.map((p) => {
       const div = document.createElement('div');
       div.className = 'hero-partner-item';
       if (p.logoUrl) {
         const img = document.createElement('img');
         img.src = p.logoUrl;
         img.alt = p.name || 'Partner';
+        img.loading = 'lazy';
         img.onerror = () => {
+          console.warn('Failed to load partner image:', p.logoUrl);
           img.remove();
           const span = document.createElement('span');
           span.textContent = p.name || 'Partner';
           div.appendChild(span);
+        };
+        img.onload = () => {
+          console.log('Partner image loaded:', p.name, p.logoUrl);
         };
         div.appendChild(img);
       } else {
@@ -1025,10 +1040,11 @@
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       state.partnersData = data.partners || [];
+      console.log('Loaded partners:', state.partnersData.length, state.partnersData);
       renderHeroPartners(state.partnersData);
       renderPartnersSection(state.partnersData);
     } catch (err) {
-      console.warn('Failed to load partners', err);
+      console.error('Failed to load partners', err);
     }
   }
 

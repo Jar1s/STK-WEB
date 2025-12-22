@@ -263,6 +263,13 @@ async function submitPartner(e) {
   
   try {
     const id = document.getElementById('partner-id').value;
+    let currentPartner = null;
+    if (id) {
+      // Get current partner data to preserve logoUrl if no new file is uploaded
+      const data = await apiFetch(API.partners);
+      currentPartner = data.partners.find((x) => x.id.toString() === id.toString());
+    }
+    
     const payload = {
       id: id || undefined,
       name: document.getElementById('partner-name').value,
@@ -272,7 +279,15 @@ async function submitPartner(e) {
     };
     
     const logoUrl = await uploadLogoIfNeeded(document.getElementById('partner-logo'));
-    if (logoUrl) payload.logoUrl = logoUrl;
+    if (logoUrl) {
+      payload.logoUrl = logoUrl;
+    } else if (id && currentPartner && currentPartner.logoUrl) {
+      // Preserve existing logoUrl if editing and no new file uploaded
+      payload.logoUrl = currentPartner.logoUrl;
+    } else if (!id) {
+      // For new partners, logoUrl is optional
+      payload.logoUrl = null;
+    }
 
     const method = id ? 'PUT' : 'POST';
     const url = id ? API.partner(id) : API.partners;
