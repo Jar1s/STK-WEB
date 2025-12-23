@@ -521,6 +521,33 @@ body {
 /* Mobile menu will use .nav-menu class */
 .nav-menu.mobile-only {
     display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: min(280px, 85vw);
+    max-width: 320px;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    background: rgba(26, 26, 26, 0.98);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 4rem 2rem 2rem;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2002;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    align-items: flex-start;
+    gap: 0;
+    list-style: none;
+    will-change: right;
+}
+
+.nav-menu.mobile-only.active {
+    display: flex;
+    right: 0;
 }
 
 /* Medium screens - show mobile menu (mobile & landscape) */
@@ -586,10 +613,6 @@ body {
     .logo {
         display: flex !important;
         align-items: center;
-    }
-
-.nav-menu.mobile-only {
-    display: none;
     }
 }
 
@@ -3319,58 +3342,29 @@ section {
         display: flex;
     }
 
-    .mobile-menu-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.6);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
-        z-index: 2001;
-        -webkit-backdrop-filter: blur(4px);
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 2001;
+    -webkit-backdrop-filter: blur(4px);
         backdrop-filter: blur(4px);
         will-change: opacity, visibility;
     }
 
-    .mobile-menu-overlay.active {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .nav-menu.mobile-only {
-        display: flex;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: min(280px, 85vw);
-        max-width: 320px;
-        height: 100vh;
-        height: 100dvh; /* Dynamic viewport height for mobile browsers */
-        background: rgba(26, 26, 26, 0.98);
-        -webkit-backdrop-filter: blur(20px);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        padding: 4rem 2rem 2rem;
-        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
-        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 2002;
-        overflow-y: auto;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
-        align-items: flex-start;
-        gap: 0;
-        list-style: none;
-        will-change: right;
-    }
-
-.nav-menu.mobile-only.active {
-    display: flex;
-    right: 0;
+.mobile-menu-overlay.active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
 }
-    
+
     /* Prevent body scroll when menu is open */
     body.menu-open {
         overflow: hidden;
