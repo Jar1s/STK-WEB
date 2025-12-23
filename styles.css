@@ -1014,9 +1014,9 @@ body {
     position: relative;
     z-index: 3;
     max-width: 800px;
-    padding: 2rem;
+    padding: 3rem 2rem 2rem;
     animation: fadeInUp 1s ease;
-    margin: 0 auto;
+    margin: 6vh auto 3vh;
     width: 100%;
     text-align: center;
     display: flex;
@@ -1174,10 +1174,8 @@ body {
 
 /* Hero Statistics */
 .hero-statistics {
-    position: absolute;
-    bottom: 8rem;
-    left: 0;
-    right: 0;
+    position: relative;
+    margin: 4rem auto 3rem;
     z-index: 4;
     padding: 0 2rem;
     width: 100%;
@@ -4690,7 +4688,7 @@ section {
 
     .hero-content {
         margin-top: 0 !important;
-        padding: 0.3rem 0.5rem !important;
+        padding: 1rem 0.75rem 0.75rem !important;
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
