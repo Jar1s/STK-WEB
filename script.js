@@ -67,7 +67,6 @@
     const logoEl = navWrapper?.querySelector('.logo');
 
     const closeMobileMenu = () => {
-      if (!isMobileViewport()) return;
       if (!state.mobileNavMenu) return;
       state.isMenuOpen = false;
       state.mobileNavMenu.classList.remove('active');
@@ -87,7 +86,6 @@
     };
 
     const openMobileMenu = () => {
-      if (!isMobileViewport()) return;
       if (!state.mobileNavMenu) return;
       state.isMenuOpen = true;
       state.mobileNavMenu.style.display = 'flex';
@@ -124,6 +122,7 @@
     const buildMobileMenu = () => {
       const existingMobile = $('.nav-menu.mobile-only', navWrapper) || $('.nav-menu.mobile-only');
       if (existingMobile) {
+        if (!existingMobile.id) existingMobile.id = 'mobile-menu';
         state.mobileNavMenu = existingMobile;
         return;
       }
@@ -131,6 +130,7 @@
       if (navMenuLeft && navMenuRight) {
         const mobileNavMenu = document.createElement('ul');
         mobileNavMenu.className = 'nav-menu mobile-only';
+        mobileNavMenu.id = 'mobile-menu';
         mobileNavMenu.setAttribute('role', 'menu');
         mobileNavMenu.setAttribute('aria-label', 'Main navigation');
         navMenuLeft.querySelectorAll('li').forEach((li) => {
@@ -154,6 +154,7 @@
       if (singleMenu) {
         const mobileNavMenu = document.createElement('ul');
         mobileNavMenu.className = 'nav-menu mobile-only';
+        mobileNavMenu.id = 'mobile-menu';
         mobileNavMenu.setAttribute('role', 'menu');
         mobileNavMenu.setAttribute('aria-label', 'Main navigation');
         singleMenu.querySelectorAll('li').forEach((li) => {
