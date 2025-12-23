@@ -173,16 +173,8 @@
     mobileMenuToggle?.setAttribute('aria-label', 'Toggle navigation menu');
     mobileMenuToggle?.setAttribute('aria-expanded', 'false');
     mobileMenuToggle?.addEventListener('click', toggleMobileMenu);
-    mobileMenuToggle?.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      toggleMobileMenu();
-    });
 
     mobileMenuOverlay?.addEventListener('click', closeMobileMenu);
-    mobileMenuOverlay?.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      closeMobileMenu();
-    });
 
     document.addEventListener('click', (e) => {
       if (e.target.closest('.nav-link') && state.mobileNavMenu?.classList.contains('active')) {
