@@ -4108,12 +4108,18 @@ section {
     .info-card,
     .service-card,
     .review-card,
-    .advantage-card,
     .main-service-card,
     .service-link-card,
     .partner-card,
     .charging-card {
         background: var(--dark-bg-card);
+        border-color: var(--dark-border);
+        box-shadow: var(--dark-shadow-lg);
+    }
+
+    /* Preserve photo backgrounds on advantage cards */
+    .advantage-card {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.75) 85%), var(--card-bg) center/cover no-repeat;
         border-color: var(--dark-border);
         box-shadow: var(--dark-shadow-lg);
     }
@@ -4128,6 +4134,11 @@ section {
     .charging-card:hover {
         box-shadow: var(--dark-shadow-xl);
         border-color: var(--primary-color);
+    }
+
+    .advantage-card:hover,
+    .advantage-card:focus-within {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.65) 85%), var(--card-bg) center/cover no-repeat;
     }
 
     .info-card h3,
