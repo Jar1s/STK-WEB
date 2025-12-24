@@ -142,6 +142,18 @@
       backBtn.addEventListener('click', () => closeMobileMenu());
     };
 
+    const ensureMobileSocials = () => {
+      if (!state.mobileNavMenu) return;
+      if (state.mobileNavMenu.querySelector('.mobile-menu-socials')) return;
+      const socialsSource = $('.social-icons', navbarRightExtras) || $('.social-icons', navWrapper) || $('.social-icons');
+      if (!socialsSource) return;
+      const cloned = socialsSource.cloneNode(true);
+      const socialItem = document.createElement('li');
+      socialItem.className = 'mobile-menu-socials';
+      socialItem.appendChild(cloned);
+      state.mobileNavMenu.appendChild(socialItem);
+    };
+
     const setDesktopVisibility = (mobile) => {
       desktopMenus.forEach((menu) => { if (menu) menu.style.display = mobile ? 'none' : ''; });
       if (navbarLeftExtras) navbarLeftExtras.style.display = mobile ? 'none' : '';
@@ -207,6 +219,7 @@
 
     buildMobileMenu();
     ensureMobileHeader();
+    ensureMobileSocials();
     ensureInBody(mobileMenuOverlay);
     applyNavVisibility();
 
