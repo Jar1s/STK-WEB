@@ -4138,7 +4138,7 @@ section {
 
     .advantage-card:hover,
     .advantage-card:focus-within {
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.65) 85%), var(--card-bg) center/cover no-repeat;
+        background: #ffffff;
     }
 
     .info-card h3,
