@@ -263,6 +263,12 @@ async function submitPartner(e) {
   
   try {
     const id = document.getElementById('partner-id').value;
+    const name = document.getElementById('partner-name').value.trim();
+    if (!name) {
+      partnerStatus('Názov partnera je povinný');
+      return;
+    }
+    const linkValue = document.getElementById('partner-link').value.trim();
     let currentPartner = null;
     if (id) {
       // Get current partner data to preserve logoUrl if no new file is uploaded
@@ -272,8 +278,8 @@ async function submitPartner(e) {
     
     const payload = {
       id: id || undefined,
-      name: document.getElementById('partner-name').value,
-      link: document.getElementById('partner-link').value || null,
+      name,
+      link: linkValue || null,
       sortOrder: Number(document.getElementById('partner-order').value || 0),
       active: document.getElementById('partner-active').value === 'true'
     };
