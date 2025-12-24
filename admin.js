@@ -338,7 +338,15 @@ async function handlePartnerActions(e) {
     const data = await apiFetch(API.partners);
     const p = data.partners.find((x) => x.id.toString() === id.toString());
     if (p) {
-      await apiFetch(API.partner(id), { method: 'PUT', body: JSON.stringify({ active: !p.active }) });
+      const payload = {
+        id: p.id,
+        name: (p.name || '').trim(),
+        link: p.link || null,
+        logoUrl: p.logoUrl || null,
+        sortOrder: p.sortOrder ?? 0,
+        active: !p.active
+      };
+      await apiFetch(API.partner(id), { method: 'PUT', body: JSON.stringify(payload) });
       loadPartners();
     }
   }
