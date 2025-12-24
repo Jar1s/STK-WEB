@@ -191,7 +191,7 @@ async function loadPartners() {
   list.innerHTML = '<div class="muted">Načítavam...</div>';
   err.textContent = '';
   try {
-    const data = await apiFetch(API.partners);
+    const data = await apiFetch(`${API.partners}?includeInactive=true`);
     list.innerHTML = '';
     data.partners.forEach((p) => {
       const div = document.createElement('div');
@@ -329,13 +329,13 @@ async function handlePartnerActions(e) {
   const t = e.target;
   if (t.dataset.partnerEdit) {
     const id = t.dataset.partnerEdit;
-    const data = await apiFetch(API.partners);
+    const data = await apiFetch(`${API.partners}?includeInactive=true`);
     const p = data.partners.find((x) => x.id.toString() === id.toString());
     if (p) fillPartnerForm(p);
   }
   if (t.dataset.partnerToggle) {
     const id = t.dataset.partnerToggle;
-    const data = await apiFetch(API.partners);
+    const data = await apiFetch(`${API.partners}?includeInactive=true`);
     const p = data.partners.find((x) => x.id.toString() === id.toString());
     if (p) {
       const payload = {
