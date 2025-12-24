@@ -2742,7 +2742,7 @@ body.about-page .about-page-section {
 .charging-image-wrapper {
     position: relative;
     overflow: hidden;
-    background: transparent;
+    background: url('/nabijacka.png') center/contain no-repeat, #111;
     display: flex;
     align-items: center;
     justify-content: center;
