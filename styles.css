@@ -1929,7 +1929,7 @@ body.about-page .about-page-section {
     text-align: center;
     min-height: 320px;
     overflow: hidden;
-    background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.65) 80%), var(--card-bg) center/cover no-repeat;
+    background: linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.48) 85%), var(--card-bg) center/cover no-repeat;
     background-size: cover, cover;
     background-position: center, center;
     background-repeat: no-repeat, no-repeat;
