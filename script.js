@@ -661,12 +661,16 @@
       'section-advantages-sub': 'Prečo si vybrať práve nás',
       'advantage-1-title': 'Odvoz/dovoz zadarmo',
       'advantage-1-text': 'Ak sa potrebujete počas kontroly nečakane dostaviť na neplánované stretnutie, vieme Vám zabezpečiť odvoz aj dovoz k nám. (do 10 km)',
+      'advantage-1-cta': 'STK bez stresu',
       'advantage-2-title': 'Prídeme si pre Vaše vozidlo',
       'advantage-2-text': 'Nemôžete sa k nám osobne dostaviť na kontrolu? Prídeme si po Vaše vozidlo a po kontrole Vám ho privezieme späť. (do 10 km)',
+      'advantage-2-cta': 'Bezstarostná preprava',
       'advantage-3-title': 'NONSTOP pre nákladné vozidlá',
       'advantage-3-text': 'Po telefonickej objednávke aj mimo otváracích hodín. BEZ PRÍPLATKU',
+      'advantage-3-cta': 'Servis aj po 22:00',
       'advantage-4-title': 'Zapožičanie prevozných ŠPZ',
       'advantage-4-text': 'Pre potreby KO a STK v rámci SR',
+      'advantage-4-cta': 'Dokončené rýchlejšie',
       'tech-control-title': 'TECHNICKÁ KONTROLA',
       'tech-control-desc': 'Technická kontrola vozidla (STK) je povinná kontrola, ktorá sa vykonáva v pravidelných intervaloch podľa veku a typu vozidla. Naša STK zabezpečuje komplexnú kontrolu všetkých kritických súčastí vozidla.',
       'tech-control-what': 'Čo kontrolujeme:',
@@ -731,12 +735,16 @@
       'section-advantages-sub': 'Why choose us',
       'advantage-1-title': 'Free pickup/delivery',
       'advantage-1-text': 'If you need to attend an unexpected meeting during the inspection, we can arrange pickup and delivery to us. (up to 10 km)',
+      'advantage-1-cta': 'Stress-free check',
       'advantage-2-title': 'We come to pick up your vehicle',
       'advantage-2-text': "Can't come to us in person for inspection? We'll come pick up your vehicle and bring it back after inspection. (up to 10 km)",
+      'advantage-2-cta': 'Worry-free transport',
       'advantage-3-title': 'NONSTOP for trucks',
       'advantage-3-text': 'By phone appointment even outside opening hours. NO SURCHARGE',
+      'advantage-3-cta': 'Service after hours',
       'advantage-4-title': 'Loan of transport license plates',
       'advantage-4-text': 'For KO and STK needs within Slovakia',
+      'advantage-4-cta': 'Finished faster',
       'tech-control-title': 'TECHNICAL INSPECTION',
       'tech-control-desc': 'Vehicle technical inspection (STK) is a mandatory inspection performed at regular intervals according to the age and type of vehicle. Our STK ensures comprehensive inspection of all critical vehicle components.',
       'tech-control-what': 'What we check:',
@@ -826,54 +834,11 @@
     const nextBtn = $('.carousel-btn-next');
     if (!carouselWrapper || !carousel || !prevBtn || !nextBtn) return;
 
-    const cardWidth = 320;
-    const totalCards = carousel.querySelectorAll('.advantage-card').length;
-    const totalWidth = (totalCards / 2) * cardWidth;
-    let currentPosition = 0;
-    let autoScrollInterval = null;
-    let isManualMode = false;
-    let resumeTimeout = null;
-
-    const startAutoScroll = () => {
-      if (autoScrollInterval) clearInterval(autoScrollInterval);
-      carousel.classList.add('auto-scroll');
-      isManualMode = false;
-      autoScrollInterval = setInterval(() => {
-        if (isManualMode) return;
-        currentPosition = (currentPosition - 2) % totalWidth;
-        if (currentPosition < 0) currentPosition += totalWidth;
-        carousel.style.transform = `translateX(-${currentPosition}px)`;
-      }, 50);
-    };
-
-    const pauseAutoScroll = () => {
-      carousel.classList.remove('auto-scroll');
-      isManualMode = true;
-      if (autoScrollInterval) {
-        clearInterval(autoScrollInterval);
-        autoScrollInterval = null;
-      }
-    };
-
-    const scrollNext = () => {
-      pauseAutoScroll();
-      if (resumeTimeout) clearTimeout(resumeTimeout);
-      currentPosition = (currentPosition + cardWidth) % totalWidth;
-      carousel.style.transform = `translateX(-${currentPosition}px)`;
-      resumeTimeout = setTimeout(startAutoScroll, 3000);
-    };
-
-    const scrollPrev = () => {
-      pauseAutoScroll();
-      if (resumeTimeout) clearTimeout(resumeTimeout);
-      currentPosition = (currentPosition - cardWidth + totalWidth) % totalWidth;
-      carousel.style.transform = `translateX(-${currentPosition}px)`;
-      resumeTimeout = setTimeout(startAutoScroll, 3000);
-    };
-
-    nextBtn.addEventListener('click', scrollNext);
-    prevBtn.addEventListener('click', scrollPrev);
-    startAutoScroll();
+    // Static grid layout — hide carousel controls and auto-scroll
+    carousel.style.transform = 'none';
+    carousel.classList.remove('auto-scroll');
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = 'none';
   }
 
   function formatStat(value) {

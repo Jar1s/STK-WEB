@@ -1894,126 +1894,130 @@ body.about-page .about-page-section {
 }
 
 .advantages-carousel-wrapper {
-    overflow: hidden;
+    overflow: visible;
     width: 100%;
     position: relative;
-    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
 
 .advantages-carousel {
-    display: flex;
-    gap: 2rem;
-    width: fit-content;
-    transition: transform 0.6s ease;
+    width: 100%;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+.advantages-carousel.advantages-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.carousel-btn,
 .advantages-carousel.auto-scroll {
-    animation: scroll-advantages 40s linear infinite;
+    display: none;
 }
 
-.advantages-carousel:hover {
-    animation-play-state: paused;
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: white;
-    border: 2px solid var(--primary-color);
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 10;
-    color: var(--primary-color);
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.carousel-btn:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 16px rgba(0, 102, 204, 0.3);
-}
-
-.carousel-btn-prev {
-    left: 10px;
-}
-
-.carousel-btn-next {
-    right: 10px;
-}
-
-@keyframes scroll-advantages {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
+@media (max-width: 640px) {
+    .advantages-carousel.advantages-grid {
+        grid-template-columns: 1fr;
     }
 }
 
 .advantage-card {
-    background: white;
-    padding: 2.5rem 2rem;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: var(--shadow-md);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
     border: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 280px;
-    max-width: 320px;
-    flex-shrink: 0;
+    border-radius: 12px;
+    padding: 2.5rem 1.75rem;
+    text-align: center;
+    min-height: 320px;
+    overflow: hidden;
+    background: white;
+    transition: all 0.35s ease;
+    isolation: isolate;
+    box-shadow: var(--shadow-md);
+    --card-bg: none;
 }
 
-.advantage-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--primary-color);
+.advantage-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.65) 80%), var(--card-bg) center/cover no-repeat;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 1;
+}
+
+.advantage-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.9);
+    z-index: 0;
+    transition: opacity 0.35s ease;
 }
 
 .advantage-icon-wrapper {
-    width: 80px;
-    height: 80px;
-    background: var(--primary-light);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
-    transition: all 0.3s ease;
+    display: none;
 }
 
-.advantage-card:hover .advantage-icon-wrapper {
-    background: var(--primary-color);
-    color: white;
-    transform: scale(1.1);
+.advantage-card h3,
+.advantage-card p,
+.advantage-cta {
+    position: relative;
+    z-index: 2;
 }
 
 .advantage-card h3 {
     font-size: 1.25rem;
     margin-bottom: 1rem;
-    color: var(--text-dark);
-    font-weight: 700;
+    color: #0c3b8c;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
 }
 
 .advantage-card p {
-    color: var(--text-medium);
-    line-height: 1.7;
+    color: var(--text-dark);
+    line-height: 1.6;
     flex-grow: 1;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    max-width: 100%;
+    margin-bottom: 1.25rem;
+    max-width: 36ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.advantage-cta {
+    display: inline-block;
+    margin-top: auto;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #0c3b8c;
+    text-transform: uppercase;
+}
+
+.advantage-card:hover,
+.advantage-card:focus-within {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(255,255,255,0.35);
+}
+
+.advantage-card:hover::before,
+.advantage-card:focus-within::before {
+    opacity: 1;
+}
+
+.advantage-card:hover::after,
+.advantage-card:focus-within::after {
+    opacity: 0;
+}
+
+.advantage-card:hover h3,
+.advantage-card:hover p,
+.advantage-card:hover .advantage-cta,
+.advantage-card:focus-within h3,
+.advantage-card:focus-within p,
+.advantage-card:focus-within .advantage-cta {
+    color: white;
 }
 
 /* License Plates Section */
