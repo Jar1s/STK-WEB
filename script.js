@@ -129,9 +129,11 @@
       state.isMenuOpen = false;
       state.mobileNavMenu.classList.remove('active');
       state.mobileNavMenu.style.display = 'none';
+      state.mobileNavMenu.style.transform = 'translateX(100%)';
       mobileMenuToggle?.classList.remove('active');
       mobileMenuToggle?.setAttribute('aria-expanded', 'false');
       mobileMenuOverlay?.classList.remove('active');
+      if (mobileMenuOverlay) mobileMenuOverlay.style.display = 'none';
       document.body.classList.remove('menu-open');
       document.body.style.position = '';
       document.body.style.top = '';
@@ -146,9 +148,11 @@
       state.isMenuOpen = true;
       state.mobileNavMenu.style.display = 'flex';
       state.mobileNavMenu.classList.add('active');
+      state.mobileNavMenu.style.transform = 'translateX(0)';
       mobileMenuToggle?.classList.add('active');
       mobileMenuToggle?.setAttribute('aria-expanded', 'true');
       mobileMenuOverlay?.classList.add('active');
+      if (mobileMenuOverlay) mobileMenuOverlay.style.display = 'block';
       lockedScrollY = window.scrollY;
       document.body.classList.add('menu-open');
       document.body.style.position = 'fixed';
@@ -171,6 +175,7 @@
       } else if (state.mobileNavMenu && !state.isMenuOpen) {
         state.mobileNavMenu.style.display = 'none';
         state.mobileNavMenu.classList.remove('active');
+        state.mobileNavMenu.style.transform = 'translateX(100%)';
       }
     };
 
