@@ -1929,30 +1929,11 @@ body.about-page .about-page-section {
     text-align: center;
     min-height: 320px;
     overflow: hidden;
-    background: white;
+    background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.65) 80%), var(--card-bg) center/cover no-repeat;
     transition: all 0.35s ease;
     isolation: isolate;
     box-shadow: var(--shadow-md);
     --card-bg: none;
-}
-
-.advantage-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.65) 80%), var(--card-bg) center/cover no-repeat;
-    opacity: 0;
-    transition: opacity 0.35s ease;
-    z-index: 1;
-}
-
-.advantage-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0.9);
-    z-index: 0;
-    transition: opacity 0.35s ease;
 }
 
 .advantage-icon-wrapper {
@@ -1969,14 +1950,14 @@ body.about-page .about-page-section {
 .advantage-card h3 {
     font-size: 1.25rem;
     margin-bottom: 1rem;
-    color: #0c3b8c;
+    color: white;
     font-weight: 800;
     letter-spacing: 0.01em;
     text-transform: uppercase;
 }
 
 .advantage-card p {
-    color: var(--text-dark);
+    color: rgba(255,255,255,0.92);
     line-height: 1.6;
     flex-grow: 1;
     margin-bottom: 1.25rem;
@@ -1990,7 +1971,7 @@ body.about-page .about-page-section {
     margin-top: auto;
     font-weight: 800;
     letter-spacing: 0.08em;
-    color: #0c3b8c;
+    color: white;
     text-transform: uppercase;
 }
 
@@ -1998,17 +1979,8 @@ body.about-page .about-page-section {
 .advantage-card:focus-within {
     transform: translateY(-8px);
     box-shadow: var(--shadow-xl);
-    border-color: rgba(255,255,255,0.35);
-}
-
-.advantage-card:hover::before,
-.advantage-card:focus-within::before {
-    opacity: 1;
-}
-
-.advantage-card:hover::after,
-.advantage-card:focus-within::after {
-    opacity: 0;
+    border-color: var(--primary-color);
+    background: white;
 }
 
 .advantage-card:hover h3,
@@ -2017,7 +1989,7 @@ body.about-page .about-page-section {
 .advantage-card:focus-within h3,
 .advantage-card:focus-within p,
 .advantage-card:focus-within .advantage-cta {
-    color: white;
+    color: #0c3b8c;
 }
 
 /* License Plates Section */
