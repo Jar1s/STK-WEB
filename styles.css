@@ -518,6 +518,11 @@ body {
     box-shadow: none;
 }
 
+/* Mobile drawer defaults */
+.nav-menu.mobile-only {
+    display: none;
+}
+
 .nav-menu.mobile-only {
     display: none;
 }
@@ -4621,7 +4626,7 @@ section {
         background: rgba(20, 20, 20, 0.96) !important;
         color: #fff !important;
         flex-direction: column !important;
-        align-items: flex-start !important;
+        align-items: stretch !important;
         gap: 0 !important;
         padding: 4rem 1.5rem 2.5rem !important;
         overflow-y: auto !important;
@@ -4641,13 +4646,48 @@ section {
         border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
     }
 
+    .nav-menu.mobile-only .mobile-menu-header {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 0.5rem !important;
+        padding: 0 0 0.75rem 0 !important;
+        border-bottom: none !important;
+    }
+
+    .mobile-menu-back {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 0.35rem !important;
+        padding: 0.55rem 0.9rem !important;
+        border-radius: 999px !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        color: #fff !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.01em !important;
+    }
+
+    .mobile-back-icon {
+        display: inline-block !important;
+        font-size: 1.1rem !important;
+        line-height: 1 !important;
+    }
+
+    .mobile-menu-title {
+        color: #fff !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+    }
+
     .nav-menu.mobile-only .nav-link {
         display: block !important;
         width: 100% !important;
-        padding: 1rem 0 !important;
+        padding: 1.1rem 0 !important;
         color: rgba(255, 255, 255, 0.92) !important;
-        font-size: 1rem !important;
-        text-align: left !important;
+        font-size: 1.05rem !important;
+        font-weight: 600 !important;
+        text-align: center !important;
         background: transparent !important;
     }
 
@@ -4655,13 +4695,13 @@ section {
     .nav-menu.mobile-only .nav-link:focus {
         color: var(--primary-color) !important;
         background: rgba(255, 255, 255, 0.06) !important;
-        padding-left: 0.4rem !important;
     }
 
     .nav-menu.mobile-only .nav-link.btn-primary {
         text-align: center !important;
         margin-top: 1rem !important;
-        border-radius: 6px !important;
+        border-radius: 8px !important;
+        width: 100% !important;
     }
 
     .mobile-menu-overlay {

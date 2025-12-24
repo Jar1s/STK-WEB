@@ -124,6 +124,24 @@
       state.mobileNavMenu = null;
     };
 
+    const ensureMobileHeader = () => {
+      if (!state.mobileNavMenu) return;
+      if (state.mobileNavMenu.querySelector('.mobile-menu-header')) return;
+      const headerItem = document.createElement('li');
+      headerItem.className = 'mobile-menu-header';
+      const backBtn = document.createElement('button');
+      backBtn.type = 'button';
+      backBtn.className = 'mobile-menu-back';
+      backBtn.innerHTML = '<span class="mobile-back-icon" aria-hidden="true">←</span><span>Späť</span>';
+      const title = document.createElement('span');
+      title.className = 'mobile-menu-title';
+      title.textContent = 'Menu';
+      headerItem.appendChild(backBtn);
+      headerItem.appendChild(title);
+      state.mobileNavMenu.insertBefore(headerItem, state.mobileNavMenu.firstChild);
+      backBtn.addEventListener('click', () => closeMobileMenu());
+    };
+
     const setDesktopVisibility = (mobile) => {
       desktopMenus.forEach((menu) => { if (menu) menu.style.display = mobile ? 'none' : ''; });
       if (navbarLeftExtras) navbarLeftExtras.style.display = mobile ? 'none' : '';
@@ -188,6 +206,7 @@
     };
 
     buildMobileMenu();
+    ensureMobileHeader();
     ensureInBody(mobileMenuOverlay);
     applyNavVisibility();
 
